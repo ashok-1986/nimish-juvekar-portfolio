@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import { ArrowDown, ExternalLink, MapPin } from 'lucide-react'
+import { ArrowDown } from 'lucide-react'
 import { PERSONAL } from '@/lib/data'
 
 export default function HeroSection() {
@@ -135,7 +135,7 @@ export default function HeroSection() {
               className="section-eyebrow mb-4"
               style={{ opacity: 0 }}
             >
-              {PERSONAL.credentials} · Lecturer · UEL
+              {PERSONAL.credentials} · Lecturer
             </div>
 
             {/* Heading with letter-by-letter animation */}
@@ -174,12 +174,6 @@ export default function HeroSection() {
               {PERSONAL.heroTagline}
             </p>
 
-            {/* Location */}
-            <div className="flex items-center gap-2 mb-8 text-slate font-sans text-sm">
-              <MapPin size={14} className="text-blue flex-shrink-0" />
-              <span>{PERSONAL.location} · {PERSONAL.institution}</span>
-            </div>
-
             {/* CTAs */}
             <div
               ref={btnsRef}
@@ -200,20 +194,11 @@ export default function HeroSection() {
               >
                 Get In Touch
               </a>
-              <a
-                href={PERSONAL.uel}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary"
-              >
-                <ExternalLink size={14} />
-                UEL Profile
-              </a>
             </div>
 
             {/* Tags */}
             <div ref={tagsRef} className="flex flex-wrap gap-2">
-              {['Project Management', 'Supply Chain', 'Operations', 'Fire & ELV Systems', 'Work-Based Learning', 'International Business'].map(t => (
+              {['Project Management', 'Supply Chain', 'Operations', 'Fire & ELV Systems', 'Work-Based Learning'].map(t => (
                 <span key={t} className="tag">{t}</span>
               ))}
             </div>

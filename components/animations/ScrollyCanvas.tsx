@@ -1,13 +1,20 @@
 'use client'
 import { useEffect, useRef, useCallback } from 'react'
 
-// Placeholder frame URLs — replace with actual image sequence
-// For production: use a folder of /images/frames/frame-001.jpg ... frame-060.jpg
+// Image sequence scrubbing via scroll.
+// Expected assets (optional):
+// - public/images/frames/frame-001.jpg ... frame-060.jpg
+// - (or .webp equivalents)
 const TOTAL_FRAMES = 60
+const FRAME_DIR = '/images/frames'
+const FRAME_EXTS: Array<'webp' | 'jpg'> = ['webp', 'jpg']
 
-function getFrameUrl(_index: number): string | null {
-  // Replace with: return `/images/frames/frame-${String(_index + 1).padStart(3, '0')}.jpg`
-  return null // procedural fallback active until images are provided
+function frameNumberToSlug(index: number) {
+  return String(index + 1).padStart(3, '0')
+}
+
+function getFrameUrl(index: number, ext: 'webp' | 'jpg') {
+  return `${FRAME_DIR}/frame-${frameNumberToSlug(index)}.${ext}`
 }
 
 // Procedural "frame" renderer — creates a visual when no images are available
@@ -60,30 +67,118 @@ function drawProceduralFrame(ctx: CanvasRenderingContext2D, w: number, h: number
 
 export default function ScrollyCanvas() {
   const canvasRef    = useRef<HTMLCanvasElement>(null)
-  const imagesRef    = useRef<HTMLImageElement[]>([])
+  const imagesRef    = useRef<Array<HTMLImageElement | undefined>>([])
   const frameRef     = useRef(0)
   const rafRef       = useRef<number>(0)
   const loadedRef    = useRef(false)
 
   // Load frames if URLs exist
   useEffect(() => {
-    const allUrls = Array.from({ length: TOTAL_FRAMES }, (_, i) => getFrameUrl(i))
-    const urls: string[] = allUrls.filter((u): u is string => u !== null)
-    if (urls.length === 0) { loadedRef.current = true; return }
+    // Avoid heavy work for reduced motion.
+    const reduceMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches
 
-    let loaded = 0
-    const images: HTMLImageElement[] = []
+    if (reduceMotion) {
+      loadedRef.current = true
+      imagesRef.current = []
+      return
+    }
 
-    urls.forEach((url, i) => {
-      const img = new Image()
-      img.src = url
-      img.onload = () => {
-        loaded++
-        if (loaded === urls.length) loadedRef.current = true
+    let mounted = true
+    const tryLoadFirstFrameExists = () =>
+      new Promise<boolean>((resolve) => {
+        const img = new Image()
+        img.decoding = 'async'
+
+        let extIndex = 0
+        const tryExt = () => {
+          const ext = FRAME_EXTS[extIndex]
+          if (!ext) return resolve(false)
+
+          img.onload = () => resolve(true)
+          img.onerror = () => {
+            extIndex++
+            tryExt()
+          }
+
+          img.src = getFrameUrl(0, ext)
+        }
+
+        tryExt()
+      })
+
+    tryLoadFirstFrameExists().then((exists) => {
+      if (!mounted) return
+      if (!exists) {
+        // No image sequence assets provided; procedural fallback only.
+        loadedRef.current = true
+        imagesRef.current = []
+        return
       }
-      images[i] = img
+
+      let loadedCount = 0
+      const images: Array<HTMLImageElement | undefined> = new Array(TOTAL_FRAMES)
+
+      // Concurrency-limited preloader to avoid blocking the main thread.
+      const maxConcurrent = 6
+      let inFlight = 0
+      let nextIndex = 0
+
+      const loadNext = () => {
+        if (!mounted) return
+        while (inFlight < maxConcurrent && nextIndex < TOTAL_FRAMES) {
+          const index = nextIndex++
+          inFlight++
+
+          const img = new Image()
+          img.decoding = 'async'
+
+          let extIndex = 0
+          const tryExt = () => {
+            const ext = FRAME_EXTS[extIndex]
+            if (!ext) {
+              inFlight--
+              loadNext()
+              return
+            }
+
+            img.onload = () => {
+              if (!mounted) return
+              images[index] = img
+              loadedCount++
+              inFlight--
+              // Mark as ready once at least one frame is loaded; draw will progressively enhance.
+              if (loadedCount > 0) loadedRef.current = true
+              loadNext()
+            }
+
+            img.onerror = () => {
+              extIndex++
+              tryExt()
+            }
+
+            img.src = getFrameUrl(index, ext)
+          }
+
+          tryExt()
+        }
+      }
+
+      loadNext()
+      imagesRef.current = images
     })
-    imagesRef.current = images
+
+    // Safety net: if sequence exists but is slow, we still keep procedural fallback responsive.
+    const fallbackTimeout = window.setTimeout(() => {
+      if (!mounted) return
+      loadedRef.current = true
+    }, 6000)
+
+    return () => {
+      mounted = false
+      window.clearTimeout(fallbackTimeout)
+    }
   }, [])
 
   // Draw frame — cover logic for canvas
@@ -98,7 +193,7 @@ export default function ScrollyCanvas() {
     const progress = index / Math.max(TOTAL_FRAMES - 1, 1)
     const img = imagesRef.current[index]
 
-    if (img && img.complete) {
+    if (img && img.complete && img.naturalWidth > 0 && img.naturalHeight > 0) {
       // Object-fit: cover
       const imgAR = img.naturalWidth / img.naturalHeight
       const canvasAR = w / h
@@ -118,28 +213,53 @@ export default function ScrollyCanvas() {
     }
   }, [])
 
-  // Scroll handler
+  // Scroll-scrub handler (GSAP ScrollTrigger)
   useEffect(() => {
+    const reduceMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches
+
+    if (reduceMotion) {
+      drawFrame(0)
+      return
+    }
+
     const container = document.getElementById('scrolly-container')
     if (!container) return
 
-    const onScroll = () => {
-      const rect   = container.getBoundingClientRect()
-      const total  = container.offsetHeight - window.innerHeight
-      const scrolled = Math.max(0, -rect.top)
-      const progress  = Math.min(1, scrolled / total)
-      const newFrame  = Math.round(progress * (TOTAL_FRAMES - 1))
+    let killed = false
+    let st: any = null
 
-      if (newFrame !== frameRef.current) {
-        frameRef.current = newFrame
-        cancelAnimationFrame(rafRef.current)
-        rafRef.current = requestAnimationFrame(() => drawFrame(newFrame))
-      }
+    const setup = async () => {
+      const { gsap } = await import('gsap')
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger')
+      if (killed) return
+      gsap.registerPlugin(ScrollTrigger)
+
+      st = ScrollTrigger.create({
+        trigger: container,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+        invalidateOnRefresh: true,
+        onUpdate: (self: any) => {
+          const progress = Math.min(1, Math.max(0, self.progress ?? 0))
+          const newFrame = Math.round(progress * (TOTAL_FRAMES - 1))
+
+          if (newFrame !== frameRef.current) {
+            frameRef.current = newFrame
+            cancelAnimationFrame(rafRef.current)
+            rafRef.current = requestAnimationFrame(() => drawFrame(newFrame))
+          }
+        },
+      })
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true })
+    setup()
+
     return () => {
-      window.removeEventListener('scroll', onScroll)
+      killed = true
+      st?.kill?.()
       cancelAnimationFrame(rafRef.current)
     }
   }, [drawFrame])
@@ -151,12 +271,10 @@ export default function ScrollyCanvas() {
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1
-      canvas.width  = window.innerWidth  * dpr
-      canvas.height = window.innerHeight * dpr
-      canvas.style.width  = `${window.innerWidth}px`
+      canvas.width = Math.round(window.innerWidth * dpr)
+      canvas.height = Math.round(window.innerHeight * dpr)
+      canvas.style.width = `${window.innerWidth}px`
       canvas.style.height = `${window.innerHeight}px`
-      const ctx = canvas.getContext('2d')
-      ctx?.scale(dpr, dpr)
       drawFrame(frameRef.current)
     }
 

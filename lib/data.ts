@@ -15,7 +15,7 @@ export const PERSONAL = {
   orcidId: '0009-0000-4319-2899',
   gamma: 'https://nimish-juvekar-jrtjqh6.gamma.site/',
   photo: '/images/nimish.jpg',
-  heroTagline: 'Bridging 15+ years of Global Industry Experience with Academic Excellence.',
+  heroTagline: 'Bridging 15+ years of Global Industry Experience with Academic Excellence at the University of East London.',
   heroSub: 'From ELV systems in Mumbai to supply chains across South East Asia — now shaping the next generation of global business leaders at the University of East London.',
   summary: `Over 15 years of operational and leadership experience across India, South East Asia, the Middle East, and the UK. Roles spanning ELV systems engineering, fire safety, supply chain, and sales — across companies including Teknoware, Heinrich, Watchdog Security, and Firelife Safety Enterprises.\n\nMoved to London in 2022 to complete an MSc in International Business Management at UEL, graduating with Merit. Now a Lecturer in Work-Based Learning at the Royal Docks School of Business and Law, University of East London.`,
   quote: '"Combining academic excellence with practical industry experience to develop the next generation of global business leaders."',
@@ -25,7 +25,7 @@ export const STATS = [
   { number: 15, suffix: '+', label: 'Years Industry Experience' },
   { number: 4,  suffix: '',  label: 'Countries Worked In' },
   { number: 8,  suffix: '',  label: 'Industry Roles Held' },
-  { number: 13, suffix: '+', label: 'Certifications Earned' },
+  { number: 2, suffix: '', label: 'Academic Institutions' },
 ]
 
 export const EXPERIENCE = [

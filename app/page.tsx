@@ -8,7 +8,6 @@ import TeachingSection from '@/components/sections/TeachingSection'
 import CompetenciesSection from '@/components/sections/CompetenciesSection'
 import QualificationsSection from '@/components/sections/QualificationsSection'
 import ContactSection from '@/components/sections/ContactSection'
-import ProjectsSection from '@/components/sections/ProjectsSection'
 import USPSection from '@/components/sections/USPSection'
 import ScrollyTellingWrapper from '@/components/animations/ScrollyTellingWrapper'
 
@@ -24,7 +23,6 @@ export default function Home() {
         <ExperienceSection />
         <TeachingSection />
         <CompetenciesSection />
-        <ProjectsSection />
         <QualificationsSection />
         <USPSection />
         <ContactSection />
