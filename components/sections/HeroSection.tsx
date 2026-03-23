@@ -153,6 +153,42 @@ export default function HeroSection() {
           <div className="w-1.5 h-3 bg-blue rounded-full animate-bounce" />
         </div>
       </div>
+      {/* Profile photo — fixed position on desktop */}
+        <div className="hidden lg:block absolute right-[6vw] top-1/2 -translate-y-1/2 z-10">
+          <div
+            className="relative rounded-2xl overflow-hidden"
+            style={{
+              width: 'clamp(220px, 22vw, 320px)',
+              aspectRatio: '3/4',
+              boxShadow: '0 20px 60px rgba(26,26,46,0.2)',
+            }}
+          >
+            {/* Background offset block */}
+            <div
+              className="absolute rounded-2xl bg-sky-tint"
+              style={{
+                inset: 0,
+                transform: 'rotate(-3deg) scale(1.05)',
+                zIndex: 0,
+              }}
+            />
+            {/* Photo */}
+            <img
+              src="/images/nimish.jpg"
+              alt="Nimish Juvekar — Lecturer, University of East London"
+              className="relative z-10 w-full h-full object-cover object-top"
+              style={{ borderRadius: '16px' }}
+            />
+            {/* Credential badge */}
+            <div
+              className="absolute bottom-4 left-0 z-20 bg-white rounded-r-xl px-4 py-2"
+              style={{ borderLeft: '4px solid #0A66C2' }}
+            >
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', fontWeight: 600, color: '#0A66C2', textTransform: 'uppercase', letterSpacing: '0.06em' }}>UEL · AFHEA</p>
+              <p style={{ fontFamily: 'Times New Roman, serif', fontSize: '13px', fontWeight: 700, color: '#1A1A2E' }}>Lecturer</p>
+            </div>
+          </div>
+        </div>
     </section>
   );
 }
