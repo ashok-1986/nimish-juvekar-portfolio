@@ -6,19 +6,19 @@ const ScrollyCanvas = dynamic(() => import('./ScrollyCanvas'), { ssr: false })
 
 const SECTIONS = [
   {
-    range: [0, 0.28] as [number, number],
+    range: [0.05, 0.30] as [number, number],
     align: 'center' as const,
     eyebrow: 'AFHEA · MSc · fCMgr · Lecturer',
     title: 'Industry.\nMeets Academia.',
   },
   {
-    range: [0.32, 0.58] as [number, number],
+    range: [0.36, 0.60] as [number, number],
     align: 'left' as const,
     eyebrow: '15+ Years of Global Experience',
     title: 'I build\nglobal leaders.',
   },
   {
-    range: [0.62, 0.88] as [number, number],
+    range: [0.65, 0.88] as [number, number],
     align: 'right' as const,
     eyebrow: 'From Mumbai to London',
     title: 'Bridging design\nand engineering.',
@@ -28,28 +28,29 @@ const SECTIONS = [
 function TextOverlay() {
   const refs = useRef<(HTMLDivElement | null)[]>([])
 
-  useEffect(() => {
-    // Hide all panels initially
+  const hideAll = () => {
     refs.current.forEach(el => {
       if (el) { el.style.opacity = '0'; el.style.transform = 'translateY(24px)' }
     })
+  }
+
+  useEffect(() => {
+    hideAll()
 
     const onScroll = () => {
       const container = document.getElementById('scrolly-container')
-      if (!container) return
+      if (!container) { hideAll(); return }
 
       const rect = container.getBoundingClientRect()
 
-      // Hide everything when canvas is NOT in viewport
-      if (rect.bottom < 0 || rect.top > window.innerHeight) {
-        refs.current.forEach(el => {
-          if (el) { el.style.opacity = '0'; el.style.transform = 'translateY(24px)' }
-        })
-        return
-      }
+      // Hide when canvas is fully above viewport (user scrolled past it)
+      if (rect.bottom <= 0) { hideAll(); return }
+
+      // Hide when canvas has not entered viewport yet (user is on hero)
+      if (rect.top >= window.innerHeight) { hideAll(); return }
 
       const total = container.offsetHeight - window.innerHeight
-      if (total <= 0) return
+      if (total <= 0) { hideAll(); return }
 
       const scrolled = Math.max(0, -rect.top)
       const progress = Math.min(1, scrolled / total)
@@ -58,7 +59,7 @@ function TextOverlay() {
         const el = refs.current[i]
         if (!el) return
         const [start, end] = section.range
-        const fade = 0.06
+        const fade = 0.05
         let opacity = 0
         let y = 24
 
@@ -82,8 +83,7 @@ function TextOverlay() {
     }
 
     window.addEventListener('scroll', onScroll, { passive: true })
-    const timer = setTimeout(onScroll, 100)
-
+    const timer = setTimeout(onScroll, 200)
     return () => {
       window.removeEventListener('scroll', onScroll)
       clearTimeout(timer)
@@ -98,10 +98,7 @@ function TextOverlay() {
           ref={el => { refs.current[i] = el }}
           style={{
             position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
+            top: 0, left: 0, right: 0, bottom: 0,
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -124,8 +121,8 @@ function TextOverlay() {
             fontWeight: 600,
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.8)',
-            textShadow: '0 1px 8px rgba(0,0,0,0.8)',
+            color: 'rgba(255,255,255,0.85)',
+            textShadow: '0 1px 8px rgba(0,0,0,0.9)',
             marginBottom: '12px',
           }}>
             {section.eyebrow}
@@ -137,17 +134,15 @@ function TextOverlay() {
             color: '#FFFFFF',
             lineHeight: 1.0,
             whiteSpace: 'pre-line',
-            textShadow: '0 2px 32px rgba(0,0,0,0.7), 0 0 60px rgba(0,0,0,0.4)',
+            textShadow: '0 2px 32px rgba(0,0,0,0.8), 0 0 80px rgba(0,0,0,0.5)',
             marginBottom: '20px',
           }}>
             {section.title}
           </h2>
           <div style={{
-            width: '48px',
-            height: '3px',
-            background: '#0A66C2',
-            borderRadius: '2px',
-            boxShadow: '0 0 12px rgba(10,102,194,0.8)',
+            width: '48px', height: '3px',
+            background: '#0A66C2', borderRadius: '2px',
+            boxShadow: '0 0 12px rgba(10,102,194,0.9)',
           }} />
         </div>
       ))}
