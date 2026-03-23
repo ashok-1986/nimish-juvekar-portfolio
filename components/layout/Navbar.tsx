@@ -121,16 +121,6 @@ export default function Navbar() {
                 <FileText size={14} />
                 Download CV
               </a>
-              <a
-                href={PERSONAL.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary text-[13px] py-2 px-4"
-                style={{ background: 'var(--blue)', borderColor: 'var(--blue)' }}
-              >
-                <Download size={14} />
-                Connect
-              </a>
             </div>
 
             {/* Mobile hamburger */}
