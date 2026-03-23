@@ -29,9 +29,9 @@ function TextOverlay() {
   const refs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
-    // Set initial opacity 0 on all text panels
+    // Hide all panels initially
     refs.current.forEach(el => {
-      if (el) el.style.opacity = '0'
+      if (el) { el.style.opacity = '0'; el.style.transform = 'translateY(24px)' }
     })
 
     const onScroll = () => {
@@ -39,6 +39,15 @@ function TextOverlay() {
       if (!container) return
 
       const rect = container.getBoundingClientRect()
+
+      // Hide everything when canvas is NOT in viewport
+      if (rect.bottom < 0 || rect.top > window.innerHeight) {
+        refs.current.forEach(el => {
+          if (el) { el.style.opacity = '0'; el.style.transform = 'translateY(24px)' }
+        })
+        return
+      }
+
       const total = container.offsetHeight - window.innerHeight
       if (total <= 0) return
 
@@ -51,7 +60,7 @@ function TextOverlay() {
         const [start, end] = section.range
         const fade = 0.06
         let opacity = 0
-        let y = 0
+        let y = 24
 
         if (progress < start - fade) {
           opacity = 0; y = 24
@@ -73,7 +82,6 @@ function TextOverlay() {
     }
 
     window.addEventListener('scroll', onScroll, { passive: true })
-    // Small delay to ensure DOM is ready
     const timer = setTimeout(onScroll, 100)
 
     return () => {
@@ -98,11 +106,9 @@ function TextOverlay() {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems:
-              section.align === 'center'
-                ? 'center'
-                : section.align === 'left'
-                ? 'flex-start'
-                : 'flex-end',
+              section.align === 'center' ? 'center'
+              : section.align === 'left' ? 'flex-start'
+              : 'flex-end',
             paddingLeft: section.align === 'left' ? '8vw' : '24px',
             paddingRight: section.align === 'right' ? '8vw' : '24px',
             textAlign: section.align,
@@ -112,43 +118,37 @@ function TextOverlay() {
             willChange: 'opacity, transform',
           }}
         >
-          <p
-            style={{
-              fontFamily: 'DM Sans, sans-serif',
-              fontSize: 'clamp(10px, 1.2vw, 13px)',
-              fontWeight: 600,
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.8)',
-              textShadow: '0 1px 8px rgba(0,0,0,0.8)',
-              marginBottom: '12px',
-            }}
-          >
+          <p style={{
+            fontFamily: 'DM Sans, sans-serif',
+            fontSize: 'clamp(10px, 1.2vw, 13px)',
+            fontWeight: 600,
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.8)',
+            textShadow: '0 1px 8px rgba(0,0,0,0.8)',
+            marginBottom: '12px',
+          }}>
             {section.eyebrow}
           </p>
-          <h2
-            style={{
-              fontFamily: 'Times New Roman, serif',
-              fontSize: 'clamp(36px, 7vw, 88px)',
-              fontWeight: 700,
-              color: '#FFFFFF',
-              lineHeight: 1.0,
-              whiteSpace: 'pre-line',
-              textShadow: '0 2px 32px rgba(0,0,0,0.7), 0 0 60px rgba(0,0,0,0.4)',
-              marginBottom: '20px',
-            }}
-          >
+          <h2 style={{
+            fontFamily: 'Times New Roman, serif',
+            fontSize: 'clamp(36px, 7vw, 88px)',
+            fontWeight: 700,
+            color: '#FFFFFF',
+            lineHeight: 1.0,
+            whiteSpace: 'pre-line',
+            textShadow: '0 2px 32px rgba(0,0,0,0.7), 0 0 60px rgba(0,0,0,0.4)',
+            marginBottom: '20px',
+          }}>
             {section.title}
           </h2>
-          <div
-            style={{
-              width: '48px',
-              height: '3px',
-              background: '#0A66C2',
-              borderRadius: '2px',
-              boxShadow: '0 0 12px rgba(10,102,194,0.8)',
-            }}
-          />
+          <div style={{
+            width: '48px',
+            height: '3px',
+            background: '#0A66C2',
+            borderRadius: '2px',
+            boxShadow: '0 0 12px rgba(10,102,194,0.8)',
+          }} />
         </div>
       ))}
     </>
