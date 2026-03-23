@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #1A1A2E;
+  --blue: #0A66C2;
+  --ivory: #F9F8F6;
+  --sky-tint: #EAF2FB;
+  --slate: #5A5A6E;
+  --mist: #E8E4DC;
+  --white: #FFFFFF;
+}
+
+@theme inline {
+  --color-background: var(--ivory);
+  --color-foreground: var(--navy);
+  --color-accent: var(--blue);
+  --color-section-bg: var(--sky-tint);
+  --color-body-text: var(--slate);
+  --color-border: var(--mist);
+  --color-navy: var(--navy);
+  --color-white: var(--white);
+  
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-serif: "Times New Roman", Times, serif;
+  
+  --text-clamp-hero: clamp(52px, 7vw, 88px);
+  --text-clamp-section-h2: clamp(32px, 4vw, 48px);
+  --text-clamp-stats: clamp(40px, 5vw, 56px);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+body {
+  background: var(--ivory);
+  color: var(--navy);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.text-clamp-hero {
+  font-size: var(--text-clamp-hero);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.text-clamp-section-h2 {
+  font-size: var(--text-clamp-section-h2);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.text-clamp-stats {
+  font-size: var(--text-clamp-stats);
+  font-weight: 600;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.label, .tag {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--blue);
+  color: var(--white);
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-dark {
+  background: rgba(26, 26, 46, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}

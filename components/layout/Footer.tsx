@@ -1,0 +1,58 @@
+"use client";
+
+import { personalInfo, navLinks, socialLinks } from "@/lib/data";
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="bg-navy text-white py-16 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
+          <div className="text-center md:text-left">
+            <h3 className="font-serif text-xl font-semibold mb-2">
+              {personalInfo.name}
+            </h3>
+            <p className="text-white/60 text-sm">{personalInfo.title}</p>
+            <p className="text-white/60 text-sm">{personalInfo.location}</p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-6">
+            {navLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                className="text-white/60 hover:text-blue transition-colors text-sm"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-6">
+            {socialLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-blue transition-colors text-sm"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-white/40 text-sm">
+            &copy; {currentYear} {personalInfo.name}. All rights reserved.
+          </p>
+          <p className="text-white/40 text-sm">
+            Built with Next.js & GSAP
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
