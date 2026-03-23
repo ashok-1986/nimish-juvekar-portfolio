@@ -64,7 +64,7 @@ export default function USPSection() {
           <p className="section-eyebrow mb-3" style={{ color: 'rgba(10,102,194,0.8)' }}>
             Value Proposition
           </p>
-          <h2 className="font-serif text-[clamp(32px,4vw,48px)] font-bold text-white">
+          <h2 className="font-serif text-[clamp(32px,4vw,44px)] font-bold text-white">
             Why Work With Nimish
           </h2>
           <p className="font-sans text-[15px] mt-4 max-w-lg mx-auto" style={{ color: 'rgba(255,255,255,0.6)' }}>

@@ -48,8 +48,9 @@ body {
 .skip-link:focus { top: 16px; }
 
 .dot-grid {
-  background-image: radial-gradient(circle, #C8C4BC 1px, transparent 1px);
-  background-size: 28px 28px;
+  /* PRD: 1px dots, #E8E4DC, 24px grid */
+  background-image: radial-gradient(circle, var(--mist) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 .section-base { padding: var(--section-pad) 0; width: 100%; }
@@ -91,7 +92,10 @@ body {
 .tag {
   display: inline-block; font-family: var(--font-sans);
   font-size: 11px; font-weight: 500; color: var(--slate);
-  background: var(--white); border: 1px solid var(--mist);
+  /* PRD: sky-tint pill + LinkedIn-blue text */
+  color: var(--blue);
+  background: var(--sky-tint);
+  border: 1px solid rgba(10,102,194,0.18);
   padding: 4px 12px; border-radius: var(--radius-pill);
   transition: all 0.2s;
 }

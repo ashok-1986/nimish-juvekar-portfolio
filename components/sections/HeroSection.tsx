@@ -140,7 +140,7 @@ export default function HeroSection() {
 
             {/* Heading with letter-by-letter animation */}
             <h1
-              className="font-serif text-[clamp(52px,7vw,88px)] font-bold leading-[1.0] text-navy mb-6 overflow-hidden"
+              className="font-serif text-[clamp(56px,7vw,80px)] font-bold leading-[1.0] text-navy mb-6 overflow-hidden"
               style={{ perspective: '800px', transformStyle: 'preserve-3d' }}
               aria-label={PERSONAL.name}
             >

@@ -33,7 +33,7 @@ export default function QualificationsSection() {
       <div className="container">
         <div className="text-center mb-12">
           <p className="section-eyebrow mb-3">Education & Credentials</p>
-          <h2 className="font-serif text-[clamp(32px,4vw,48px)] font-bold text-navy">
+          <h2 className="font-serif text-[clamp(32px,4vw,44px)] font-bold text-navy">
             Qualifications & Certifications
           </h2>
         </div>

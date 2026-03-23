@@ -65,7 +65,7 @@ export default function AboutSection() {
           <div>
             <div ref={headingRef}>
               <p className="section-eyebrow mb-3">About</p>
-              <h2 className="font-serif text-[clamp(32px,4vw,48px)] font-bold text-navy mb-6 heading-underline">
+              <h2 className="font-serif text-[clamp(32px,4vw,44px)] font-bold text-navy mb-6 heading-underline">
                 From the Field<br />to the Lecture Hall
               </h2>
             </div>

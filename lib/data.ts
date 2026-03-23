@@ -10,6 +10,8 @@ export const PERSONAL = {
   location: 'London, United Kingdom',
   email: 'N.Juvekar@uel.ac.uk',
   linkedin: 'https://www.linkedin.com/in/nimishjuvekar',
+  // Place the CV PDF in `public/` and point to it here (download).
+  cv: '/Nimish_Juvekar_CV.pdf',
   uel: 'https://www.uel.ac.uk/about-uel/staff/nimish-vivek-juvekar',
   orcid: 'https://orcid.org/0009-0000-4319-2899',
   orcidId: '0009-0000-4319-2899',

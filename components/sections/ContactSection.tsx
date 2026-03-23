@@ -94,7 +94,7 @@ export default function ContactSection() {
       <div className="container">
         <div className="text-center mb-12">
           <p className="section-eyebrow mb-3">Get In Touch</p>
-          <h2 className="font-serif text-[clamp(32px,4vw,48px)] font-bold text-navy">
+          <h2 className="font-serif text-[clamp(32px,4vw,44px)] font-bold text-navy">
             Let's Connect
           </h2>
         </div>

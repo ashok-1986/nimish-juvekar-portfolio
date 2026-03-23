@@ -46,7 +46,7 @@ export default function TeachingSection() {
         {/* Heading */}
         <div className="text-center mb-12">
           <p className="section-eyebrow mb-3">Academic</p>
-          <h2 className="font-serif text-[clamp(32px,4vw,48px)] font-bold text-navy">
+          <h2 className="font-serif text-[clamp(32px,4vw,44px)] font-bold text-navy">
             Teaching at UEL
           </h2>
           <p className="font-sans text-[15px] text-slate mt-4 max-w-xl mx-auto">

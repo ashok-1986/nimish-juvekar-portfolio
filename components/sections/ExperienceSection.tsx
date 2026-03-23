@@ -76,7 +76,7 @@ export default function ExperienceSection() {
         {/* Heading */}
         <div ref={headingRef} className="text-center mb-16">
           <p className="section-eyebrow mb-3">Career</p>
-          <h2 className="font-serif text-[clamp(32px,4vw,48px)] font-bold text-navy">
+          <h2 className="font-serif text-[clamp(32px,4vw,44px)] font-bold text-navy">
             Professional Experience
           </h2>
           <p className="font-sans text-[15px] text-slate mt-4 max-w-xl mx-auto">

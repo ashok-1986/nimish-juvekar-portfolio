@@ -71,7 +71,7 @@ export default function StatsSection() {
                   0
                 </span>
                 <span
-                  className="font-serif font-bold text-blue"
+                  className="font-serif font-bold text-white"
                   style={{ fontSize: 'clamp(28px, 3.5vw, 40px)', lineHeight: 1.1, marginBottom: '4px' }}
                 >
                   {stat.suffix}

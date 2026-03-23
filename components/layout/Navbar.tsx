@@ -113,10 +113,11 @@ export default function Navbar() {
             {/* Desktop CTAs */}
             <div className="hidden md:flex items-center gap-3">
               <a
-                href={PERSONAL.linkedin}
-                target="_blank"
+                href={PERSONAL.cv}
+                download
                 rel="noopener noreferrer"
                 className="btn-secondary text-[13px] py-2 px-4"
+                aria-label="Download CV"
               >
                 <FileText size={14} />
                 Download CV
@@ -171,10 +172,11 @@ export default function Navbar() {
             </ul>
             <div className="mt-6 space-y-3">
               <a
-                href={PERSONAL.linkedin}
-                target="_blank"
+                href={PERSONAL.cv}
+                download
                 rel="noopener noreferrer"
                 className="btn-secondary w-full justify-center text-[13px]"
+                aria-label="Download CV"
               >
                 <FileText size={14} />
                 Download CV

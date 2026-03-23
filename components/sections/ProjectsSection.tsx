@@ -40,7 +40,7 @@ export default function ProjectsSection() {
       <div className="container">
         <div className="text-center mb-12">
           <p className="section-eyebrow mb-3">Portfolio</p>
-          <h2 className="font-serif text-[clamp(32px,4vw,48px)] font-bold text-navy">
+          <h2 className="font-serif text-[clamp(32px,4vw,44px)] font-bold text-navy">
             Selected Work
           </h2>
           <p className="font-sans text-[15px] text-slate mt-4 max-w-xl mx-auto">

@@ -47,7 +47,7 @@ export default function CompetenciesSection() {
       <div className="container">
         <div className="text-center mb-12">
           <p className="section-eyebrow mb-3">Skills</p>
-          <h2 className="font-serif text-[clamp(32px,4vw,48px)] font-bold text-navy">
+          <h2 className="font-serif text-[clamp(32px,4vw,44px)] font-bold text-navy">
             Core Competencies
           </h2>
         </div>
