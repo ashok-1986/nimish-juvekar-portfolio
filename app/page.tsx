@@ -12,13 +12,12 @@ import QualificationsSection from "@/components/sections/QualificationsSection";
 import USPSection from "@/components/sections/USPSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
-import ScrollProgressBar from '@/components/ui/ScrollProgressBar'
-// First line inside the <> fragment:
-//<ScrollProgressBar />
+import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
 
 export default function Home() {
   return (
     <>
+      <ScrollProgressBar />
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
