@@ -60,14 +60,6 @@ export default function HeroSection() {
         duration: 0.7,
       }, 0.3)
 
-      // Title words
-      .from(titleRef.current, {
-        y: 60,
-        opacity: 0,
-        duration: 0.9,
-        ease: "power4.out",
-      }, 0.45)
-
       // Subtitle
       .from(subtitleRef.current, {
         y: 30,
