@@ -14,7 +14,7 @@ import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
 import ScrollProgressBar from '@/components/ui/ScrollProgressBar'
 // First line inside the <> fragment:
-<ScrollProgressBar />
+//<ScrollProgressBar />
 
 export default function Home() {
   return (
