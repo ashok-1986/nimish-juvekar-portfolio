@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { heroContent } from "@/lib/data";
+import { RevealText } from "@/components/ui/reveal-text";
 
 export default function HeroSection() {
   const containerRef  = useRef<HTMLDivElement>(null);
@@ -261,6 +262,28 @@ export default function HeroSection() {
         <div className="w-6 h-10 rounded-full border-2 border-slate/30 flex justify-center pt-2">
           <div className="w-1.5 h-3 bg-blue rounded-full animate-bounce" />
         </div>
+      </div>
+
+      {/* Decorative RevealText at bottom of hero */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none overflow-hidden">
+        <RevealText 
+          text="CREATE"
+          textColor="text-[#1A1A2E]"
+          overlayColor="text-[#0A66C2]"
+          fontSize="text-[80px] md:text-[120px]"
+          letterDelay={0.06}
+          overlayDelay={0.04}
+          overlayDuration={0.35}
+          springDuration={500}
+          letterImages={[
+            "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80", // C
+            "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80", // R
+            "https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80", // E
+            "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80", // A
+            "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80", // T
+            "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80", // E
+          ]}
+        />
       </div>
     </section>
   );
