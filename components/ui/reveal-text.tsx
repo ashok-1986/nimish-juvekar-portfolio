@@ -102,9 +102,10 @@ export function RevealText({
                 }
               }}
               style={{
-                backgroundImage: `url('${letterImages[index % letterImages.length]}')`,
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                backgroundImage: letterImages.length > 0 
+                  ? `url('${letterImages[index % letterImages.length]}')`
+                  : undefined,
+                WebkitBackgroundClip: "text",                WebkitTextFillColor: "transparent",
               }}
             >
               {letter}
