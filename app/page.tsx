@@ -23,7 +23,7 @@ export default function Home() {
       </a>
       <Navbar />
       <Overlay />
-      <main id="main-content">
+      <main id="main-content" role="main" tabIndex={-1}>
         <HeroSection />
         <ScrollyTellingWrapper />
         <AboutSection />

@@ -95,14 +95,26 @@ export default function ContactSection() {
     }
   };
 
+  // Focus management for form status announcements
+  useEffect(() => {
+    if (formState === "success" || formState === "error") {
+      const statusElement = document.getElementById("form-status");
+      if (statusElement) {
+        statusElement.focus();
+      }
+    }
+  }, [formState]);
+
   return (
     <section
       id="contact"
       ref={containerRef}
       className="py-24 md:py-32 px-6 bg-sky-tint"
+      aria-labelledby="contact-heading"
     >
       <div className="max-w-xl mx-auto">
         <h2
+          id="contact-heading"
           ref={titleRef}
           className="font-serif text-clamp-section-h2 font-semibold text-navy mb-4 text-center"
         >
@@ -116,7 +128,21 @@ export default function ContactSection() {
           ref={formRef}
           onSubmit={handleSubmit}
           className="space-y-6 bg-ivory border border-mist rounded-lg p-8"
+          aria-label="Contact form"
         >
+          {/* Live region for form status announcements */}
+          <div
+            id="form-status"
+            tabIndex={-1}
+            aria-live="polite"
+            aria-atomic="true"
+            className="sr-only"
+          >
+            {formState === "success" && "Message sent successfully"}
+            {formState === "error" && "Error sending message. Please try again."}
+            {formState === "submitting" && "Sending message..."}
+          </div>
+
           <div>
             <label
               htmlFor="name"
@@ -129,7 +155,8 @@ export default function ContactSection() {
               id="name"
               name="name"
               required
-              className="w-full px-4 py-3 bg-ivory border border-mist rounded-lg text-navy placeholder-slate/50 focus:outline-none focus:border-blue transition-colors"
+              autoComplete="name"
+              className="w-full px-4 py-3 bg-ivory border border-mist rounded-lg text-navy placeholder-slate/50 focus:outline-none focus:border-blue focus:ring-2 focus:ring-blue/20 transition-colors"
               placeholder="Your name"
             />
           </div>
@@ -146,7 +173,8 @@ export default function ContactSection() {
               id="email"
               name="email"
               required
-              className="w-full px-4 py-3 bg-ivory border border-mist rounded-lg text-navy placeholder-slate/50 focus:outline-none focus:border-blue transition-colors"
+              autoComplete="email"
+              className="w-full px-4 py-3 bg-ivory border border-mist rounded-lg text-navy placeholder-slate/50 focus:outline-none focus:border-blue focus:ring-2 focus:ring-blue/20 transition-colors"
               placeholder="your@email.com"
             />
           </div>
@@ -162,7 +190,7 @@ export default function ContactSection() {
               id="subject"
               name="subject"
               required
-              className="w-full px-4 py-3 bg-ivory border border-mist rounded-lg text-navy focus:outline-none focus:border-blue transition-colors"
+              className="w-full px-4 py-3 bg-ivory border border-mist rounded-lg text-navy focus:outline-none focus:border-blue focus:ring-2 focus:ring-blue/20 transition-colors"
             >
               <option value="">Select a subject</option>
               {contactContent.subjects.map((subject, index) => (
@@ -185,7 +213,7 @@ export default function ContactSection() {
               name="message"
               required
               rows={5}
-              className="w-full px-4 py-3 bg-ivory border border-mist rounded-lg text-navy placeholder-slate/50 focus:outline-none focus:border-blue transition-colors resize-none"
+              className="w-full px-4 py-3 bg-ivory border border-mist rounded-lg text-navy placeholder-slate/50 focus:outline-none focus:border-blue focus:ring-2 focus:ring-blue/20 transition-colors resize-none"
               placeholder="Your message..."
             />
           </div>
@@ -193,23 +221,30 @@ export default function ContactSection() {
           <button
             type="submit"
             disabled={formState === "submitting"}
-            className="w-full py-3 bg-blue text-white font-medium rounded-lg hover:bg-blue/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-busy={formState === "submitting"}
+            className="w-full py-3 bg-blue text-white font-medium rounded-lg hover:bg-blue/90 focus:ring-2 focus:ring-blue/40 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {formState === "submitting" ? "Sending..." : "Send Message"}
           </button>
 
           {formState === "success" && (
-            <p className="text-green-600 text-sm text-center">
+            <p
+              role="status"
+              className="text-green-600 text-sm text-center font-medium"
+            >
               Thank you! Your message has been sent successfully.
             </p>
           )}
 
           {formState === "error" && (
-            <p className="text-red-600 text-sm text-center">
+            <p
+              role="alert"
+              className="text-red-600 text-sm text-center font-medium"
+            >
               Something went wrong. Please try again or email directly at{" "}
               <a
                 href={`mailto:${contactContent.email}`}
-                className="underline hover:text-blue transition-colors"
+                className="underline hover:text-blue focus:ring-2 focus:ring-blue/40 rounded transition-colors"
               >
                 {contactContent.email}
               </a>
