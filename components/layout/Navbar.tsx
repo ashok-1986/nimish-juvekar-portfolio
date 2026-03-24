@@ -147,7 +147,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className={`text-2xl font-serif transition-colors ${
+                className={`mobile-nav-link text-2xl font-serif transition-colors block ${
                   activeSection === link.href.slice(1)
                     ? "text-blue"
                     : "text-navy hover:text-blue"

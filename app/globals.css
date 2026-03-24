@@ -38,6 +38,9 @@ body {
   font-family: var(--font-sans);
   font-size: 15px;
   line-height: 1.65;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: 100%;
+  max-width: 100vw;
 }
 
 .font-serif {
@@ -307,6 +310,23 @@ body {
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+
+/* ─── Mobile touch targets - minimum 44x44px ──────────────────────────────── */
+@media (max-width: 768px) {
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Ensure mobile menu links have adequate touch targets */
+  .mobile-nav-link {
+    padding: 12px 0;
+  }
 }
 
 /* ─── Timeline enhanced ──────────────────────────────────────────────────── */
