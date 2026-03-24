@@ -12,6 +12,9 @@ import QualificationsSection from "@/components/sections/QualificationsSection";
 import USPSection from "@/components/sections/USPSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
+import ScrollProgressBar from '@/components/ui/ScrollProgressBar'
+// First line inside the <> fragment:
+<ScrollProgressBar />
 
 export default function Home() {
   return (
