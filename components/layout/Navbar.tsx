@@ -41,6 +41,7 @@ export default function Navbar() {
   return (
     <>
       <nav
+        aria-label="Main navigation"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? "bg-ivory/90 backdrop-blur-md border-b border-mist py-3"
@@ -109,6 +110,9 @@ export default function Navbar() {
         className={`fixed inset-0 z-50 bg-ivory/98 backdrop-blur-lg transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation menu"
       >
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-between p-6 border-b border-mist">

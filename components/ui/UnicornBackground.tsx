@@ -46,6 +46,9 @@ export default function UnicornBackground() {
       s.onload = function () {
         initUnicorn();
       };
+      s.onerror = function () {
+        console.error("Failed to load UnicornStudio script");
+      };
       (document.head || document.body).appendChild(s);
     }
   }, []);

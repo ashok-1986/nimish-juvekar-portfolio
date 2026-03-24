@@ -8,9 +8,13 @@ const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+  display: "swap",
+  preload: true,
+  fallback: ["system-ui", "arial"],
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nimishjuvekar.com"),
   title: "Nimish Juvekar — Lecturer & Industry Expert | University of East London",
   description:
     "Nimish Juvekar is a Lecturer in Work-Based Learning at UEL with 15+ years of international experience in operations, supply chain, and project management.",
@@ -33,12 +37,21 @@ export const metadata: Metadata = {
     siteName: "Nimish Juvekar",
     locale: "en_GB",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Nimish Juvekar — Lecturer & Industry Expert at University of East London",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Nimish Juvekar — Lecturer & Industry Expert",
     description:
       "Lecturer in Work-Based Learning at UEL with 15+ years of international experience.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -76,6 +89,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} h-full antialiased`}>
       <head>
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
