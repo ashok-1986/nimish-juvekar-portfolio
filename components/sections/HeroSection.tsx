@@ -166,12 +166,45 @@ export default function HeroSection() {
               {heroContent.credentials}
             </span>
 
-            <h1
-              ref={titleRef}
-              className="font-serif text-clamp-hero font-semibold text-navy mb-6 leading-tight"
-            >
-              {heroContent.name}
-            </h1>
+<div className="mb-6" ref={titleRef}>
+  <RevealText
+    text="NIMISH"
+    textColor="text-navy"
+    overlayColor="text-blue-600"
+    fontSize="text-[clamp(52px,7vw,88px)]"
+    letterDelay={0.08}
+    overlayDelay={0.05}
+    overlayDuration={0.4}
+    springDuration={500}
+    letterImages={[
+      'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80',
+      'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80',
+      'https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80',
+      'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80',
+      'https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800&q=80',
+      'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=800&q=80',
+    ]}
+  />
+  <RevealText
+    text="JUVEKAR"
+    textColor="text-navy"
+    overlayColor="text-blue-600"
+    fontSize="text-[clamp(52px,7vw,88px)]"
+    letterDelay={0.06}
+    overlayDelay={0.04}
+    overlayDuration={0.4}
+    springDuration={500}
+    letterImages={[
+      'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80',
+      'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&q=80',
+      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80',
+      'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80',
+      'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80',
+      'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80',
+    ]}
+  />
+</div>
 
             <p
               ref={subtitleRef}
@@ -265,12 +298,12 @@ export default function HeroSection() {
       </div>
 
       {/* Decorative RevealText at bottom of hero */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none overflow-hidden">
-        <RevealText 
+      <div className="absolute bottom-0 left-0 right-0 h-48 md:h-56 flex items-end justify-center pb-4">
+        <RevealText
           text="CREATE"
-          textColor="text-[#1A1A2E]"
+          textColor="text-[#1A1A2E]/20"
           overlayColor="text-[#0A66C2]"
-          fontSize="text-[80px] md:text-[120px]"
+          fontSize="text-[60px] md:text-[90px]"
           letterDelay={0.06}
           overlayDelay={0.04}
           overlayDuration={0.35}
