@@ -150,8 +150,8 @@ function TextOverlay() {
               background: '#0A66C2',
               borderRadius: '2px',
               boxShadow: '0 0 12px rgba(10,102,194,0.9)',
-              marginLeft: section.align === 'right' ? 'auto' : 0,
-              marginRight: section.align === 'left' ? 'auto' : 0,
+              marginLeft: section.align === 'right' || section.align === 'center' ? 'auto' : 0,
+              marginRight: section.align === 'left' || section.align === 'center' ? 'auto' : 0,
             }} />
           </div>
         </div>

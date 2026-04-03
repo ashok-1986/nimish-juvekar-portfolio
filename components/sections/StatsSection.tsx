@@ -54,6 +54,17 @@ export default function StatsSection() {
       if (hasAnimatedRef.current) return
       hasAnimatedRef.current = true
 
+      // Respect prefers-reduced-motion: skip animation, set final values immediately
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      if (prefersReducedMotion) {
+        statElements.forEach((el, index) => {
+          const target = STATS[index]
+          if (!target) return
+          el.textContent = `${target.number}${target.suffix}`
+        })
+        return
+      }
+
       const startTime = performance.now()
       const duration = 1800
 

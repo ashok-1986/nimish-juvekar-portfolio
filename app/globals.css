@@ -425,3 +425,21 @@ html {
 @media (hover: none) {
   .section-number { display: none; }
 }
+
+/* 8. Force all lucide SVG icons to LinkedIn Blue by default */
+svg[class*="lucide"], .lucide {
+  color: #0A66C2;
+  stroke: #0A66C2;
+}
+
+/* Exception: icons inside navy-text or explicitly navy-marked elements */
+.text-navy svg, .icon-navy svg {
+  color: #1A1A2E;
+  stroke: #1A1A2E;
+}
+
+/* Exception: icons on dark backgrounds */
+.icon-white svg {
+  color: #FFFFFF;
+  stroke: #FFFFFF;
+}

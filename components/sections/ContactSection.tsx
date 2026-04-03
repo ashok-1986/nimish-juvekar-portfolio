@@ -1,12 +1,12 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import { Mail, Phone, Send } from 'lucide-react'
+import { useEffect, useRef } from 'react'
+import { Mail, Phone } from 'lucide-react'
 import { PERSONAL } from '@/lib/data'
 
 export default function ContactSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const filloutLoaded = useRef(false)
 
   useEffect(() => {
     let ctx: { revert: () => void } | undefined
@@ -31,10 +31,10 @@ export default function ContactSection() {
             scrollTrigger: { trigger: '.contact-info', start: 'top 85%', once: true } }
         )
 
-        gsap!.fromTo('.contact-form',
+        gsap!.fromTo('.contact-form-wrap',
           { y: 30, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.6, delay: 0.25, ease: 'power3.out',
-            scrollTrigger: { trigger: '.contact-form', start: 'top 85%', once: true } }
+            scrollTrigger: { trigger: '.contact-form-wrap', start: 'top 85%', once: true } }
         )
       }, sectionRef)
     }
@@ -42,33 +42,15 @@ export default function ContactSection() {
     return () => ctx?.revert()
   }, [])
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setFormState('submitting')
-    const form = e.currentTarget
-    const formData = new FormData(form)
-    const name = formData.get('name') as string
-    const email = formData.get('email') as string
-    const subject = formData.get('subject') as string
-    const message = formData.get('message') as string
-
-    // Build mailto link with form data
-    const mailtoSubject = encodeURIComponent(`Portfolio Contact: ${subject}`)
-    const mailtoBody = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\n${message}`
-    )
-    window.location.href = `mailto:${PERSONAL.email}?subject=${mailtoSubject}&body=${mailtoBody}`
-
-    setFormState('success')
-    form.reset()
-  }
-
+  // Load Fillout embed script
   useEffect(() => {
-    if (formState === 'success' || formState === 'error') {
-      const el = document.getElementById('form-status')
-      el?.focus()
-    }
-  }, [formState])
+    if (filloutLoaded.current) return
+    filloutLoaded.current = true
+    const script = document.createElement('script')
+    script.src = 'https://server.fillout.com/embed/v1/'
+    script.async = true
+    document.body.appendChild(script)
+  }, [])
 
   return (
     <section
@@ -173,10 +155,8 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Contact Form */}
-          <form
-            onSubmit={handleSubmit}
-            className="contact-form col-span-1 md:col-span-3 space-y-5 rounded-2xl p-4 md:p-8"
+          {/* Fillout Contact Form */}
+          <div className="contact-form-wrap col-span-1 md:col-span-3 rounded-2xl overflow-hidden"
             style={{
               opacity: 0,
               background: 'rgba(255,255,255,0.75)',
@@ -184,76 +164,15 @@ export default function ContactSection() {
               border: '1px solid rgba(255,255,255,0.6)',
               boxShadow: '0 4px 24px rgba(10,102,194,0.07)',
             }}
-            aria-label="Contact form"
           >
-            <div id="form-status" tabIndex={-1} aria-live="polite" aria-atomic="true" className="sr-only">
-              {formState === 'success' && 'Message sent successfully'}
-              {formState === 'error' && 'Error sending message. Please try again.'}
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-navy mb-1.5">Full Name</label>
-                <input
-                  type="text" id="name" name="name" required autoComplete="name"
-                  className="w-full px-4 py-3 bg-ivory border border-mist rounded-lg text-navy placeholder-slate/50 focus:outline-none focus:border-blue focus:ring-2 focus:ring-blue/20 transition-colors"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-navy mb-1.5">Email</label>
-                <input
-                  type="email" id="email" name="email" required autoComplete="email"
-                  className="w-full px-4 py-3 bg-ivory border border-mist rounded-lg text-navy placeholder-slate/50 focus:outline-none focus:border-blue focus:ring-2 focus:ring-blue/20 transition-colors"
-                  placeholder="your@email.com"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-navy mb-1.5">Subject</label>
-              <select
-                id="subject" name="subject" required
-                className="w-full px-4 py-3 bg-ivory border border-mist rounded-lg text-navy focus:outline-none focus:border-blue focus:ring-2 focus:ring-blue/20 transition-colors"
-              >
-                <option value="">Select a subject</option>
-                {['Academic Collaboration', 'Industry Partnership', 'Student Inquiry', 'Speaking Engagement', 'General Inquiry'].map(s => (
-                  <option key={s} value={s}>{s}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-navy mb-1.5">Message</label>
-              <textarea
-                id="message" name="message" required rows={5}
-                className="w-full px-4 py-3 bg-ivory border border-mist rounded-lg text-navy placeholder-slate/50 focus:outline-none focus:border-blue focus:ring-2 focus:ring-blue/20 transition-colors resize-none"
-                placeholder="Your message..."
-              />
-            </div>
-
-            <button
-              type="submit" disabled={formState === 'submitting'} aria-busy={formState === 'submitting'}
-              className="w-full md:w-auto py-3.5 bg-blue text-white font-medium rounded-lg hover:bg-blue/90 focus:ring-2 focus:ring-blue/40 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-            >
-              <Send size={16} />
-              {formState === 'submitting' ? 'Sending...' : 'Send Message'}
-            </button>
-
-            {formState === 'success' && (
-              <p role="status" className="text-green-600 text-sm text-center font-medium">
-                Thank you! Your message has been sent successfully.
-              </p>
-            )}
-            {formState === 'error' && (
-              <p role="alert" className="text-red-600 text-sm text-center font-medium">
-                Something went wrong. Please try again or email directly at{' '}
-                <a href={`mailto:${PERSONAL.email}`} className="underline hover:text-blue">
-                  {PERSONAL.email}
-                </a>
-              </p>
-            )}
-          </form>
+            <div
+              style={{ width: '100%', height: '580px' }}
+              data-fillout-id="9e37tHoVeNus"
+              data-fillout-embed-type="standard"
+              data-fillout-inherit-parameters
+              data-fillout-dynamic-resize
+            />
+          </div>
         </div>
       </div>
     </section>
