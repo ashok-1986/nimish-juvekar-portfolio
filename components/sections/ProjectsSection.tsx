@@ -1,53 +1,16 @@
 'use client'
 import { useEffect, useRef } from 'react'
-import { ExternalLink, ArrowUpRight, BookOpen, Users, Globe, Wrench } from 'lucide-react'
+import { ExternalLink, ArrowUpRight, BookOpen, Users, Globe, Calendar } from 'lucide-react'
+import { PROJECTS } from '@/lib/data'
 
-const PROJECTS = [
-  {
-    id: 1,
-    title: 'Work-Based Learning Programme',
-    category: 'Academic — UEL',
-    icon: BookOpen,
-    description: 'Designed and delivered a placement-integrated MSc module connecting students with industry partners across London. Built frameworks for employer engagement, student mentoring, and academic assessment.',
-    tags: ['Level 7', 'Work-Based Learning', 'UEL', 'MSc'],
-    link: 'https://www.uel.ac.uk/about-uel/staff/nimish-vivek-juvekar',
-    accent: '#0A66C2',
-    stat: { value: '50+', label: 'Students Mentored' },
-  },
-  {
-    id: 2,
-    title: 'Global Project Management Module',
-    category: 'Academic — UEL',
-    icon: Globe,
-    description: 'Delivered comprehensive lectures on global project management to diverse international student cohorts. Achieved 88% in this module during MSc — now teaches it with first-hand expertise.',
-    tags: ['PMI', 'Global PM', 'Multicultural', 'MSc Level 7'],
-    link: 'https://www.uel.ac.uk/about-uel/staff/nimish-vivek-juvekar',
-    accent: '#0A66C2',
-    stat: { value: '88%', label: 'Module Score' },
-  },
-  {
-    id: 3,
-    title: 'ELV Systems — South East Asia Operations',
-    category: 'Industry — Watchdog Security',
-    icon: Users,
-    description: 'Led a team of 50+ engineers and technicians across South East Asia, delivering ELV system installations, product training, and technical support for high-value clients.',
-    tags: ['ELV Systems', 'Team Leadership', 'South East Asia', 'Technical Training'],
-    link: 'https://www.linkedin.com/in/nimishjuvekar',
-    accent: '#1A1A2E',
-    stat: { value: '50+', label: 'Engineers Led' },
-  },
-  {
-    id: 4,
-    title: 'West India Sales & Operations Expansion',
-    category: 'Industry — Heinrich Limited',
-    icon: Wrench,
-    description: 'Drove market penetration across West India as Regional Techno-Commercial Manager, combining deep product expertise with strategic sales and stakeholder management.',
-    tags: ['Sales', 'Operations', 'India', 'Supply Chain'],
-    link: 'https://www.linkedin.com/in/nimishjuvekar',
-    accent: '#1A1A2E',
-    stat: { value: '4', label: 'Countries Covered' },
-  },
-]
+const ICON_MAP: Record<string, React.ElementType> = {
+  BookOpen,
+  Globe,
+  Users,
+  Calendar,
+}
+
+const ACCENT_MAP = ['#0A66C2', '#0A66C2', '#0A66C2', '#1A1A2E']
 
 export default function ProjectsSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -130,11 +93,12 @@ export default function ProjectsSection() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {PROJECTS.map((project) => {
-            const Icon = project.icon
+          {PROJECTS.map((project, idx) => {
+            const Icon = ICON_MAP[Object.keys(ICON_MAP)[idx % Object.keys(ICON_MAP).length]]
+            const accent = ACCENT_MAP[idx % ACCENT_MAP.length]
             return (
               <a
-                key={project.id}
+                key={idx}
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -172,9 +136,9 @@ export default function ProjectsSection() {
                   <div className="flex items-center gap-3">
                     <div
                       className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: project.accent === '#0A66C2' ? 'rgba(10,102,194,0.1)' : 'rgba(26,26,46,0.07)' }}
+                      style={{ background: accent === '#0A66C2' ? 'rgba(10,102,194,0.1)' : 'rgba(26,26,46,0.07)' }}
                     >
-                      <Icon size={20} style={{ color: project.accent }} />
+                      <Icon size={20} style={{ color: accent }} />
                     </div>
                     <div>
                       <p className="font-sans text-[10px] font-600 uppercase tracking-widest text-slate">{project.category}</p>
@@ -202,11 +166,11 @@ export default function ProjectsSection() {
                 <div className="flex items-center gap-3 mb-5 relative z-10">
                   <div
                     className="px-4 py-2 rounded-xl"
-                    style={{ background: project.accent === '#0A66C2' ? 'rgba(10,102,194,0.08)' : 'rgba(26,26,46,0.05)' }}
+                    style={{ background: accent === '#0A66C2' ? 'rgba(10,102,194,0.08)' : 'rgba(26,26,46,0.05)' }}
                   >
                     <span
                       className="project-stat-num font-serif font-bold text-[22px]"
-                      style={{ color: project.accent }}
+                      style={{ color: accent }}
                     >
                       {project.stat.value}
                     </span>

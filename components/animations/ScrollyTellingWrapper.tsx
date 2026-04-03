@@ -1,29 +1,11 @@
 'use client'
 import { useEffect, useRef } from 'react'
 import dynamic from 'next/dynamic'
+import { SCROLLY_SECTIONS } from '@/lib/data'
 
 const ScrollyCanvas = dynamic(() => import('./ScrollyCanvas'), { ssr: false })
 
-const SECTIONS = [
-  {
-    range: [0.05, 0.30] as [number, number],
-    align: 'center' as const,
-    eyebrow: 'AFHEA · MSc · fCMgr · Lecturer',
-    title: 'Industry.\nMeets Academia.',
-  },
-  {
-    range: [0.36, 0.60] as [number, number],
-    align: 'left' as const,
-    eyebrow: '15+ Years of Global Experience',
-    title: 'I build\nglobal leaders.',
-  },
-  {
-    range: [0.65, 0.88] as [number, number],
-    align: 'right' as const,
-    eyebrow: 'From Mumbai to London',
-    title: 'Bridging design\nand engineering.',
-  },
-]
+const SECTIONS = SCROLLY_SECTIONS
 
 function TextOverlay() {
   const refs = useRef<(HTMLDivElement | null)[]>([])

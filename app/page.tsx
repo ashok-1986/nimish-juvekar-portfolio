@@ -9,6 +9,8 @@ import TeachingSection from "@/components/sections/TeachingSection";
 import CompetenciesSection from "@/components/sections/CompetenciesSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import QualificationsSection from "@/components/sections/QualificationsSection";
+import CommunitySection from "@/components/sections/CommunitySection";
+import FreelanceSection from "@/components/sections/FreelanceSection";
 import USPSection from "@/components/sections/USPSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
@@ -33,6 +35,8 @@ export default function Home() {
         <CompetenciesSection />
         <ProjectsSection />
         <QualificationsSection />
+        <CommunitySection />
+        <FreelanceSection />
         <USPSection />
         <ContactSection />
       </main>
