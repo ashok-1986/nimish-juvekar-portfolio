@@ -59,11 +59,9 @@ export default function TeachingSection() {
     <section
       id="teaching"
       ref={sectionRef}
-      className="section-base relative overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #EAF2FB 0%, #F5F2EC 100%)' }}
+      className="relative overflow-hidden"
+      style={{ padding: '50px 0', background: 'linear-gradient(135deg, #EAF2FB 0%, #F5F2EC 100%)' }}
     >
-      <span className="section-number" aria-hidden="true">03</span>
-
       <div className="container relative z-10">
         {/* ── Heading ── */}
         <div className="teach-heading mb-14" style={{ opacity: 0 }}>

@@ -73,12 +73,9 @@ export default function ProjectsSection() {
     <section
       id="projects"
       ref={sectionRef}
-      className="section-base relative overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #EAF2FB 0%, #F9F8F6 50%, #EAF2FB 100%)' }}
+      className="relative overflow-hidden"
+      style={{ padding: '50px 0', background: 'linear-gradient(135deg, #EAF2FB 0%, #F9F8F6 50%, #EAF2FB 100%)' }}
     >
-      {/* Section number accent */}
-      <span className="section-number" aria-hidden="true">05</span>
-
       <div className="container relative z-10">
         {/* Heading */}
         <div className="projects-heading mb-14" style={{ opacity: 0 }}>

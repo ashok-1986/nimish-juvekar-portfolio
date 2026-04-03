@@ -76,11 +76,9 @@ export default function ContactSection() {
     <section
       id="contact"
       ref={sectionRef}
-      className="section-base relative overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #EAF2FB 0%, #F9F8F6 100%)' }}
+      className="relative overflow-hidden"
+      style={{ padding: '50px 0', background: 'linear-gradient(135deg, #EAF2FB 0%, #F9F8F6 100%)' }}
     >
-      <span className="section-number" aria-hidden="true">12</span>
-
       <div className="container relative z-10">
         <div className="contact-heading mb-14" style={{ opacity: 0 }}>
           <p className="section-eyebrow mb-3">Connect</p>

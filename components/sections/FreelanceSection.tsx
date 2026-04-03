@@ -54,19 +54,9 @@ export default function FreelanceSection() {
     <section
       id="freelance"
       ref={sectionRef}
-      className="section-base relative overflow-hidden bg-navy"
+      className="relative overflow-hidden bg-navy"
+      style={{ padding: '50px 0' }}
     >
-      <span
-        className="absolute font-serif font-bold select-none pointer-events-none"
-        style={{
-          fontSize: 'clamp(120px, 18vw, 220px)',
-          color: 'rgba(255,255,255,0.03)',
-          top: '-10px', right: 0,
-          lineHeight: 1,
-        }}
-        aria-hidden="true"
-      >09</span>
-
       <div className="container relative z-10">
         <div className="freelance-heading mb-14" style={{ opacity: 0 }}>
           <p className="section-eyebrow mb-3" style={{ color: 'rgba(255,255,255,0.5)' }}>Available For Hire</p>

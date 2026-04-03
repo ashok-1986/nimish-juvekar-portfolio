@@ -53,7 +53,15 @@ export default function Footer() {
             &copy; {currentYear} {personalInfo.name}. All rights reserved.
           </p>
           <p className="text-white/40 text-sm">
-            Built with Next.js & GSAP
+            Built by{' '}
+            <a
+              href="https://alchemetyx.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue hover:text-blue/80 transition-colors underline"
+            >
+              Alchemetryx
+            </a>
           </p>
         </div>
       </div>

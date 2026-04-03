@@ -136,20 +136,9 @@ export default function QualificationsSection() {
     <section
       id="qualifications"
       ref={sectionRef}
-      className="section-base relative overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #F9F8F6 0%, #F5F2EC 60%, #F9F8F6 100%)' }}
+      className="relative overflow-hidden"
+      style={{ padding: '50px 0', background: 'linear-gradient(135deg, #F9F8F6 0%, #F5F2EC 60%, #F9F8F6 100%)' }}
     >
-      <span
-        className="absolute font-serif font-bold select-none pointer-events-none"
-        style={{
-          fontSize: 'clamp(120px, 18vw, 220px)',
-          color: 'rgba(10,102,194,0.04)',
-          top: '-10px', right: 0,
-          lineHeight: 1,
-        }}
-        aria-hidden="true"
-      >07</span>
-
       <div className="container relative z-10">
 
         {/* ── Heading ── */}

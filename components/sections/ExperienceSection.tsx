@@ -78,7 +78,7 @@ export default function ExperienceSection() {
     <section
       id="experience"
       ref={containerRef}
-      className="py-24 md:py-32 px-6 bg-ivory"
+      className="py-[50px] px-6 bg-ivory"
     >
       <div className="max-w-5xl mx-auto">
         <h2

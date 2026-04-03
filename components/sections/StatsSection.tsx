@@ -121,8 +121,8 @@ export default function StatsSection() {
     <section
       id="stats"
       ref={containerRef}
-      className="relative py-20 md:py-32 overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #1A1A2E 0%, #16213E 40%, #0D3B6E 100%)' }}
+      className="relative overflow-hidden"
+      style={{ padding: '50px 0', background: 'linear-gradient(135deg, #1A1A2E 0%, #16213E 40%, #0D3B6E 100%)' }}
     >
       {/* Particle canvas */}
       <canvas

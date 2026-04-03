@@ -52,11 +52,9 @@ export default function CommunitySection() {
     <section
       id="community"
       ref={sectionRef}
-      className="section-base relative overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #F9F8F6 0%, #F5F2EC 100%)' }}
+      className="relative overflow-hidden"
+      style={{ padding: '50px 0', background: 'linear-gradient(135deg, #F9F8F6 0%, #F5F2EC 100%)' }}
     >
-      <span className="section-number" aria-hidden="true">08</span>
-
       <div className="container relative z-10">
         <div className="community-heading mb-14" style={{ opacity: 0 }}>
           <p className="section-eyebrow mb-3">Giving Back</p>
