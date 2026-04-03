@@ -137,7 +137,7 @@ export default function TeachingSection() {
               className="w-8 h-8 rounded-lg flex items-center justify-center"
               style={{ background: 'rgba(10,102,194,0.1)', color: '#0A66C2' }}
             >
-              <CheckCircle size={16} />
+              <CheckCircle size={16} className="text-blue" />
             </div>
             <h3 className="font-sans font-600 text-[13px] uppercase tracking-widest text-navy">
               2025 Professional Development
@@ -164,7 +164,7 @@ export default function TeachingSection() {
                       : '1px solid rgba(232,228,220,0.8)',
                   }}
                 >
-                  <CheckCircle size={12} style={{ color: '#0A66C2', flexShrink: 0 }} />
+                  <CheckCircle size={12} className="text-blue" style={{ flexShrink: 0 }} />
                   <span className="font-sans text-[11px] md:text-[12px] text-slate">{label}</span>
                   {hasScore && scoreMatch && (
                     <span

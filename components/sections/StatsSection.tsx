@@ -7,6 +7,7 @@ export default function StatsSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const statsRef = useRef<HTMLDivElement>(null)
+  const hasAnimatedRef = useRef(false)
 
   useEffect(() => {
     let ctx: { revert: () => void } | undefined
@@ -27,35 +28,72 @@ export default function StatsSection() {
 
         const cards = statsRef.current?.children
         if (cards) {
-          Array.from(cards).forEach((card, i) => {
+          Array.from(cards).forEach((card) => {
             gsap!.fromTo(card,
               { y: 30, opacity: 0 },
-              { y: 0, opacity: 1, duration: 0.6, delay: i * 0.12, ease: 'power3.out',
+              { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out',
                 scrollTrigger: { trigger: statsRef.current, start: 'top 80%', once: true } }
             )
-
-            // Counter animation
-            const valueEl = card.querySelector('.stat-value')
-            const target = STATS[i]
-            if (valueEl && target) {
-              const obj = { val: 0 }
-              gsap!.to(obj, {
-                val: target.number,
-                duration: 2,
-                ease: 'power2.out',
-                scrollTrigger: { trigger: statsRef.current, start: 'top 80%', once: true },
-                onUpdate() {
-                  const rounded = Math.round(obj.val)
-                  valueEl.textContent = rounded.toString() + target.suffix
-                }
-              })
-            }
           })
         }
       }, containerRef)
     }
     init()
     return () => ctx?.revert()
+  }, [])
+
+  useEffect(() => {
+    const statsContainer = statsRef.current
+    if (!statsContainer) return
+
+    const statElements = Array.from(
+      statsContainer.querySelectorAll<HTMLElement>('.stat-value')
+    )
+
+    const animateCounters = () => {
+      if (hasAnimatedRef.current) return
+      hasAnimatedRef.current = true
+
+      const startTime = performance.now()
+      const duration = 1800
+
+      const tick = (now: number) => {
+        const progress = Math.min(1, (now - startTime) / duration)
+        const eased = 1 - Math.pow(1 - progress, 3)
+
+        statElements.forEach((el, index) => {
+          const target = STATS[index]
+          if (!target) return
+
+          const value = Math.round(target.number * eased)
+          el.textContent = `${value}${target.suffix}`
+        })
+
+        if (progress < 1) {
+          requestAnimationFrame(tick)
+        }
+      }
+
+      requestAnimationFrame(tick)
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries
+        if (!entry?.isIntersecting) return
+
+        animateCounters()
+        observer.disconnect()
+      },
+      {
+        threshold: 0.35,
+        rootMargin: '0px 0px -10% 0px',
+      }
+    )
+
+    observer.observe(statsContainer)
+
+    return () => observer.disconnect()
   }, [])
 
   // Subtle particle background
@@ -156,6 +194,7 @@ export default function StatsSection() {
             >
               <div
                 className="stat-value font-serif text-[clamp(36px,8vw,56px)] font-bold text-white mb-2"
+                data-target={stat.number}
               >
                 0{stat.suffix}
               </div>

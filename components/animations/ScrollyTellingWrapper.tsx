@@ -7,6 +7,27 @@ const ScrollyCanvas = dynamic(() => import('./ScrollyCanvas'), { ssr: false })
 
 const SECTIONS = SCROLLY_SECTIONS
 
+function getOverlayLayout(align: 'left' | 'center' | 'right') {
+  if (align === 'left') {
+    return {
+      alignItems: 'flex-start' as const,
+      textAlign: 'left' as const,
+    }
+  }
+
+  if (align === 'right') {
+    return {
+      alignItems: 'flex-end' as const,
+      textAlign: 'right' as const,
+    }
+  }
+
+  return {
+    alignItems: 'center' as const,
+    textAlign: 'center' as const,
+  }
+}
+
 function TextOverlay() {
   const refs = useRef<(HTMLDivElement | null)[]>([])
 
@@ -75,7 +96,10 @@ function TextOverlay() {
 
   return (
     <>
-      {SECTIONS.map((section, i) => (
+      {SECTIONS.map((section, i) => {
+        const layout = getOverlayLayout(section.align)
+
+        return (
         <div
           key={i}
           ref={el => { refs.current[i] = el }}
@@ -85,47 +109,54 @@ function TextOverlay() {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: layout.alignItems,
             paddingLeft: '24px',
             paddingRight: '24px',
-            textAlign: 'center',
+            textAlign: layout.textAlign,
             opacity: 0,
             pointerEvents: 'none',
             zIndex: 20,
             willChange: 'opacity, transform',
           }}
         >
-          <p style={{
-            fontFamily: 'DM Sans, sans-serif',
-            fontSize: 'clamp(10px, 1.2vw, 13px)',
-            fontWeight: 600,
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.85)',
-            textShadow: '0 1px 8px rgba(0,0,0,0.9)',
-            marginBottom: '12px',
-          }}>
-            {section.eyebrow}
-          </p>
-          <h2 style={{
-            fontFamily: 'Times New Roman, serif',
-            fontSize: 'clamp(28px, 6vw, 88px)',
-            fontWeight: 700,
-            color: '#FFFFFF',
-            lineHeight: 1.0,
-            whiteSpace: 'pre-line',
-            textShadow: '0 2px 32px rgba(0,0,0,0.8), 0 0 80px rgba(0,0,0,0.5)',
-            marginBottom: '20px',
-          }}>
-            {section.title}
-          </h2>
-          <div style={{
-            width: '48px', height: '3px',
-            background: '#0A66C2', borderRadius: '2px',
-            boxShadow: '0 0 12px rgba(10,102,194,0.9)',
-          }} />
+          <div style={{ width: 'min(100%, 980px)' }}>
+            <p style={{
+              fontFamily: 'DM Sans, sans-serif',
+              fontSize: 'clamp(10px, 1.2vw, 13px)',
+              fontWeight: 600,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.85)',
+              textShadow: '0 1px 8px rgba(0,0,0,0.9)',
+              marginBottom: '12px',
+            }}>
+              {section.eyebrow}
+            </p>
+            <h2 style={{
+              fontFamily: 'Times New Roman, serif',
+              fontSize: 'clamp(28px, 6vw, 88px)',
+              fontWeight: 700,
+              color: '#FFFFFF',
+              lineHeight: 1.0,
+              whiteSpace: 'pre-line',
+              textShadow: '0 2px 32px rgba(0,0,0,0.8), 0 0 80px rgba(0,0,0,0.5)',
+              marginBottom: '20px',
+            }}>
+              {section.title}
+            </h2>
+            <div style={{
+              width: '48px',
+              height: '3px',
+              background: '#0A66C2',
+              borderRadius: '2px',
+              boxShadow: '0 0 12px rgba(10,102,194,0.9)',
+              marginLeft: section.align === 'right' ? 'auto' : 0,
+              marginRight: section.align === 'left' ? 'auto' : 0,
+            }} />
+          </div>
         </div>
-      ))}
+        )
+      })}
     </>
   )
 }

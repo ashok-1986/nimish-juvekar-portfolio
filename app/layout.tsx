@@ -14,7 +14,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nimishjuvekar.com"),
+  metadataBase: new URL("https://nimish.drievu.com"),
   title: "Nimish Juvekar — Lecturer & Industry Expert | University of East London",
   description:
     "Nimish Juvekar is a Lecturer in Work-Based Learning at UEL with 15+ years of international experience in operations, supply chain, and project management.",
@@ -33,13 +33,13 @@ export const metadata: Metadata = {
     title: "Nimish Juvekar — Lecturer & Industry Expert | University of East London",
     description:
       "Nimish Juvekar is a Lecturer in Work-Based Learning at UEL with 15+ years of international experience.",
-    url: "https://nimishjuvekar.com",
+    url: "https://nimish.drievu.com",
     siteName: "Nimish Juvekar",
     locale: "en_GB",
     type: "website",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Nimish Juvekar — Lecturer & Industry Expert at University of East London",
@@ -51,14 +51,14 @@ export const metadata: Metadata = {
     title: "Nimish Juvekar — Lecturer & Industry Expert",
     description:
       "Lecturer in Work-Based Learning at UEL with 15+ years of international experience.",
-    images: ["/og-image.png"],
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
     follow: true,
   },
   alternates: {
-    canonical: "https://nimishjuvekar.com",
+    canonical: "https://nimish.drievu.com",
   },
 };
 
@@ -72,7 +72,7 @@ export default function RootLayout({
     "@type": "Person",
     name: personalInfo.name,
     jobTitle: personalInfo.title,
-    url: "https://nimishjuvekar.com",
+    url: "https://nimish.drievu.com",
     email: personalInfo.email,
     address: {
       "@type": "PostalAddress",

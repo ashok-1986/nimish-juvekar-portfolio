@@ -448,22 +448,28 @@ export const USP_CARDS = [
 // ScrollyTelling overlay text (for ScrollyCanvas component)
 export const SCROLLY_SECTIONS = [
   {
-    range: [0.05, 0.30] as [number, number],
+    range: [0.03, 0.25] as [number, number],
     align: 'center' as const,
     eyebrow: 'AFHEA · CMBE · fCMgr · Lecturer',
     title: 'Industry.\nMeets Academia.',
   },
   {
-    range: [0.36, 0.60] as [number, number],
+    range: [0.30, 0.50] as [number, number],
     align: 'left' as const,
-    eyebrow: '15+ Years · 4 Countries · 50+ Certifications',
+    eyebrow: '15+ Years · 4 Countries',
     title: 'I build\nglobal leaders.',
   },
   {
-    range: [0.65, 0.88] as [number, number],
+    range: [0.55, 0.74] as [number, number],
     align: 'right' as const,
     eyebrow: 'From Mumbai to London',
     title: 'Bridging engineering\nand education.',
+  },
+  {
+    range: [0.79, 0.96] as [number, number],
+    align: 'center' as const,
+    eyebrow: 'University of East London',
+    title: 'Shaping the\nnext generation.',
   },
 ]
 
@@ -480,9 +486,10 @@ export const heroContent = {
 // Scrolly content (used by existing ScrollyTellingWrapper)
 export const scrollyContent = {
   sections: [
-    { id: '1', eyebrow: 'AFHEA · CMBE · fCMgr', title: 'Industry.\nMeets Academia.', position: 'center' },
-    { id: '2', eyebrow: '15+ Years · 50+ Certifications', title: 'I build\nglobal leaders.', position: 'left' },
+    { id: '1', eyebrow: 'AFHEA · CMBE · fCMgr · Lecturer', title: 'Industry.\nMeets Academia.', position: 'center' },
+    { id: '2', eyebrow: '15+ Years · 4 Countries', title: 'I build\nglobal leaders.', position: 'left' },
     { id: '3', eyebrow: 'From Mumbai to London', title: 'Bridging engineering\nand education.', position: 'right' },
+    { id: '4', eyebrow: 'University of East London', title: 'Shaping the\nnext generation.', position: 'center' },
   ],
 }
 

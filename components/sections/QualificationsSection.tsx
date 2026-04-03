@@ -6,7 +6,7 @@ import { QUALIFICATIONS, CERTIFICATIONS, ACCREDITATIONS } from '@/lib/data'
 // ─── Icon maps ────────────────────────────────────────────────────────────────
 
 const CATEGORY_ICONS: Record<string, React.ReactNode> = {
-  Elite: <Award size={18} />,
+  Elite: <Award size={18} className="text-blue" />,
   'Supply Chain': (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" width={18} height={18}>
       <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
@@ -37,7 +37,7 @@ const CATEGORY_ICONS: Record<string, React.ReactNode> = {
 }
 
 const DEGREE_ICONS: Record<string, React.ReactNode> = {
-  degree: <GraduationCap size={22} />,
+  degree: <GraduationCap size={22} className="text-blue" />,
   diploma: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" width={22} height={22}>
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -156,7 +156,7 @@ export default function QualificationsSection() {
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(10,102,194,0.1)', color: '#0A66C2' }}>
-              <Award size={16} />
+              <Award size={16} className="text-blue" />
             </div>
             <h3 className="font-sans font-600 text-[13px] uppercase tracking-widest text-navy">Elite Professional Accreditations</h3>
           </div>

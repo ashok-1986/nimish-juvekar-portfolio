@@ -239,6 +239,25 @@ body {
   text-shadow: 0 0 20px rgba(10, 102, 194, 0.3);
 }
 
+/* Force all lucide icons to LinkedIn Blue unless explicitly overridden */
+svg[class*="lucide"] {
+  color: #0A66C2;
+  stroke: #0A66C2;
+}
+
+/* Exceptions — icons that should stay navy */
+.icon-navy svg,
+.text-navy svg {
+  color: #1A1A2E;
+  stroke: #1A1A2E;
+}
+
+/* White icons (on dark backgrounds) */
+.icon-white svg {
+  color: white;
+  stroke: white;
+}
+
 /* ─── Smooth underline on nav hover ─────────────────────────────────────── */
 .nav-link {
   position: relative;

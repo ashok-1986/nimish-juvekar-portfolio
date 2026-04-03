@@ -11,13 +11,13 @@ const ICON_MAP: Record<string, React.ElementType> = {
 }
 
 const ACCENT_MAP = ['#0A66C2', '#0A66C2', '#0A66C2', '#1A1A2E']
-const isTouchDevice = 'ontouchstart' in window
 
 export default function ProjectsSection() {
   const sectionRef = useRef<HTMLElement>(null)
+  const isTouchDevice = typeof window !== 'undefined' && 'ontouchstart' in window
 
   useEffect(() => {
-    let ctx: any
+    let ctx: { revert: () => void } | undefined
     const init = async () => {
       const { gsap } = await import('gsap')
       const { ScrollTrigger } = await import('gsap/ScrollTrigger')
@@ -164,17 +164,11 @@ export default function ProjectsSection() {
 
                 {/* Stat */}
                 <div className="flex items-center gap-3 mb-5 relative z-10">
-                  <div
-                    className="px-4 py-2 rounded-xl"
-                    style={{ background: accent === '#0A66C2' ? 'rgba(10,102,194,0.08)' : 'rgba(26,26,46,0.05)' }}
-                  >
-                    <span
-                      className="project-stat-num font-serif font-bold text-[22px]"
-                      style={{ color: accent }}
-                    >
+                  <div className="flex items-center gap-2">
+                    <span className="project-stat-num font-serif font-bold text-[20px] text-navy">
                       {project.stat.value}
                     </span>
-                    <span className="font-sans text-[11px] text-slate ml-2">{project.stat.label}</span>
+                    <span className="font-sans text-[12px] text-slate">{project.stat.label}</span>
                   </div>
                 </div>
 
