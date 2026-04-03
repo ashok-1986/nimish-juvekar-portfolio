@@ -58,7 +58,7 @@ export default function CommunitySection() {
       <div className="container relative z-10">
         <div className="community-heading mb-14" style={{ opacity: 0 }}>
           <p className="section-eyebrow mb-3">Giving Back</p>
-          <h2 className="font-serif text-[clamp(32px,4vw,52px)] font-bold text-navy heading-underline">
+          <h2 className="font-serif font-bold text-navy heading-underline" style={{ fontSize: 'clamp(28px, 5vw, 52px)' }}>
             Community & Volunteering
           </h2>
           <p className="font-sans text-[15px] text-slate mt-6 max-w-xl">
@@ -72,7 +72,7 @@ export default function CommunitySection() {
             return (
               <div
                 key={i}
-                className="community-card group block rounded-2xl p-6 relative overflow-hidden"
+                className="community-card group block rounded-2xl p-4 md:p-6 h-auto relative overflow-hidden"
                 style={{
                   opacity: 0,
                   background: 'rgba(255,255,255,0.75)',

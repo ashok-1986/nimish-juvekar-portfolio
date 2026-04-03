@@ -60,7 +60,7 @@ export default function FreelanceSection() {
       <div className="container relative z-10">
         <div className="freelance-heading mb-14" style={{ opacity: 0 }}>
           <p className="section-eyebrow mb-3" style={{ color: 'rgba(255,255,255,0.5)' }}>Available For Hire</p>
-          <h2 className="font-serif text-[clamp(32px,4vw,52px)] font-bold text-white heading-underline">
+          <h2 className="font-serif text-[clamp(28px,5vw,52px)] font-bold text-white heading-underline">
             Freelance Services
           </h2>
           <p className="font-sans text-[15px] mt-6 max-w-xl" style={{ color: 'rgba(255,255,255,0.65)' }}>
@@ -74,7 +74,7 @@ export default function FreelanceSection() {
             return (
               <div
                 key={i}
-                className="freelance-card group rounded-2xl p-6 relative overflow-hidden"
+                className="freelance-card group rounded-2xl p-4 md:p-6 relative overflow-hidden"
                 style={{
                   opacity: 0,
                   background: 'rgba(255,255,255,0.05)',
@@ -164,7 +164,7 @@ export default function FreelanceSection() {
         <div className="text-center">
           <a
             href="mailto:drievu.nimish@gmail.com"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-blue text-white font-medium rounded-lg hover:bg-blue/90 transition-colors"
+            className="inline-flex items-center justify-center gap-2 w-full md:w-auto px-8 py-3.5 bg-blue text-white font-medium rounded-lg hover:bg-blue/90 transition-colors"
           >
             Get In Touch
             <ArrowUpRight size={16} />

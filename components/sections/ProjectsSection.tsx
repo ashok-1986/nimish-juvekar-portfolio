@@ -11,6 +11,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
 }
 
 const ACCENT_MAP = ['#0A66C2', '#0A66C2', '#0A66C2', '#1A1A2E']
+const isTouchDevice = 'ontouchstart' in window
 
 export default function ProjectsSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -80,7 +81,7 @@ export default function ProjectsSection() {
         {/* Heading */}
         <div className="projects-heading mb-14" style={{ opacity: 0 }}>
           <p className="section-eyebrow mb-3">Portfolio</p>
-          <h2 className="font-serif text-[clamp(32px,4vw,52px)] font-bold text-navy heading-underline">
+          <h2 className="font-serif font-bold text-navy heading-underline" style={{ fontSize: 'clamp(28px, 5vw, 52px)' }}>
             Selected Work
           </h2>
           <p className="font-sans text-[15px] text-slate mt-6 max-w-xl">
@@ -99,7 +100,7 @@ export default function ProjectsSection() {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="project-card-item group block rounded-2xl p-6 relative overflow-hidden"
+                className="project-card-item group block rounded-2xl p-4 md:p-6 relative overflow-hidden"
                 style={{
                   opacity: 0,
                   background: 'rgba(255,255,255,0.75)',
@@ -109,18 +110,20 @@ export default function ProjectsSection() {
                   boxShadow: '0 4px 24px rgba(10,102,194,0.07)',
                   transition: 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.3s ease',
                 }}
-                onMouseEnter={e => {
-                  const el = e.currentTarget as HTMLElement
-                  el.style.transform = 'translateY(-6px) scale(1.01)'
-                  el.style.boxShadow = '0 16px 48px rgba(10,102,194,0.14)'
-                  el.style.borderColor = 'rgba(10,102,194,0.25)'
-                }}
-                onMouseLeave={e => {
-                  const el = e.currentTarget as HTMLElement
-                  el.style.transform = 'translateY(0) scale(1)'
-                  el.style.boxShadow = '0 4px 24px rgba(10,102,194,0.07)'
-                  el.style.borderColor = 'rgba(255,255,255,0.6)'
-                }}
+                {...(!isTouchDevice ? {
+                  onMouseEnter: e => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.transform = 'translateY(-6px) scale(1.01)'
+                    el.style.boxShadow = '0 16px 48px rgba(10,102,194,0.14)'
+                    el.style.borderColor = 'rgba(10,102,194,0.25)'
+                  },
+                  onMouseLeave: e => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.transform = 'translateY(0) scale(1)'
+                    el.style.boxShadow = '0 4px 24px rgba(10,102,194,0.07)'
+                    el.style.borderColor = 'rgba(255,255,255,0.6)'
+                  },
+                } : {})}
               >
                 {/* Hover glow */}
                 <div
@@ -176,11 +179,11 @@ export default function ProjectsSection() {
                 </div>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 relative z-10">
+                <div className="flex flex-wrap gap-1.5 md:gap-2 relative z-10">
                   {project.tags.map(tag => (
                     <span
                       key={tag}
-                      className="font-sans text-[10px] font-500 px-2.5 py-1 rounded-full"
+                      className="font-sans text-[10px] md:text-[11px] font-500 px-2 py-0.5 md:px-2.5 md:py-1 rounded-full"
                       style={{
                         background: 'rgba(10,102,194,0.07)',
                         color: '#0A66C2',

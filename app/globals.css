@@ -361,3 +361,48 @@ body {
 .timeline-card-enhanced:hover::before {
   opacity: 1;
 }
+
+/* ─── MOBILE GLOBAL FIXES ─────────────────────────────────────────────── */
+
+/* 1. iOS svh fix for Hero and Scrolly canvas */
+@supports (height: 100svh) {
+  .h-screen { height: 100svh; }
+  .min-h-screen { min-height: 100svh; }
+}
+
+/* 2. Prevent iOS auto-zoom on form inputs */
+input, select, textarea {
+  font-size: 16px !important;
+}
+
+/* 3. Mobile section padding — clamp between 48px and 50px */
+@media (max-width: 768px) {
+  section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+}
+
+/* 4. Disable scroll-behavior smooth when Lenis is active */
+html {
+  scroll-behavior: auto;
+}
+
+/* 5. Reduce section number opacity on mobile */
+@media (max-width: 768px) {
+  .section-number {
+    opacity: 0.3 !important;
+  }
+}
+
+/* 6. Mobile container tighter padding */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px !important;
+  }
+}
+
+/* 7. Disable hover-only animations on touch devices */
+@media (hover: none) {
+  .section-number { display: none; }
+}

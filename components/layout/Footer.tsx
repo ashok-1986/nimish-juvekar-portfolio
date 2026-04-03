@@ -13,8 +13,8 @@ export default function Footer() {
             <h3 className="font-serif text-xl font-semibold mb-2">
               {personalInfo.name}
             </h3>
-            <p className="text-white/60 text-sm">{personalInfo.title}</p>
-            <p className="text-white/60 text-sm">{personalInfo.location}</p>
+            <p className="text-white/60 text-xs md:text-sm">{personalInfo.title}</p>
+            <p className="text-white/60 text-xs md:text-sm">{personalInfo.location}</p>
           </div>
 
           <nav aria-label="Footer navigation">
@@ -23,7 +23,7 @@ export default function Footer() {
                 <a
                   key={index}
                   href={link.href}
-                  className="text-white/60 hover:text-blue transition-colors text-sm"
+                  className="text-white/60 hover:text-blue transition-colors text-xs md:text-sm"
                 >
                   {link.label}
                 </a>
@@ -39,7 +39,7 @@ export default function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/60 hover:text-blue transition-colors text-sm"
+                  className="text-white/60 hover:text-blue transition-colors text-xs md:text-sm"
                 >
                   {link.label}
                 </a>
@@ -48,11 +48,11 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/40 text-sm">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+          <p className="text-white/40 text-xs md:text-sm">
             &copy; {currentYear} {personalInfo.name}. All rights reserved.
           </p>
-          <p className="text-white/40 text-sm">
+          <p className="text-white/40 text-xs md:text-sm">
             Built by{' '}
             <a
               href="https://alchemetyx.com"

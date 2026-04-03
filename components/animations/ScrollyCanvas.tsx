@@ -105,7 +105,7 @@ export default function ScrollyCanvas() {
     const resize = () => {
       const dpr = window.devicePixelRatio || 1
       const w   = window.innerWidth
-      const h   = window.innerHeight
+      const h   = window.visualViewport?.height ?? window.innerHeight
       canvas.width        = w * dpr
       canvas.height       = h * dpr
       canvas.style.width  = `${w}px`
@@ -160,7 +160,7 @@ export default function ScrollyCanvas() {
     >
       <div
         className="sticky top-0 w-full overflow-hidden"
-        style={{ height: '100vh' }}
+        style={{ height: '100svh' }}
       >
         <canvas
           ref={canvasRef}

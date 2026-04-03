@@ -42,27 +42,25 @@ export default function ContactSection() {
     return () => ctx?.revert()
   }, [])
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setFormState('submitting')
     const form = e.currentTarget
     const formData = new FormData(form)
+    const name = formData.get('name') as string
+    const email = formData.get('email') as string
+    const subject = formData.get('subject') as string
+    const message = formData.get('message') as string
 
-    try {
-      const response = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
-        method: 'POST',
-        body: formData,
-        headers: { Accept: 'application/json' },
-      })
-      if (response.ok) {
-        setFormState('success')
-        form.reset()
-      } else {
-        setFormState('error')
-      }
-    } catch {
-      setFormState('error')
-    }
+    // Build mailto link with form data
+    const mailtoSubject = encodeURIComponent(`Portfolio Contact: ${subject}`)
+    const mailtoBody = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\n${message}`
+    )
+    window.location.href = `mailto:${PERSONAL.email}?subject=${mailtoSubject}&body=${mailtoBody}`
+
+    setFormState('success')
+    form.reset()
   }
 
   useEffect(() => {
@@ -82,7 +80,7 @@ export default function ContactSection() {
       <div className="container relative z-10">
         <div className="contact-heading mb-14" style={{ opacity: 0 }}>
           <p className="section-eyebrow mb-3">Connect</p>
-          <h2 className="font-serif text-[clamp(32px,4vw,52px)] font-bold text-navy heading-underline">
+          <h2 className="font-serif text-[clamp(28px,5vw,52px)] font-bold text-navy heading-underline">
             Get In Touch
           </h2>
           <p className="font-sans text-[15px] text-slate mt-6 max-w-lg mx-auto text-center">
@@ -92,7 +90,7 @@ export default function ContactSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
           {/* Contact Info */}
-          <div className="contact-info md:col-span-2 space-y-6" style={{ opacity: 0 }}>
+          <div className="contact-info col-span-1 md:col-span-2 space-y-6" style={{ opacity: 0 }}>
             <div
               className="rounded-2xl p-6"
               style={{
@@ -178,7 +176,7 @@ export default function ContactSection() {
           {/* Contact Form */}
           <form
             onSubmit={handleSubmit}
-            className="contact-form md:col-span-3 space-y-5 rounded-2xl p-8"
+            className="contact-form col-span-1 md:col-span-3 space-y-5 rounded-2xl p-4 md:p-8"
             style={{
               opacity: 0,
               background: 'rgba(255,255,255,0.75)',
@@ -236,7 +234,7 @@ export default function ContactSection() {
 
             <button
               type="submit" disabled={formState === 'submitting'} aria-busy={formState === 'submitting'}
-              className="w-full py-3.5 bg-blue text-white font-medium rounded-lg hover:bg-blue/90 focus:ring-2 focus:ring-blue/40 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full md:w-auto py-3.5 bg-blue text-white font-medium rounded-lg hover:bg-blue/90 focus:ring-2 focus:ring-blue/40 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               <Send size={16} />
               {formState === 'submitting' ? 'Sending...' : 'Send Message'}

@@ -85,36 +85,36 @@ export default function CompetenciesSection() {
       style={{ padding: '50px 0', background: 'linear-gradient(135deg, #EAF2FB 0%, #F9F8F6 50%, #EAF2FB 100%)' }}
     >
       <div className="container relative z-10">
-        <div className="comp-heading mb-14" style={{ opacity: 0 }}>
+        <div className="comp-heading mb-10 md:mb-14" style={{ opacity: 0 }}>
           <p className="section-eyebrow mb-3">Expertise</p>
-          <h2 className="font-serif text-[clamp(32px,4vw,52px)] font-bold text-navy heading-underline">
+          <h2 className="font-serif font-bold text-navy heading-underline" style={{ fontSize: 'clamp(28px, 5vw, 52px)' }}>
             Core Competencies
           </h2>
-          <p className="font-sans text-[15px] text-slate mt-6 max-w-xl mx-auto">
+          <p className="font-sans text-[15px] text-slate mt-4 md:mt-6 max-w-xl mx-auto">
             A multidisciplinary skill set spanning academia, business operations, technical engineering, and digital innovation.
           </p>
         </div>
 
-        <div className="space-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {entries.map(([name, skills], catIndex) => {
             const iconKey = CATEGORY_ICONS[catIndex] || 'BookOpen'
             const color = ICON_COLORS[catIndex] || '#0A66C2'
             return (
               <div key={name} className="comp-category">
-                <div className="flex items-center gap-3 mb-5">
+                <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-5">
                   <div
-                    className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                    className="w-8 h-8 md:w-9 md:h-9 rounded-xl flex items-center justify-center flex-shrink-0"
                     style={{ background: `${color}15`, color }}
                   >
                     {ICON_SVGS[iconKey]}
                   </div>
-                  <h3 className="font-sans font-600 text-[14px] text-navy">{name}</h3>
+                  <h3 className="font-sans font-600 text-[12px] md:text-[14px] text-navy">{name}</h3>
                 </div>
-                <div className="flex flex-wrap gap-2.5">
+                <div className="flex flex-wrap gap-2 md:gap-2.5">
                   {skills.map((skill) => (
                     <span
                       key={skill}
-                      className="skill-tag font-sans text-[12px] font-500 px-3.5 py-1.5 rounded-full cursor-default"
+                      className="skill-tag font-sans text-[11px] md:text-[12px] font-500 px-2.5 md:px-3.5 py-1 md:py-1.5 rounded-full cursor-default"
                       style={{
                         background: 'rgba(255,255,255,0.7)',
                         backdropFilter: 'blur(8px)',

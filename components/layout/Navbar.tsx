@@ -51,7 +51,7 @@ export default function Navbar() {
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           <Link
             href="#"
-            className="font-serif text-xl font-semibold text-navy"
+            className="font-serif text-sm md:text-xl font-semibold text-navy"
           >
             {personalInfo.name}
           </Link>
@@ -85,7 +85,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setIsOpen(true)}
-            className="md:hidden p-2 text-navy"
+            className="md:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-navy"
             aria-label="Open menu"
           >
             <svg
@@ -116,7 +116,7 @@ export default function Navbar() {
       >
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-between p-6 border-b border-mist">
-            <span className="font-serif text-xl font-semibold text-navy">
+            <span className="font-serif text-sm md:text-xl font-semibold text-navy">
               {personalInfo.name}
             </span>
             <button
@@ -141,13 +141,13 @@ export default function Navbar() {
             </button>
           </div>
 
-          <nav className="flex flex-col gap-6 p-6">
+          <nav className="flex flex-col gap-4 p-6">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className={`mobile-nav-link text-2xl font-serif transition-colors block ${
+                className={`mobile-nav-link text-[28px] font-serif transition-colors block ${
                   activeSection === link.href.slice(1)
                     ? "text-blue"
                     : "text-navy hover:text-blue"

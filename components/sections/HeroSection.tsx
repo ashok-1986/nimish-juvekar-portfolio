@@ -115,13 +115,13 @@ export default function HeroSection() {
         style={{
           backgroundImage: "radial-gradient(circle, #C8C4BC 1px, transparent 1px)",
           backgroundSize: "28px 28px",
-          opacity: 0.4,
+          opacity: 0.25,
         }}
       />
 
       {/* Decorative N */}
       <span
-        className="absolute select-none pointer-events-none font-serif font-bold"
+        className="absolute select-none pointer-events-none font-serif font-bold opacity-30 lg:opacity-100 overflow-hidden"
         style={{
           fontSize: "clamp(200px, 30vw, 380px)",
           color: "#F0EDE8",
@@ -156,7 +156,7 @@ export default function HeroSection() {
                 text="NIMISH"
                 textColor="text-navy"
                 overlayColor="text-blue"
-                fontSize="text-[clamp(52px,6.5vw,82px)]"
+                fontSize="text-[clamp(40px,10vw,88px)]"
                 letterDelay={0.07}
                 overlayDelay={0.05}
                 overlayDuration={0.4}
@@ -170,7 +170,7 @@ export default function HeroSection() {
                   text="JUVEKAR"
                   textColor="text-navy"
                   overlayColor="text-blue"
-                  fontSize="text-[clamp(52px,6.5vw,82px)]"
+                  fontSize="text-[clamp(40px,10vw,88px)]"
                   letterDelay={0.06}
                   overlayDelay={0.04}
                   overlayDuration={0.4}
@@ -198,7 +198,7 @@ export default function HeroSection() {
             <a
               ref={ctaRef}
               href="#experience"
-              className="inline-flex items-center gap-2 bg-blue text-white px-8 py-4 rounded-lg font-medium transition-all hover:bg-blue/90 hover:shadow-lg hover:shadow-blue/25 hover:-translate-y-0.5"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue text-white px-8 py-4 rounded-lg font-medium transition-all hover:bg-blue/90 hover:shadow-lg hover:shadow-blue/25 hover:-translate-y-0.5"
             >
               {heroContent.cta}
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">

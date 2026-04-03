@@ -72,14 +72,15 @@ export default function AboutSection() {
       <div className="max-w-5xl mx-auto">
         <h2
           ref={titleRef}
-          className="font-serif text-clamp-section-h2 font-semibold text-navy mb-12 text-center"
+          className="font-serif font-semibold text-navy mb-12 text-center"
+          style={{ fontSize: 'clamp(28px, 5vw, 48px)', lineHeight: '1.2' }}
         >
           {aboutContent.title}
         </h2>
 
         <div
           ref={storyRef}
-          className="grid md:grid-cols-3 gap-8 mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
         >
           {aboutContent.story.map((paragraph, index) => (
             <div
@@ -93,12 +94,12 @@ export default function AboutSection() {
 
         <div
           ref={credentialsRef}
-          className="flex flex-wrap justify-center gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-3 justify-items-center"
         >
           {aboutContent.credentials.map((credential, index) => (
             <span
               key={index}
-              className="px-4 py-2 bg-sky-tint border border-mist rounded-full text-sm font-medium text-navy"
+              className="w-full text-center px-4 py-2 bg-sky-tint border border-mist rounded-full text-sm font-medium text-navy"
             >
               {credential}
             </span>

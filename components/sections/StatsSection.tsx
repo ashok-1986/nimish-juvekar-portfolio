@@ -132,7 +132,7 @@ export default function StatsSection() {
       />
 
       <div className="container relative z-10">
-        <h2 className="stats-heading text-center font-serif text-[clamp(28px,4vw,48px)] font-semibold text-white mb-4">
+        <h2 className="stats-heading text-center font-serif text-[clamp(28px,5vw,48px)] font-semibold text-white mb-4">
           By The Numbers
         </h2>
         <p className="stats-heading text-center font-sans text-[15px] text-white/60 mb-16 max-w-lg mx-auto">
@@ -155,7 +155,7 @@ export default function StatsSection() {
               }}
             >
               <div
-                className="stat-value font-serif text-[clamp(32px,5vw,52px)] font-bold text-white mb-2"
+                className="stat-value font-serif text-[clamp(36px,8vw,56px)] font-bold text-white mb-2"
               >
                 0{stat.suffix}
               </div>

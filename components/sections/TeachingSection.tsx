@@ -64,22 +64,22 @@ export default function TeachingSection() {
     >
       <div className="container relative z-10">
         {/* ── Heading ── */}
-        <div className="teach-heading mb-14" style={{ opacity: 0 }}>
+        <div className="teach-heading mb-10 md:mb-14" style={{ opacity: 0 }}>
           <p className="section-eyebrow mb-3">Education</p>
-          <h2 className="font-serif text-[clamp(32px,4vw,52px)] font-bold text-navy heading-underline">
+          <h2 className="font-serif font-bold text-navy heading-underline" style={{ fontSize: 'clamp(28px, 4vw, 52px)' }}>
             Teaching at UEL
           </h2>
-          <p className="font-sans text-[15px] text-slate mt-6 max-w-xl mx-auto italic">
+          <p className="font-sans text-[15px] text-slate mt-4 md:mt-6 max-w-xl mx-auto italic">
             {TEACHING.philosophy}
           </p>
         </div>
 
         {/* ── Modules Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-14">
           {TEACHING.modules.map((mod, i) => (
             <div
               key={i}
-              className="teach-module group rounded-2xl p-6 relative overflow-hidden"
+              className="teach-module group rounded-2xl p-4 md:p-6 relative overflow-hidden"
               style={{
                 opacity: 0,
                 background: 'rgba(255,255,255,0.75)',
@@ -144,7 +144,7 @@ export default function TeachingSection() {
             </h3>
           </div>
 
-          <div className="training-grid flex flex-wrap gap-3">
+          <div className="training-grid flex flex-wrap gap-2 md:gap-3">
             {TEACHING.uelTraining2025.map((item, i) => {
               const hasScore = item.includes('Score:')
               const scoreMatch = item.match(/Score:\s*(\d+)/)
@@ -152,7 +152,7 @@ export default function TeachingSection() {
               return (
                 <div
                   key={i}
-                  className="training-pill flex items-center gap-2 px-4 py-2 rounded-full"
+                  className="training-pill flex items-center gap-1.5 md:gap-2 px-2.5 md:px-4 py-1.5 md:py-2 rounded-full"
                   style={{
                     opacity: 0,
                     background: hasScore && scoreMatch && parseInt(scoreMatch[1]) >= 100
@@ -165,10 +165,10 @@ export default function TeachingSection() {
                   }}
                 >
                   <CheckCircle size={12} style={{ color: '#0A66C2', flexShrink: 0 }} />
-                  <span className="font-sans text-[12px] text-slate">{label}</span>
+                  <span className="font-sans text-[11px] md:text-[12px] text-slate">{label}</span>
                   {hasScore && scoreMatch && (
                     <span
-                      className="font-sans text-[11px] font-700"
+                      className="font-sans text-[10px] md:text-[11px] font-700"
                       style={{ color: '#0A66C2' }}
                     >
                       {scoreMatch[1]}%

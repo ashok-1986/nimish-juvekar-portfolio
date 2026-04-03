@@ -78,18 +78,23 @@ export default function ExperienceSection() {
     <section
       id="experience"
       ref={containerRef}
-      className="py-[50px] px-6 bg-ivory"
+      className="py-[50px] px-4 md:px-6 bg-ivory"
     >
       <div className="max-w-5xl mx-auto">
         <h2
           ref={titleRef}
-          className="font-serif text-clamp-section-h2 font-semibold text-navy mb-16 text-center"
+          className="font-serif font-semibold text-center mb-16 text-navy"
+          style={{ fontSize: 'clamp(28px, 5vw, 48px)' }}
         >
           {experienceContent.title}
         </h2>
 
         <div ref={timelineRef} className="relative">
-          <div className="timeline-line absolute left-1/2 top-0 bottom-0 w-px bg-mist -translate-x-1/2 origin-top" />
+          {/* Timeline line: left edge on mobile (16px), centre on desktop */}
+          <div
+            className="timeline-line absolute top-0 bottom-0 bg-mist origin-top left-[16px] md:left-1/2 md:-translate-x-1/2"
+            style={{ width: '2px' }}
+          />
 
           <div className="space-y-12">
             {experienceContent.timeline.map((item, index) => {
@@ -97,32 +102,36 @@ export default function ExperienceSection() {
               return (
                 <div
                   key={index}
-                  className={`timeline-item relative flex items-center ${
-                    isLeft ? "justify-end" : "justify-start"
+                  className={`timeline-item relative md:flex md:items-center ${
+                    isLeft ? 'md:justify-end' : 'md:justify-start'
                   }`}
                 >
+                  {/* Mobile: card with left padding to clear the line */}
                   <div
-                    className={`w-full md:w-1/2 ${
-                      isLeft ? "md:pr-12 md:text-right" : "md:pl-12 md:text-left"
+                    className={`pl-10 md:pl-0 md:w-1/2 ${
+                      isLeft ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'
                     }`}
                   >
-                    <div className="bg-sky-tint border border-mist rounded-lg p-6 hover:border-blue/30 transition-colors">
-                      <span className="inline-block text-sm font-medium text-blue mb-2">
-                        {item.year}
+                    <div className="bg-sky-tint border border-mist rounded-lg p-4 md:p-6 hover:border-blue/30 transition-colors">
+                      <span
+                        className="inline-block text-[11px] md:text-sm font-medium text-blue mb-1 md:mb-2 truncate"
+                        title={`${item.year} | ${item.company}`}
+                      >
+                        {item.year} | {item.company}
                       </span>
-                      <h3 className="text-lg font-semibold text-navy mb-1">
+                      <h3 className="text-base md:text-lg font-semibold text-navy mb-1">
                         {item.role}
                       </h3>
-                      <p className="text-sm font-medium text-slate mb-3">
-                        {item.company}
-                      </p>
-                      <p className="text-sm text-slate leading-relaxed">
+                      <p className="text-xs md:text-sm text-slate leading-relaxed">
                         {item.description}
                       </p>
                     </div>
                   </div>
 
-                  <div className="hidden md:block absolute left-1/2 w-4 h-4 bg-blue rounded-full -translate-x-1/2 border-4 border-ivory" />
+                  {/* Dot: mobile left-aligned with line, desktop centre-aligned */}
+                  <div
+                    className="absolute w-3 h-3 md:w-4 md:h-4 bg-blue rounded-full border-[3px] md:border-4 border-ivory left-[9px] md:left-1/2 md:-translate-x-1/2"
+                  />
                 </div>
               );
             })}

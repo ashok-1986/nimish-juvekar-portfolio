@@ -144,7 +144,7 @@ export default function QualificationsSection() {
         {/* ── Heading ── */}
         <div className="qual-heading mb-14" style={{ opacity: 0 }}>
           <p className="section-eyebrow mb-3">Credentials</p>
-          <h2 className="font-serif text-[clamp(32px,4vw,52px)] font-bold text-navy heading-underline">
+          <h2 className="font-serif font-bold text-navy heading-underline" style={{ fontSize: 'clamp(28px, 5vw, 48px)' }}>
             Education & Certifications
           </h2>
           <p className="font-sans text-[15px] text-slate mt-6 max-w-xl">
@@ -227,7 +227,7 @@ export default function QualificationsSection() {
               return (
                 <div
                   key={q.type + q.title}
-                  className="degree-card group rounded-2xl p-6 relative overflow-hidden cursor-default"
+                  className="degree-card group rounded-2xl p-4 md:p-6 relative overflow-hidden cursor-default"
                   style={{
                     opacity: 0,
                     background: 'rgba(255,255,255,0.75)',
@@ -312,11 +312,11 @@ export default function QualificationsSection() {
               <h3 className="font-sans font-600 text-[13px] uppercase tracking-widest text-navy">Professional Certifications</h3>
             </div>
             <div
-              className="flex items-center gap-2 px-4 py-2 rounded-xl flex-shrink-0"
+              className="flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-xl flex-shrink-0"
               style={{ background: 'rgba(10,102,194,0.08)' }}
             >
-              <span className="cert-count font-serif font-bold text-[22px]" style={{ color: '#0A66C2' }}>0</span>
-              <span className="font-sans text-[11px] text-slate">Certifications</span>
+              <span className="cert-count font-serif font-bold text-[18px] md:text-[22px]" style={{ color: '#0A66C2' }}>0</span>
+              <span className="font-sans text-[10px] md:text-[11px] text-slate">Certifications</span>
             </div>
           </div>
 

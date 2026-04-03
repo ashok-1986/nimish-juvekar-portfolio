@@ -15,10 +15,12 @@ import USPSection from "@/components/sections/USPSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
 import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
+import SmoothScroll from "@/components/ui/SmoothScroll";
 
 export default function Home() {
   return (
     <>
+      <SmoothScroll />
       <ScrollProgressBar />
       <a href="#main-content" className="skip-link">
         Skip to main content

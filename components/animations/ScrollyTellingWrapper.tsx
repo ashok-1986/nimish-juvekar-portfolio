@@ -24,14 +24,15 @@ function TextOverlay() {
       if (!container) { hideAll(); return }
 
       const rect = container.getBoundingClientRect()
+      const vh = window.visualViewport?.height ?? window.innerHeight
 
       // Hide when canvas is fully above viewport (user scrolled past it)
       if (rect.bottom <= 0) { hideAll(); return }
 
       // Hide when canvas has not entered viewport yet (user is on hero)
-      if (rect.top >= window.innerHeight) { hideAll(); return }
+      if (rect.top >= vh) { hideAll(); return }
 
-      const total = container.offsetHeight - window.innerHeight
+      const total = container.offsetHeight - vh
       if (total <= 0) { hideAll(); return }
 
       const scrolled = Math.max(0, -rect.top)
@@ -84,13 +85,10 @@ function TextOverlay() {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            alignItems:
-              section.align === 'center' ? 'center'
-              : section.align === 'left' ? 'flex-start'
-              : 'flex-end',
-            paddingLeft: section.align === 'left' ? '8vw' : '24px',
-            paddingRight: section.align === 'right' ? '8vw' : '24px',
-            textAlign: section.align,
+            alignItems: 'center',
+            paddingLeft: '24px',
+            paddingRight: '24px',
+            textAlign: 'center',
             opacity: 0,
             pointerEvents: 'none',
             zIndex: 20,
@@ -111,7 +109,7 @@ function TextOverlay() {
           </p>
           <h2 style={{
             fontFamily: 'Times New Roman, serif',
-            fontSize: 'clamp(36px, 7vw, 88px)',
+            fontSize: 'clamp(28px, 6vw, 88px)',
             fontWeight: 700,
             color: '#FFFFFF',
             lineHeight: 1.0,
