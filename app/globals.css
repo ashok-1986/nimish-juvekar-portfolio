@@ -1,24 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --navy: #1A1A2E;
-  --blue: #0A66C2;
-  --ivory: #F9F8F6;
-  --sky-tint: #EAF2FB;
-  --slate: #5A5A6E;
-  --mist: #E8E4DC;
-  --white: #FFFFFF;
+  --obsidian: #052026;
+  --zinc: #FAFAFA;
+  --tangerine: #FF5A1F;
 }
 
 @theme inline {
-  --color-background: var(--ivory);
-  --color-foreground: var(--navy);
-  --color-accent: var(--blue);
-  --color-section-bg: var(--sky-tint);
-  --color-body-text: var(--slate);
-  --color-border: var(--mist);
-  --color-navy: var(--navy);
-  --color-white: var(--white);
+  --color-background: var(--zinc);
+  --color-foreground: var(--obsidian);
+  --color-accent: var(--tangerine);
+  --color-obsidian: var(--obsidian);
+  --color-zinc: var(--zinc);
+  --color-tangerine: var(--tangerine);
 
   --font-sans: var(--font-dm-sans), system-ui, sans-serif;
   --font-serif: "Times New Roman", Times, serif;
@@ -33,12 +27,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-  background: var(--ivory);
-  color: var(--navy);
+  background: var(--zinc);
+  color: var(--obsidian);
   font-family: var(--font-sans);
   font-size: 15px;
   line-height: 1.65;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
 }
@@ -80,8 +74,8 @@ body {
   position: absolute;
   top: -40px;
   left: 0;
-  background: var(--blue);
-  color: var(--white);
+  background: var(--tangerine);
+  color: var(--zinc);
   padding: 8px 16px;
   z-index: 100;
   transition: top 0.2s;
@@ -90,33 +84,29 @@ body {
 
 .skip-link:focus {
   top: 0;
-  outline: 2px solid var(--white);
+  outline: 2px solid var(--zinc);
   outline-offset: 2px;
 }
 
-/* ─── Focus visible styles for keyboard navigation ───────────────────────── */
 :focus-visible {
-  outline: 2px solid var(--blue);
+  outline: 2px solid var(--tangerine);
   outline-offset: 2px;
 }
 
-/* Remove default focus for mouse users, keep for keyboard */
 :focus:not(:focus-visible) {
   outline: none;
 }
 
-/* Enhanced focus for interactive elements */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid var(--blue);
+  outline: 2px solid var(--tangerine);
   outline-offset: 2px;
-  border-color: var(--blue);
+  border-color: var(--tangerine);
 }
 
-/* ─── Reduced motion preferences ──────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -129,55 +119,32 @@ textarea:focus-visible {
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(250, 250, 250, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
 .glass-dark {
-  background: rgba(26, 26, 46, 0.7);
+  background: rgba(5, 32, 38, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-/* ─── Enhanced spacing — consistent side padding ────────────────────────── */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 clamp(24px, 5vw, 80px); /* was 20px, now 80px max on large screens */
+  padding: 0 clamp(24px, 5vw, 80px);
 }
 
-/* ─── Background gradients replacing pure white ─────────────────────────── */
-
-/* Main ivory background with subtle warmth gradient */
-body {
-  background: linear-gradient(160deg, #FAFAF8 0%, #F9F8F6 40%, #F5F3EF 100%);
-  min-height: 100vh;
-}
-
-/* Section alternating backgrounds */
-.section-ivory {
-  background: linear-gradient(135deg, #F9F8F6 0%, #F5F2EC 100%);
-}
-
-.section-sky {
-  background: linear-gradient(135deg, #EAF2FB 0%, #E0ECFA 60%, #EAF2FB 100%);
-}
-
-.section-dark {
-  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #1A1A2E 100%);
-}
-
-/* ─── Enhanced card styles ───────────────────────────────────────────────── */
 .card-enhanced {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(250, 250, 250, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(232, 228, 220, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   box-shadow:
-    0 1px 3px rgba(26, 26, 46, 0.04),
-    0 4px 16px rgba(26, 26, 46, 0.06),
+    0 1px 3px rgba(5, 32, 38, 0.04),
+    0 4px 16px rgba(5, 32, 38, 0.06),
     0 0 0 1px rgba(255, 255, 255, 0.5) inset;
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
               box-shadow 0.3s ease,
@@ -187,12 +154,11 @@ body {
 .card-enhanced:hover {
   transform: translateY(-6px) scale(1.01);
   box-shadow:
-    0 8px 32px rgba(10, 102, 194, 0.12),
-    0 2px 8px rgba(26, 26, 46, 0.08);
-  border-color: rgba(10, 102, 194, 0.2);
+    0 8px 32px rgba(255, 90, 31, 0.12),
+    0 2px 8px rgba(5, 32, 38, 0.08);
+  border-color: rgba(255, 90, 31, 0.2);
 }
 
-/* ─── GSAP animation base states ─────────────────────────────────────────── */
 .gsap-fade-up {
   opacity: 0;
   transform: translateY(40px);
@@ -213,7 +179,6 @@ body {
   transform: scale(0.9);
 }
 
-/* ─── Magnetic button effect ─────────────────────────────────────────────── */
 .btn-magnetic {
   position: relative;
   overflow: hidden;
@@ -233,32 +198,11 @@ body {
   opacity: 1;
 }
 
-/* ─── Glowing text accent ────────────────────────────────────────────────── */
-.text-glow-blue {
-  color: #0A66C2;
-  text-shadow: 0 0 20px rgba(10, 102, 194, 0.3);
+.text-glow-tangerine {
+  color: var(--tangerine);
+  text-shadow: 0 0 20px rgba(255, 90, 31, 0.3);
 }
 
-/* Force all lucide icons to LinkedIn Blue unless explicitly overridden */
-svg[class*="lucide"] {
-  color: #0A66C2;
-  stroke: #0A66C2;
-}
-
-/* Exceptions — icons that should stay navy */
-.icon-navy svg,
-.text-navy svg {
-  color: #1A1A2E;
-  stroke: #1A1A2E;
-}
-
-/* White icons (on dark backgrounds) */
-.icon-white svg {
-  color: white;
-  stroke: white;
-}
-
-/* ─── Smooth underline on nav hover ─────────────────────────────────────── */
 .nav-link {
   position: relative;
   padding-bottom: 2px;
@@ -271,7 +215,7 @@ svg[class*="lucide"] {
   left: 0;
   width: 0;
   height: 2px;
-  background: #0A66C2;
+  background: var(--tangerine);
   border-radius: 1px;
   transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -281,12 +225,11 @@ svg[class*="lucide"] {
   width: 100%;
 }
 
-/* ─── Section number accent ──────────────────────────────────────────────── */
 .section-number {
   font-family: 'Times New Roman', serif;
   font-size: clamp(80px, 12vw, 160px);
   font-weight: 700;
-  color: rgba(10, 102, 194, 0.05);
+  color: rgba(255, 90, 31, 0.05);
   position: absolute;
   top: -20px;
   right: 0;
@@ -295,19 +238,17 @@ svg[class*="lucide"] {
   user-select: none;
 }
 
-/* ─── Scroll progress bar ────────────────────────────────────────────────── */
 .scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, #0A66C2, #1877D2);
+  background: linear-gradient(90deg, var(--tangerine), #FF7A3F);
   z-index: 9999;
   transform-origin: left;
-  box-shadow: 0 0 8px rgba(10, 102, 194, 0.5);
+  box-shadow: 0 0 8px rgba(255, 90, 31, 0.5);
 }
 
-/* ─── Screen reader only utility ──────────────────────────────────────────── */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -331,7 +272,6 @@ svg[class*="lucide"] {
   white-space: normal;
 }
 
-/* ─── Mobile touch targets - minimum 44x44px ──────────────────────────────── */
 @media (max-width: 768px) {
   button,
   a,
@@ -342,59 +282,20 @@ svg[class*="lucide"] {
     min-width: 44px;
   }
   
-  /* Ensure mobile menu links have adequate touch targets */
   .mobile-nav-link {
     padding: 12px 0;
   }
 }
 
-/* ─── Timeline enhanced ──────────────────────────────────────────────────── */
-.timeline-card-enhanced {
-  position: relative;
-  padding: 24px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 16px;
-  border: 1px solid #E8E4DC;
-  border-left: 4px solid #0A66C2;
-  box-shadow: 0 2px 16px rgba(10, 102, 194, 0.06);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.timeline-card-enhanced::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #0A66C2, transparent);
-  border-radius: 16px 16px 0 0;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.timeline-card-enhanced:hover {
-  transform: translateY(-4px) translateX(4px);
-  box-shadow: 0 8px 32px rgba(10, 102, 194, 0.12);
-  border-color: rgba(10, 102, 194, 0.3);
-}
-
-.timeline-card-enhanced:hover::before {
-  opacity: 1;
-}
-
-/* ─── MOBILE GLOBAL FIXES ─────────────────────────────────────────────── */
-
-/* 1. iOS svh fix for Hero and Scrolly canvas */
 @supports (height: 100svh) {
   .h-screen { height: 100svh; }
   .min-h-screen { min-height: 100svh; }
 }
 
-/* 2. Prevent iOS auto-zoom on form inputs */
 input, select, textarea {
   font-size: 16px !important;
 }
 
-/* 3. Mobile section padding — clamp between 48px and 50px */
 @media (max-width: 768px) {
   section {
     padding-top: 48px !important;
@@ -402,44 +303,22 @@ input, select, textarea {
   }
 }
 
-/* 4. Disable scroll-behavior smooth when Lenis is active */
 html {
   scroll-behavior: auto;
 }
 
-/* 5. Reduce section number opacity on mobile */
 @media (max-width: 768px) {
   .section-number {
     opacity: 0.3 !important;
   }
 }
 
-/* 6. Mobile container tighter padding */
 @media (max-width: 768px) {
   .container {
     padding: 0 16px !important;
   }
 }
 
-/* 7. Disable hover-only animations on touch devices */
 @media (hover: none) {
   .section-number { display: none; }
-}
-
-/* 8. Force all lucide SVG icons to LinkedIn Blue by default */
-svg[class*="lucide"], .lucide {
-  color: #0A66C2;
-  stroke: #0A66C2;
-}
-
-/* Exception: icons inside navy-text or explicitly navy-marked elements */
-.text-navy svg, .icon-navy svg {
-  color: #1A1A2E;
-  stroke: #1A1A2E;
-}
-
-/* Exception: icons on dark backgrounds */
-.icon-white svg {
-  color: #FFFFFF;
-  stroke: #FFFFFF;
 }
