@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { personalInfo } from "@/lib/data";
 
@@ -10,6 +10,15 @@ const dmSans = DM_Sans({
   display: "swap",
   preload: true,
   fallback: ["system-ui", "arial"],
+});
+
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  style: ["normal", "italic"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -86,7 +95,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${dmSans.variable} h-full antialiased`}>
+    <html lang="en" className={`${dmSans.variable} ${playfairDisplay.variable} h-full antialiased`}>
       <head>
         <link
           rel="preconnect"

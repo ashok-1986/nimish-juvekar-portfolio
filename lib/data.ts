@@ -546,7 +546,8 @@ export const experienceContent = {
     year: exp.period,
     role: exp.role,
     company: `${exp.company}, ${exp.location}`,
-    description: exp.highlights.join(' '),
+    description: exp.highlights[0] ?? '',
+    highlights: exp.highlights,
   })),
 }
 

@@ -27,7 +27,7 @@
   --color-white: #FFFFFF;
 
   --font-sans: var(--font-dm-sans), system-ui, sans-serif;
-  --font-serif: "Times New Roman", Times, serif;
+  --font-serif: var(--font-playfair), Georgia, "Times New Roman", Times, serif;
 
   --text-clamp-hero: clamp(52px, 7vw, 88px);
   --text-clamp-section-h2: clamp(32px, 4vw, 48px);
@@ -43,11 +43,26 @@ body {
   background: var(--zinc);
   color: var(--obsidian);
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.65;
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
+}
+
+/* ── Stacking: page sections sit above the fixed scrolly text overlay (z-20).
+   The scrolly wrapper is a <div>, all other children are <section> elements.
+   Hero and every content section get z-30 so their opaque backgrounds clip the
+   fixed overlay that would otherwise bleed through. ── */
+main > section {
+  position: relative;
+  z-index: 30;
+}
+
+/* The scrolly wrapper <div> stays at the default stacking level so the
+   fixed overlay (z-20) composites correctly inside the scrolly region. */
+#scrolly-container {
+  z-index: auto;
 }
 
 /* ── Section eyebrow label ──────────────────────────────────────────────── */

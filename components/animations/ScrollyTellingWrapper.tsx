@@ -133,7 +133,7 @@ function TextOverlay() {
               {section.eyebrow}
             </p>
             <h2 style={{
-              fontFamily: 'Times New Roman, serif',
+              fontFamily: 'var(--font-playfair), Georgia, Times New Roman, serif',
               fontSize: 'clamp(28px, 6vw, 88px)',
               fontWeight: 700,
               color: '#FFFFFF',
