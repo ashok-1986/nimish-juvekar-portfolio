@@ -38,7 +38,7 @@ export const ACCREDITATIONS = [
     expires: 'March 2027',
     credentialId: 'CMBE2611617383',
     icon: 'award',
-    color: '#0A66C2',
+    color: '#FF5A1F',
   },
   {
     title: 'Associate Fellow of Advance HE (AFHEA)',
@@ -46,7 +46,7 @@ export const ACCREDITATIONS = [
     issued: 'March 2026',
     credentialId: 'PR337918',
     icon: 'graduation',
-    color: '#0A66C2',
+    color: '#FF5A1F',
   },
   {
     title: 'Foundation Chartered Manager (fCMgr)',
@@ -54,7 +54,7 @@ export const ACCREDITATIONS = [
     issued: '2025',
     credentialId: null,
     icon: 'briefcase',
-    color: '#1A1A2E',
+    color: '#052026',
   },
 ]
 
@@ -66,7 +66,7 @@ export const EXPERIENCE = [
     location: 'London, UK',
     period: 'Sep 2025 – Present',
     tag: 'Academia',
-    tagColor: 'blue',
+    tagColor: 'tangerine',
     highlights: [
       'Guides Level 7 Master\'s students through practical placement years, turning academic frameworks into day-one career skills.',
       'Manages relationships with external business clients, securing and maintaining valuable internship and placement opportunities.',
@@ -81,7 +81,7 @@ export const EXPERIENCE = [
     location: 'London, UK',
     period: 'Sep 2023 – Sep 2025',
     tag: 'Academia',
-    tagColor: 'blue',
+    tagColor: 'tangerine',
     highlights: [
       'Delivered comprehensive lectures on Global Project Management and Managing Resources in an International Business Environment.',
       'Designed educational materials tailored to diverse international learners, enhancing student outcomes.',
