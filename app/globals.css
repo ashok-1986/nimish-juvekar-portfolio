@@ -4,15 +4,27 @@
   --obsidian: #052026;
   --zinc: #FAFAFA;
   --tangerine: #FF5A1F;
+  --muted: #4A5A5D;
+  --surface: #EDF4F5;
+  --border: #C8D8DA;
 }
 
 @theme inline {
-  --color-background: var(--zinc);
-  --color-foreground: var(--obsidian);
-  --color-accent: var(--tangerine);
   --color-obsidian: var(--obsidian);
   --color-zinc: var(--zinc);
   --color-tangerine: var(--tangerine);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+
+  /* Legacy aliases — keep components working without touching every className */
+  --color-navy: var(--obsidian);
+  --color-blue: var(--tangerine);
+  --color-ivory: var(--zinc);
+  --color-slate: var(--muted);
+  --color-mist: var(--border);
+  --color-sky-tint: var(--surface);
+  --color-white: #FFFFFF;
 
   --font-sans: var(--font-dm-sans), system-ui, sans-serif;
   --font-serif: "Times New Roman", Times, serif;
@@ -24,6 +36,7 @@
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
+  text-wrap: balance;
 }
 
 body {
@@ -37,6 +50,33 @@ body {
   max-width: 100vw;
 }
 
+/* ── Section eyebrow label ──────────────────────────────────────────────── */
+.section-eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--tangerine);
+  letter-spacing: 0.04em;
+}
+
+/* ── Heading underline accent ───────────────────────────────────────────── */
+.heading-underline {
+  position: relative;
+  padding-bottom: 16px;
+}
+.heading-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--tangerine);
+  border-radius: 2px;
+}
+
+/* ── Font utilities ─────────────────────────────────────────────────────── */
 .font-serif {
   font-family: var(--font-serif);
 }
@@ -66,10 +106,10 @@ body {
 .label, .tag {
   font-size: 12px;
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.04em;
 }
 
+/* ── Skip link ──────────────────────────────────────────────────────────── */
 .skip-link {
   position: absolute;
   top: -40px;
@@ -88,6 +128,7 @@ body {
   outline-offset: 2px;
 }
 
+/* ── Focus styles ───────────────────────────────────────────────────────── */
 :focus-visible {
   outline: 2px solid var(--tangerine);
   outline-offset: 2px;
@@ -107,6 +148,7 @@ textarea:focus-visible {
   border-color: var(--tangerine);
 }
 
+/* ── Reduced motion ─────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -118,6 +160,7 @@ textarea:focus-visible {
   }
 }
 
+/* ── Glass utilities ────────────────────────────────────────────────────── */
 .glass {
   background: rgba(250, 250, 250, 0.7);
   backdrop-filter: blur(12px);
@@ -130,23 +173,25 @@ textarea:focus-visible {
   -webkit-backdrop-filter: blur(12px);
 }
 
+/* ── Container ──────────────────────────────────────────────────────────── */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 clamp(24px, 5vw, 80px);
 }
 
+/* ── Cards ──────────────────────────────────────────────────────────────── */
 .card-enhanced {
   background: rgba(250, 250, 250, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(5, 32, 38, 0.08);
   border-radius: 16px;
   box-shadow:
     0 1px 3px rgba(5, 32, 38, 0.04),
     0 4px 16px rgba(5, 32, 38, 0.06),
     0 0 0 1px rgba(255, 255, 255, 0.5) inset;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
               box-shadow 0.3s ease,
               border-color 0.3s ease;
 }
@@ -159,6 +204,7 @@ textarea:focus-visible {
   border-color: rgba(255, 90, 31, 0.2);
 }
 
+/* ── GSAP base states ───────────────────────────────────────────────────── */
 .gsap-fade-up {
   opacity: 0;
   transform: translateY(40px);
@@ -176,13 +222,14 @@ textarea:focus-visible {
 
 .gsap-scale-in {
   opacity: 0;
-  transform: scale(0.9);
+  transform: scale(0.95);
 }
 
+/* ── Magnetic button ────────────────────────────────────────────────────── */
 .btn-magnetic {
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .btn-magnetic::after {
@@ -198,11 +245,11 @@ textarea:focus-visible {
   opacity: 1;
 }
 
-.text-glow-tangerine {
-  color: var(--tangerine);
-  text-shadow: 0 0 20px rgba(255, 90, 31, 0.3);
+.btn-magnetic:active {
+  transform: scale(0.97);
 }
 
+/* ── Nav link underline ─────────────────────────────────────────────────── */
 .nav-link {
   position: relative;
   padding-bottom: 2px;
@@ -217,7 +264,7 @@ textarea:focus-visible {
   height: 2px;
   background: var(--tangerine);
   border-radius: 1px;
-  transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: width 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .nav-link:hover::after,
@@ -225,30 +272,19 @@ textarea:focus-visible {
   width: 100%;
 }
 
-.section-number {
-  font-family: 'Times New Roman', serif;
-  font-size: clamp(80px, 12vw, 160px);
-  font-weight: 700;
-  color: rgba(255, 90, 31, 0.05);
-  position: absolute;
-  top: -20px;
-  right: 0;
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-}
-
+/* ── Scroll progress bar ────────────────────────────────────────────────── */
 .scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--tangerine), #FF7A3F);
+  background: linear-gradient(90deg, var(--tangerine), #FF8A60);
   z-index: 9999;
   transform-origin: left;
   box-shadow: 0 0 8px rgba(255, 90, 31, 0.5);
 }
 
+/* ── SR only ────────────────────────────────────────────────────────────── */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -272,6 +308,7 @@ textarea:focus-visible {
   white-space: normal;
 }
 
+/* ── Mobile touch targets ───────────────────────────────────────────────── */
 @media (max-width: 768px) {
   button,
   a,
@@ -281,21 +318,24 @@ textarea:focus-visible {
     min-height: 44px;
     min-width: 44px;
   }
-  
+
   .mobile-nav-link {
     padding: 12px 0;
   }
 }
 
+/* ── iOS SVH fix ────────────────────────────────────────────────────────── */
 @supports (height: 100svh) {
   .h-screen { height: 100svh; }
   .min-h-screen { min-height: 100svh; }
 }
 
+/* ── Prevent iOS auto-zoom on form inputs ───────────────────────────────── */
 input, select, textarea {
   font-size: 16px !important;
 }
 
+/* ── Mobile section padding ─────────────────────────────────────────────── */
 @media (max-width: 768px) {
   section {
     padding-top: 48px !important;

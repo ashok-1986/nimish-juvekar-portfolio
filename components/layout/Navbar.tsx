@@ -44,7 +44,7 @@ export default function Navbar() {
         aria-label="Main navigation"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-ivory/90 backdrop-blur-md border-b border-mist py-3"
+            ? "bg-zinc/90 backdrop-blur-md border-b border-border py-3"
             : "bg-transparent py-5"
         }`}
       >
@@ -63,13 +63,13 @@ export default function Navbar() {
                 href={link.href}
                 className={`text-sm font-medium transition-colors relative ${
                   activeSection === link.href.slice(1)
-                    ? "text-blue"
-                    : "text-slate hover:text-navy"
+                    ? "text-tangerine"
+                    : "text-muted hover:text-obsidian"
                 }`}
               >
                 {link.label}
                 {activeSection === link.href.slice(1) && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue rounded-full" />
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-tangerine rounded-full" />
                 )}
               </a>
             ))}
@@ -77,7 +77,7 @@ export default function Navbar() {
               href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 text-sm font-medium text-blue border border-blue rounded-lg hover:bg-blue hover:text-white transition-colors"
+              className="px-4 py-2 text-sm font-medium text-tangerine border border-tangerine rounded-lg hover:bg-tangerine hover:text-white transition-all duration-200 active:scale-[0.97]"
             >
               Connect on LinkedIn
             </a>
@@ -107,7 +107,7 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`fixed inset-0 z-50 bg-ivory/98 backdrop-blur-lg transform transition-transform duration-300 ${
+        className={`fixed inset-0 z-50 bg-zinc/98 backdrop-blur-lg transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         role="dialog"
@@ -115,7 +115,7 @@ export default function Navbar() {
         aria-label="Mobile navigation menu"
       >
         <div className="flex flex-col h-full">
-          <div className="flex items-center justify-between p-6 border-b border-mist">
+          <div className="flex items-center justify-between p-6 border-b border-border">
             <span className="font-serif text-sm md:text-xl font-semibold text-navy">
               {personalInfo.name}
             </span>
@@ -149,8 +149,8 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={`mobile-nav-link text-[28px] font-serif transition-colors block ${
                   activeSection === link.href.slice(1)
-                    ? "text-blue"
-                    : "text-navy hover:text-blue"
+                    ? "text-tangerine"
+                    : "text-obsidian hover:text-tangerine"
                 }`}
               >
                 {link.label}
@@ -158,12 +158,12 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="mt-auto p-6 border-t border-mist">
+          <div className="mt-auto p-6 border-t border-border">
             <a
               href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full py-3 text-center text-blue border border-blue rounded-lg hover:bg-blue hover:text-white transition-colors font-medium"
+              className="block w-full py-3 text-center text-tangerine border border-tangerine rounded-lg hover:bg-tangerine hover:text-white transition-colors font-medium active:scale-[0.97]"
             >
               Connect on LinkedIn
             </a>

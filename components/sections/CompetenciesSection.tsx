@@ -5,7 +5,7 @@ import { COMPETENCIES } from '@/lib/data'
 
 const CATEGORY_ICONS = ['BookOpen', 'Briefcase', 'Wrench', 'Palette']
 
-const ICON_COLORS = ['#0A66C2', '#1A1A2E', '#5A5A6E', '#0A66C2']
+const ICON_COLORS = ['#FF5A1F', '#052026', '#4A5A5D', '#FF5A1F']
 
 const ICON_SVGS: Record<string, React.ReactNode> = {
   BookOpen: (
@@ -82,12 +82,12 @@ export default function CompetenciesSection() {
       id="competencies"
       ref={sectionRef}
       className="relative overflow-hidden"
-      style={{ padding: '50px 0', background: 'linear-gradient(135deg, #EAF2FB 0%, #F9F8F6 50%, #EAF2FB 100%)' }}
+      style={{ padding: '50px 0', background: '#EDF4F5' }}
     >
       <div className="container relative z-10">
         <div className="comp-heading mb-10 md:mb-14" style={{ opacity: 0 }}>
           <p className="section-eyebrow mb-3">Expertise</p>
-          <h2 className="font-serif font-bold text-navy heading-underline" style={{ fontSize: 'clamp(28px, 5vw, 52px)' }}>
+          <h2 className="font-serif font-bold text-obsidian heading-underline" style={{ fontSize: 'clamp(28px, 5vw, 52px)' }}>
             Core Competencies
           </h2>
           <p className="font-sans text-[15px] text-slate mt-4 md:mt-6 max-w-xl mx-auto">
@@ -98,7 +98,7 @@ export default function CompetenciesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {entries.map(([name, skills], catIndex) => {
             const iconKey = CATEGORY_ICONS[catIndex] || 'BookOpen'
-            const color = ICON_COLORS[catIndex] || '#0A66C2'
+            const color = ICON_COLORS[catIndex] || '#FF5A1F'
             return (
               <div key={name} className="comp-category">
                 <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-5">
@@ -108,7 +108,7 @@ export default function CompetenciesSection() {
                   >
                     {ICON_SVGS[iconKey]}
                   </div>
-                  <h3 className="font-sans font-600 text-[12px] md:text-[14px] text-navy">{name}</h3>
+                  <h3 className="font-sans font-600 text-[12px] md:text-[14px] text-obsidian">{name}</h3>
                 </div>
                 <div className="flex flex-wrap gap-2 md:gap-2.5">
                   {skills.map((skill) => (
@@ -118,21 +118,21 @@ export default function CompetenciesSection() {
                       style={{
                         background: 'rgba(255,255,255,0.7)',
                         backdropFilter: 'blur(8px)',
-                        border: '1px solid rgba(232,228,220,0.8)',
-                        color: '#5A5A6E',
+                        border: '1px solid rgba(200,216,218,0.8)',
+                        color: '#4A5A5D',
                         transition: 'all 0.25s ease',
                       }}
                       onMouseEnter={e => {
                         const el = e.currentTarget as HTMLElement
-                        el.style.borderColor = 'rgba(10,102,194,0.4)'
-                        el.style.color = '#0A66C2'
-                        el.style.background = 'rgba(10,102,194,0.06)'
+                        el.style.borderColor = 'rgba(255,90,31,0.4)'
+                        el.style.color = '#FF5A1F'
+                        el.style.background = 'rgba(255,90,31,0.06)'
                         el.style.transform = 'translateY(-1px)'
                       }}
                       onMouseLeave={e => {
                         const el = e.currentTarget as HTMLElement
-                        el.style.borderColor = 'rgba(232,228,220,0.8)'
-                        el.style.color = '#5A5A6E'
+                        el.style.borderColor = 'rgba(200,216,218,0.8)'
+                        el.style.color = '#4A5A5D'
                         el.style.background = 'rgba(255,255,255,0.7)'
                         el.style.transform = 'translateY(0)'
                       }}

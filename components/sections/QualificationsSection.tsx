@@ -121,33 +121,33 @@ export default function QualificationsSection() {
     const el = e.currentTarget as HTMLElement
     if (enter) {
       el.style.transform = 'translateY(-6px) scale(1.01)'
-      el.style.boxShadow = '0 16px 48px rgba(10,102,194,0.14)'
-      el.style.borderColor = 'rgba(10,102,194,0.25)'
+      el.style.boxShadow = '0 16px 48px rgba(255,90,31,0.14)'
+      el.style.borderColor = 'rgba(255,90,31,0.25)'
     } else {
       el.style.transform = 'translateY(0) scale(1)'
-      el.style.boxShadow = '0 4px 24px rgba(10,102,194,0.07)'
+      el.style.boxShadow = '0 4px 24px rgba(255,90,31,0.07)'
       el.style.borderColor = 'rgba(255,255,255,0.6)'
     }
   }
 
-  const GRADE_COLORS: Record<string, string> = { Merit: '#0A66C2', '2:1': '#1A1A2E', Distinction: '#0A66C2' }
+  const GRADE_COLORS: Record<string, string> = { Merit: '#FF5A1F', '2:1': '#052026', Distinction: '#FF5A1F' }
 
   return (
     <section
       id="qualifications"
       ref={sectionRef}
       className="relative overflow-hidden"
-      style={{ padding: '50px 0', background: 'linear-gradient(135deg, #F9F8F6 0%, #F5F2EC 60%, #F9F8F6 100%)' }}
+      style={{ padding: '50px 0', background: '#EDF4F5' }}
     >
       <div className="container relative z-10">
 
         {/* ── Heading ── */}
         <div className="qual-heading mb-14" style={{ opacity: 0 }}>
           <p className="section-eyebrow mb-3">Credentials</p>
-          <h2 className="font-serif font-bold text-navy heading-underline" style={{ fontSize: 'clamp(28px, 5vw, 48px)' }}>
+          <h2 className="font-serif font-bold text-obsidian heading-underline" style={{ fontSize: 'clamp(28px, 5vw, 48px)' }}>
             Education & Certifications
           </h2>
-          <p className="font-sans text-[15px] text-slate mt-6 max-w-xl">
+          <p className="font-sans text-[15px] text-muted mt-6 max-w-xl">
             Formal academic qualifications backed by {CERTIFICATIONS.length}+ industry certifications across management, technology, and education.
           </p>
         </div>
@@ -155,10 +155,10 @@ export default function QualificationsSection() {
         {/* ── Elite Accreditations Strip ── */}
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(10,102,194,0.1)', color: '#0A66C2' }}>
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(255,90,31,0.1)', color: '#FF5A1F' }}>
               <Award size={16} />
             </div>
-            <h3 className="font-sans font-600 text-[13px] uppercase tracking-widest text-navy">Elite Professional Accreditations</h3>
+            <h3 className="font-sans font-600 text-[13px] uppercase tracking-widest text-obsidian">Elite Professional Accreditations</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -170,7 +170,7 @@ export default function QualificationsSection() {
                   key={i}
                   className="rounded-2xl p-5 relative overflow-hidden"
                   style={{
-                    background: isCMBE ? 'linear-gradient(135deg, #0A66C2 0%, #0D4F9A 100%)' : acc.color === '#0A66C2' ? 'linear-gradient(135deg, #0A66C2 0%, #0D4F9A 100%)' : 'linear-gradient(135deg, #1A1A2E 0%, #2A2A4E 100%)',
+                    background: isCMBE ? 'linear-gradient(135deg, #FF5A1F 0%, #073038 100%)' : acc.color === '#FF5A1F' ? 'linear-gradient(135deg, #FF5A1F 0%, #073038 100%)' : 'linear-gradient(135deg, #052026 0%, #0A3840 100%)',
                     color: '#FFFFFF',
                   }}
                 >
@@ -213,17 +213,17 @@ export default function QualificationsSection() {
         {/* ── Academic Qualifications ── */}
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(10,102,194,0.1)', color: '#0A66C2' }}>
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(255,90,31,0.1)', color: '#FF5A1F' }}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" width={16} height={16}>
                 <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
               </svg>
             </div>
-            <h3 className="font-sans font-600 text-[13px] uppercase tracking-widest text-navy">Academic Qualifications</h3>
+            <h3 className="font-sans font-600 text-[13px] uppercase tracking-widest text-obsidian">Academic Qualifications</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {QUALIFICATIONS.map((q) => {
-              const gradeColor = GRADE_COLORS[q.grade] || '#0A66C2'
+              const gradeColor = GRADE_COLORS[q.grade] || '#FF5A1F'
               return (
                 <div
                   key={q.type + q.title}
@@ -234,7 +234,7 @@ export default function QualificationsSection() {
                     backdropFilter: 'blur(16px)',
                     WebkitBackdropFilter: 'blur(16px)',
                     border: '1px solid rgba(255,255,255,0.6)',
-                    boxShadow: '0 4px 24px rgba(10,102,194,0.07)',
+                    boxShadow: '0 4px 24px rgba(255,90,31,0.07)',
                     transition: 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.3s ease',
                   }}
                   onMouseEnter={e => cardHover(e, true)}
@@ -242,25 +242,25 @@ export default function QualificationsSection() {
                 >
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                    style={{ background: 'radial-gradient(circle at 50% 0%, rgba(10,102,194,0.06) 0%, transparent 70%)' }}
+                    style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,90,31,0.06) 0%, transparent 70%)' }}
                   />
 
                   <div className="flex items-start justify-between mb-5 relative z-10">
                     <div className="flex items-center gap-3">
                       <div
                         className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                        style={{ background: 'rgba(10,102,194,0.1)', color: '#0A66C2' }}
+                        style={{ background: 'rgba(255,90,31,0.1)', color: '#FF5A1F' }}
                       >
                         {DEGREE_ICONS[q.type]}
                       </div>
-                      <p className="font-sans text-[10px] font-600 uppercase tracking-widest text-slate">
+                      <p className="font-sans text-[10px] font-600 uppercase tracking-widest text-muted">
                         {q.country}
                       </p>
                     </div>
                     <span
                       className="font-sans text-[10px] font-700 px-2.5 py-1 rounded-full flex-shrink-0"
                       style={{
-                        background: gradeColor === '#0A66C2' ? 'rgba(10,102,194,0.1)' : 'rgba(26,26,46,0.07)',
+                        background: gradeColor === '#FF5A1F' ? 'rgba(255,90,31,0.1)' : 'rgba(5,32,38,0.07)',
                         color: gradeColor,
                         border: `1px solid ${gradeColor}22`,
                       }}
@@ -269,12 +269,12 @@ export default function QualificationsSection() {
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-[18px] font-bold text-navy mb-2 leading-snug group-hover:text-blue transition-colors duration-200 relative z-10">
+                  <h3 className="font-serif text-[18px] font-bold text-obsidian mb-2 leading-snug group-hover:text-tangerine transition-colors duration-200 relative z-10">
                     {q.title}
                   </h3>
 
-                  <p className="font-sans text-[12px] font-600 text-blue mb-1 relative z-10">{q.institution}</p>
-                  <p className="font-sans text-[12px] text-slate mb-5 relative z-10">{q.period}</p>
+                  <p className="font-sans text-[12px] font-600 text-tangerine mb-1 relative z-10">{q.institution}</p>
+                  <p className="font-sans text-[12px] text-muted mb-5 relative z-10">{q.period}</p>
 
                   {q.highlights.length > 0 && (
                     <ul className="space-y-1.5 mb-5 relative z-10">
@@ -282,12 +282,12 @@ export default function QualificationsSection() {
                         const parts = h.split(' — ')
                         return (
                           <li key={i} className="flex items-start gap-2">
-                            <span style={{ color: '#0A66C2', marginTop: '4px', flexShrink: 0 }}>
+                            <span style={{ color: '#FF5A1F', marginTop: '4px', flexShrink: 0 }}>
                               <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="2"/></svg>
                             </span>
-                            <span className="font-sans text-[12px] text-slate leading-snug">
+                            <span className="font-sans text-[12px] text-muted leading-snug">
                               {parts[0]}
-                              {parts[1] && <span className="font-600 text-navy"> — {parts[1]}</span>}
+                              {parts[1] && <span className="font-600 text-obsidian"> — {parts[1]}</span>}
                             </span>
                           </li>
                         )
@@ -304,33 +304,33 @@ export default function QualificationsSection() {
         <div>
           <div className="flex items-center justify-between gap-3 mb-8">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(10,102,194,0.1)', color: '#0A66C2' }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(255,90,31,0.1)', color: '#FF5A1F' }}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" width={16} height={16}>
                   <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
                 </svg>
               </div>
-              <h3 className="font-sans font-600 text-[13px] uppercase tracking-widest text-navy">Professional Certifications</h3>
+              <h3 className="font-sans font-600 text-[13px] uppercase tracking-widest text-obsidian">Professional Certifications</h3>
             </div>
             <div
               className="flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-xl flex-shrink-0"
-              style={{ background: 'rgba(10,102,194,0.08)' }}
+              style={{ background: 'rgba(255,90,31,0.08)' }}
             >
-              <span className="cert-count font-serif font-bold text-[18px] md:text-[22px]" style={{ color: '#0A66C2' }}>0</span>
-              <span className="font-sans text-[10px] md:text-[11px] text-slate">Certifications</span>
+              <span className="cert-count font-serif font-bold text-[18px] md:text-[22px]" style={{ color: '#FF5A1F' }}>0</span>
+              <span className="font-sans text-[10px] md:text-[11px] text-muted">Certifications</span>
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {CERTIFICATIONS.map((cert, i) => {
               const colorMap: Record<string, string> = {
-                Elite: '#0A66C2',
-                'Supply Chain': '#0A66C2',
-                'Project Management': '#1A1A2E',
+                Elite: '#FF5A1F',
+                'Supply Chain': '#FF5A1F',
+                'Project Management': '#052026',
                 Technical: '#5A5A6E',
-                'Digital & Business': '#1A1A2E',
-                Leadership: '#0A66C2',
+                'Digital & Business': '#052026',
+                Leadership: '#FF5A1F',
               }
-              const certColor = colorMap[cert.category] || '#1A1A2E'
+              const certColor = colorMap[cert.category] || '#052026'
 
               return (
                 <div
@@ -342,32 +342,32 @@ export default function QualificationsSection() {
                     backdropFilter: 'blur(12px)',
                     WebkitBackdropFilter: 'blur(12px)',
                     border: '1px solid rgba(255,255,255,0.6)',
-                    boxShadow: '0 2px 12px rgba(10,102,194,0.05)',
+                    boxShadow: '0 2px 12px rgba(255,90,31,0.05)',
                     transition: 'transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.3s ease',
                   }}
                   onMouseEnter={e => {
                     const el = e.currentTarget as HTMLElement
                     el.style.transform = 'translateY(-4px) scale(1.01)'
-                    el.style.boxShadow = '0 10px 32px rgba(10,102,194,0.12)'
-                    el.style.borderColor = 'rgba(10,102,194,0.2)'
+                    el.style.boxShadow = '0 10px 32px rgba(255,90,31,0.12)'
+                    el.style.borderColor = 'rgba(255,90,31,0.2)'
                   }}
                   onMouseLeave={e => {
                     const el = e.currentTarget as HTMLElement
                     el.style.transform = 'translateY(0) scale(1)'
-                    el.style.boxShadow = '0 2px 12px rgba(10,102,194,0.05)'
+                    el.style.boxShadow = '0 2px 12px rgba(255,90,31,0.05)'
                     el.style.borderColor = 'rgba(255,255,255,0.6)'
                   }}
                 >
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
-                    style={{ background: 'radial-gradient(circle at 50% 0%, rgba(10,102,194,0.05) 0%, transparent 70%)' }}
+                    style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,90,31,0.05) 0%, transparent 70%)' }}
                   />
 
                   <div className="flex items-start gap-3 mb-3 relative z-10">
                     <div
                       className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
                       style={{
-                        background: certColor === '#0A66C2' ? 'rgba(10,102,194,0.1)' : certColor === '#1A1A2E' ? 'rgba(26,26,46,0.07)' : 'rgba(90,90,110,0.08)',
+                        background: certColor === '#FF5A1F' ? 'rgba(255,90,31,0.1)' : certColor === '#052026' ? 'rgba(5,32,38,0.07)' : 'rgba(90,90,110,0.08)',
                         color: certColor,
                       }}
                     >
@@ -380,17 +380,17 @@ export default function QualificationsSection() {
                       >
                         {cert.category}
                       </span>
-                      <p className="font-sans text-[13px] font-500 text-navy leading-snug group-hover:text-blue transition-colors duration-200">
+                      <p className="font-sans text-[13px] font-500 text-obsidian leading-snug group-hover:text-tangerine transition-colors duration-200">
                         {cert.title}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-1.5 relative z-10 pt-2 border-t border-mist">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} width={10} height={10} style={{ color: '#0A66C2', flexShrink: 0 }}>
+                  <div className="flex items-center gap-1.5 relative z-10 pt-2 border-t border-border">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} width={10} height={10} style={{ color: '#FF5A1F', flexShrink: 0 }}>
                       <path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                     </svg>
-                    <span className="font-sans text-[11px] text-slate">{cert.issuer}</span>
+                    <span className="font-sans text-[11px] text-muted">{cert.issuer}</span>
                   </div>
                 </div>
               )

@@ -67,8 +67,8 @@ export default function Overlay() {
               visibleSections.has(item.id) ? "opacity-100" : "opacity-30"
             }`}
           >
-            <span className="text-xs text-blue font-mono">{item.label}</span>
-            <div className="w-8 h-px bg-blue" />
+            <span className="text-xs text-tangerine font-mono">{item.label}</span>
+            <div className="w-8 h-px bg-tangerine" />
           </div>
         ))}
       </div>

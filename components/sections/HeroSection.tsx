@@ -107,15 +107,15 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center px-6 pt-20 bg-ivory overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center px-6 pt-20 bg-zinc overflow-hidden"
     >
       {/* Dot grid */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, #C8C4BC 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, #C8D8DA 1px, transparent 1px)",
           backgroundSize: "28px 28px",
-          opacity: 0.25,
+          opacity: 0.4,
         }}
       />
 
@@ -124,7 +124,7 @@ export default function HeroSection() {
         className="absolute select-none pointer-events-none font-serif font-bold opacity-30 lg:opacity-100 overflow-hidden"
         style={{
           fontSize: "clamp(200px, 30vw, 380px)",
-          color: "#F0EDE8",
+          color: "#EDF4F5",
           right: "-2%",
           bottom: "-8%",
           lineHeight: 1,
@@ -141,12 +141,12 @@ export default function HeroSection() {
           <div>
             <span
               ref={credentialsRef}
-              className="inline-block text-blue text-xs md:text-sm font-medium mb-4 tracking-[0.2em] uppercase"
+              className="inline-block text-tangerine text-xs md:text-sm font-medium mb-4 tracking-[0.15em] uppercase"
             >
               {heroContent.credentials}
             </span>
 
-            {/* Name — tight, left-aligned, TNR, no gap between lines */}
+            {/* Name */}
             <div
               ref={nameRef}
               className="mb-6"
@@ -154,8 +154,8 @@ export default function HeroSection() {
             >
               <RevealText
                 text="NIMISH"
-                textColor="text-navy"
-                overlayColor="text-blue"
+                textColor="text-obsidian"
+                overlayColor="text-tangerine"
                 fontSize="text-[clamp(40px,10vw,88px)]"
                 letterDelay={0.07}
                 overlayDelay={0.05}
@@ -164,12 +164,11 @@ export default function HeroSection() {
                 letterImages={NIMISH_IMAGES}
                 justify="start"
               />
-              {/* Zero-gap second line */}
               <div style={{ marginTop: '-4px' }}>
                 <RevealText
                   text="JUVEKAR"
-                  textColor="text-navy"
-                  overlayColor="text-blue"
+                  textColor="text-obsidian"
+                  overlayColor="text-tangerine"
                   fontSize="text-[clamp(40px,10vw,88px)]"
                   letterDelay={0.06}
                   overlayDelay={0.04}
@@ -183,14 +182,14 @@ export default function HeroSection() {
 
             <p
               ref={subtitleRef}
-              className="text-lg md:text-xl text-slate mb-6 max-w-2xl mx-auto lg:mx-0"
+              className="text-lg md:text-xl text-muted mb-6 max-w-2xl mx-auto lg:mx-0"
             >
               {heroContent.subtitle}
             </p>
 
             <p
               ref={descRef}
-              className="text-base text-slate mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+              className="text-base text-muted mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
               {heroContent.description}
             </p>
@@ -198,7 +197,7 @@ export default function HeroSection() {
             <a
               ref={ctaRef}
               href="#experience"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue text-white px-8 py-4 rounded-lg font-medium transition-all hover:bg-blue/90 hover:shadow-lg hover:shadow-blue/25 hover:-translate-y-0.5"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-tangerine text-white px-8 py-4 rounded-lg font-medium transition-all duration-200 hover:bg-tangerine/90 hover:shadow-lg hover:shadow-tangerine/25 hover:-translate-y-0.5 active:scale-[0.97]"
             >
               {heroContent.cta}
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
@@ -210,7 +209,7 @@ export default function HeroSection() {
           {/* Right: Photo */}
           <div ref={photoRef} className="hidden lg:block relative" style={{ willChange: "transform" }}>
             <div
-              className="absolute rounded-2xl bg-sky-tint"
+              className="absolute rounded-2xl bg-surface"
               style={{ inset: 0, transform: "rotate(-3deg) scale(1.06)", zIndex: 0 }}
             />
             <div
@@ -218,7 +217,7 @@ export default function HeroSection() {
               style={{
                 width: "40%", height: "40%",
                 bottom: "-4%", right: "-4%",
-                background: "#0A66C2",
+                background: "#FF5A1F",
                 opacity: 0.07,
                 transform: "rotate(4deg)",
                 zIndex: 0,
@@ -226,7 +225,7 @@ export default function HeroSection() {
             />
             <div
               className="relative z-10 rounded-2xl overflow-hidden"
-              style={{ aspectRatio: "3/4", boxShadow: "0 20px 60px rgba(26,26,46,0.18)" }}
+              style={{ aspectRatio: "3/4", boxShadow: "0 20px 60px rgba(5,32,38,0.18)" }}
             >
               <Image
                 src="/images/nimish.jpg"
@@ -242,11 +241,11 @@ export default function HeroSection() {
             <div
               ref={badgeRef}
               className="absolute -bottom-4 -left-4 z-20 bg-white rounded-xl shadow-lg px-4 py-3"
-              style={{ borderLeft: "4px solid #0A66C2", minWidth: "160px" }}
+              style={{ borderLeft: "4px solid #FF5A1F", minWidth: "160px" }}
             >
-              <p style={{ fontFamily: "DM Sans, sans-serif", fontSize: "10px", fontWeight: 600, color: "#0A66C2", textTransform: "uppercase", letterSpacing: "0.06em" }}>UEL · AFHEA</p>
-              <p style={{ fontFamily: "Times New Roman, serif", fontSize: "15px", fontWeight: 700, color: "#1A1A2E", marginTop: "2px" }}>Lecturer</p>
-              <p style={{ fontFamily: "DM Sans, sans-serif", fontSize: "11px", color: "#5A5A6E", marginTop: "1px" }}>Royal Docks School of Business & Law</p>
+              <p style={{ fontFamily: "DM Sans, sans-serif", fontSize: "10px", fontWeight: 600, color: "#FF5A1F", textTransform: "uppercase", letterSpacing: "0.06em" }}>UEL · AFHEA</p>
+              <p style={{ fontFamily: "Times New Roman, serif", fontSize: "15px", fontWeight: 700, color: "#052026", marginTop: "2px" }}>Lecturer</p>
+              <p style={{ fontFamily: "DM Sans, sans-serif", fontSize: "11px", color: "#4A5A5D", marginTop: "1px" }}>Royal Docks School of Business & Law</p>
             </div>
           </div>
 
@@ -256,11 +255,11 @@ export default function HeroSection() {
       {/* Scroll indicator */}
       <div
         ref={scrollRef}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted"
       >
         <span className="text-xs tracking-widest uppercase">{heroContent.scrollIndicator}</span>
-        <div className="w-6 h-10 rounded-full border-2 border-slate/30 flex justify-center pt-2">
-          <div className="w-1.5 h-3 bg-blue rounded-full animate-bounce" />
+        <div className="w-6 h-10 rounded-full border-2 border-muted/30 flex justify-center pt-2">
+          <div className="w-1.5 h-3 bg-tangerine rounded-full animate-bounce" />
         </div>
       </div>
     </section>

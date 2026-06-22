@@ -147,9 +147,9 @@ function TextOverlay() {
             <div style={{
               width: '48px',
               height: '3px',
-              background: '#0A66C2',
+              background: '#FF5A1F',
               borderRadius: '2px',
-              boxShadow: '0 0 12px rgba(10,102,194,0.9)',
+              boxShadow: '0 0 12px rgba(255,90,31,0.9)',
               marginLeft: section.align === 'right' || section.align === 'center' ? 'auto' : 0,
               marginRight: section.align === 'left' || section.align === 'center' ? 'auto' : 0,
             }} />

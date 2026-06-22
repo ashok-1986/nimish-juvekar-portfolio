@@ -10,7 +10,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Calendar,
 }
 
-const ACCENT_MAP = ['#0A66C2', '#0A66C2', '#0A66C2', '#1A1A2E']
+const ACCENT_MAP = ['#FF5A1F', '#FF5A1F', '#FF5A1F', '#052026']
 
 export default function ProjectsSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -75,16 +75,16 @@ export default function ProjectsSection() {
       id="projects"
       ref={sectionRef}
       className="relative overflow-hidden"
-      style={{ padding: '50px 0', background: 'linear-gradient(135deg, #EAF2FB 0%, #F9F8F6 50%, #EAF2FB 100%)' }}
+      style={{ padding: '50px 0', background: '#EDF4F5' }}
     >
       <div className="container relative z-10">
         {/* Heading */}
         <div className="projects-heading mb-14" style={{ opacity: 0 }}>
           <p className="section-eyebrow mb-3">Portfolio</p>
-          <h2 className="font-serif font-bold text-navy heading-underline" style={{ fontSize: 'clamp(28px, 5vw, 52px)' }}>
+          <h2 className="font-serif font-bold text-obsidian heading-underline" style={{ fontSize: 'clamp(28px, 5vw, 52px)' }}>
             Selected Work
           </h2>
-          <p className="font-sans text-[15px] text-slate mt-6 max-w-xl">
+          <p className="font-sans text-[15px] text-muted mt-6 max-w-xl">
             Academic programmes, industry operations, and leadership initiatives across 15+ years.
           </p>
         </div>
@@ -107,20 +107,20 @@ export default function ProjectsSection() {
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
                   border: '1px solid rgba(255,255,255,0.6)',
-                  boxShadow: '0 4px 24px rgba(10,102,194,0.07)',
+                  boxShadow: '0 4px 24px rgba(255,90,31,0.07)',
                   transition: 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.3s ease',
                 }}
                 {...(!isTouchDevice ? {
                   onMouseEnter: e => {
                     const el = e.currentTarget as HTMLElement
                     el.style.transform = 'translateY(-6px) scale(1.01)'
-                    el.style.boxShadow = '0 16px 48px rgba(10,102,194,0.14)'
-                    el.style.borderColor = 'rgba(10,102,194,0.25)'
+                    el.style.boxShadow = '0 16px 48px rgba(255,90,31,0.14)'
+                    el.style.borderColor = 'rgba(255,90,31,0.25)'
                   },
                   onMouseLeave: e => {
                     const el = e.currentTarget as HTMLElement
                     el.style.transform = 'translateY(0) scale(1)'
-                    el.style.boxShadow = '0 4px 24px rgba(10,102,194,0.07)'
+                    el.style.boxShadow = '0 4px 24px rgba(255,90,31,0.07)'
                     el.style.borderColor = 'rgba(255,255,255,0.6)'
                   },
                 } : {})}
@@ -128,7 +128,7 @@ export default function ProjectsSection() {
                 {/* Hover glow */}
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                  style={{ background: 'radial-gradient(circle at 50% 0%, rgba(10,102,194,0.06) 0%, transparent 70%)' }}
+                  style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,90,31,0.06) 0%, transparent 70%)' }}
                 />
 
                 {/* Top row */}
@@ -136,39 +136,39 @@ export default function ProjectsSection() {
                   <div className="flex items-center gap-3">
                     <div
                       className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: accent === '#0A66C2' ? 'rgba(10,102,194,0.1)' : 'rgba(26,26,46,0.07)' }}
+                      style={{ background: accent === '#FF5A1F' ? 'rgba(255,90,31,0.1)' : 'rgba(26,26,46,0.07)' }}
                     >
                       <Icon size={20} style={{ color: accent }} />
                     </div>
                     <div>
-                      <p className="font-sans text-[10px] font-600 uppercase tracking-widest text-slate">{project.category}</p>
+                      <p className="font-sans text-[10px] font-600 uppercase tracking-widest text-muted">{project.category}</p>
                     </div>
                   </div>
                   <ArrowUpRight
                     size={18}
-                    className="text-slate group-hover:text-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200 flex-shrink-0"
+                    className="text-muted group-hover:text-tangerine group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200 flex-shrink-0"
                   />
                 </div>
 
                 {/* Title */}
                 <h3
-                  className="font-serif text-[20px] font-bold text-navy mb-3 leading-snug group-hover:text-blue transition-colors duration-200 relative z-10"
+                  className="font-serif text-[20px] font-bold text-obsidian mb-3 leading-snug group-hover:text-tangerine transition-colors duration-200 relative z-10"
                 >
                   {project.title}
                 </h3>
 
                 {/* Description */}
-                <p className="font-sans text-[13px] text-slate leading-relaxed mb-5 relative z-10">
+                <p className="font-sans text-[13px] text-muted leading-relaxed mb-5 relative z-10">
                   {project.description}
                 </p>
 
                 {/* Stat */}
                 <div className="flex items-center gap-3 mb-5 relative z-10">
                   <div className="flex items-center gap-2">
-                    <span className="project-stat-num font-serif font-bold text-[20px] text-navy">
+                    <span className="project-stat-num font-serif font-bold text-[20px] text-obsidian">
                       {project.stat.value}
                     </span>
-                    <span className="font-sans text-[12px] text-slate">{project.stat.label}</span>
+                    <span className="font-sans text-[12px] text-muted">{project.stat.label}</span>
                   </div>
                 </div>
 
@@ -179,9 +179,9 @@ export default function ProjectsSection() {
                       key={tag}
                       className="font-sans text-[10px] md:text-[11px] font-500 px-2 py-0.5 md:px-2.5 md:py-1 rounded-full"
                       style={{
-                        background: 'rgba(10,102,194,0.07)',
-                        color: '#0A66C2',
-                        border: '1px solid rgba(10,102,194,0.12)',
+                        background: 'rgba(255,90,31,0.07)',
+                        color: '#FF5A1F',
+                        border: '1px solid rgba(255,90,31,0.12)',
                       }}
                     >
                       {tag}
@@ -190,9 +190,9 @@ export default function ProjectsSection() {
                 </div>
 
                 {/* Bottom link */}
-                <div className="mt-5 pt-4 border-t border-mist flex items-center gap-1.5 relative z-10">
-                  <ExternalLink size={11} className="text-blue" />
-                  <span className="font-sans text-[11px] text-blue font-500">
+                <div className="mt-5 pt-4 border-t border-border flex items-center gap-1.5 relative z-10">
+                  <ExternalLink size={11} className="text-tangerine" />
+                  <span className="font-sans text-[11px] text-tangerine font-500">
                     {project.link.includes('uel') ? 'View UEL Profile' : 'View LinkedIn'}
                   </span>
                 </div>

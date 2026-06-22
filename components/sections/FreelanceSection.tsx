@@ -54,7 +54,7 @@ export default function FreelanceSection() {
     <section
       id="freelance"
       ref={sectionRef}
-      className="relative overflow-hidden bg-navy"
+      className="relative overflow-hidden bg-obsidian"
       style={{ padding: '50px 0' }}
     >
       <div className="container relative z-10">
@@ -86,8 +86,8 @@ export default function FreelanceSection() {
                 onMouseEnter={e => {
                   const el = e.currentTarget as HTMLElement
                   el.style.transform = 'translateY(-6px) scale(1.01)'
-                  el.style.boxShadow = '0 16px 48px rgba(10,102,194,0.2)'
-                  el.style.borderColor = 'rgba(10,102,194,0.3)'
+                  el.style.boxShadow = '0 16px 48px rgba(255,90,31,0.2)'
+                  el.style.borderColor = 'rgba(255,90,31,0.3)'
                 }}
                 onMouseLeave={e => {
                   const el = e.currentTarget as HTMLElement
@@ -98,23 +98,23 @@ export default function FreelanceSection() {
               >
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                  style={{ background: 'radial-gradient(circle at 50% 0%, rgba(10,102,194,0.1) 0%, transparent 70%)' }}
+                  style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,90,31,0.1) 0%, transparent 70%)' }}
                 />
 
                 <div className="flex items-start gap-3 mb-5 relative z-10">
                   <div
                     className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(10,102,194,0.15)', color: '#0A66C2' }}
+                    style={{ background: 'rgba(255,90,31,0.15)', color: '#FF5A1F' }}
                   >
                     <Icon size={20} />
                   </div>
                   <ArrowUpRight
                     size={16}
-                    className="text-white/40 group-hover:text-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200 flex-shrink-0 ml-auto"
+                    className="text-white/40 group-hover:text-tangerine group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200 flex-shrink-0 ml-auto"
                   />
                 </div>
 
-                <h3 className="font-serif text-[17px] font-bold text-white mb-3 leading-snug group-hover:text-blue/90 transition-colors duration-200 relative z-10">
+                <h3 className="font-serif text-[17px] font-bold text-white mb-3 leading-snug group-hover:text-tangerine/90 transition-colors duration-200 relative z-10">
                   {service.title}
                 </h3>
 
@@ -128,9 +128,9 @@ export default function FreelanceSection() {
                       key={tag}
                       className="font-sans text-[10px] font-500 px-2.5 py-1 rounded-full"
                       style={{
-                        background: 'rgba(10,102,194,0.12)',
-                        color: '#6BADE6',
-                        border: '1px solid rgba(10,102,194,0.2)',
+                        background: 'rgba(255,90,31,0.12)',
+                        color: '#FF8A60',
+                        border: '1px solid rgba(255,90,31,0.2)',
                       }}
                     >
                       {tag}
@@ -147,7 +147,7 @@ export default function FreelanceSection() {
                           href={p.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1 text-[11px] text-blue hover:text-blue/80 transition-colors"
+                          className="flex items-center gap-1 text-[11px] text-tangerine hover:text-tangerine/80 transition-colors"
                         >
                           {p.name}
                           <ExternalLink size={9} />
@@ -164,7 +164,7 @@ export default function FreelanceSection() {
         <div className="text-center">
           <a
             href="mailto:drievu.nimish@gmail.com"
-            className="inline-flex items-center justify-center gap-2 w-full md:w-auto px-8 py-3.5 bg-blue text-white font-medium rounded-lg hover:bg-blue/90 transition-colors"
+            className="inline-flex items-center justify-center gap-2 w-full md:w-auto px-8 py-3.5 bg-tangerine text-white font-medium rounded-lg hover:bg-tangerine/90 transition-colors"
           >
             Get In Touch
             <ArrowUpRight size={16} />

@@ -54,7 +54,7 @@ export default function USPSection() {
     <section
       id="usp"
       ref={sectionRef}
-      className="relative overflow-hidden bg-navy"
+      className="relative overflow-hidden bg-obsidian"
       style={{ padding: '50px 0' }}
     >
       <div className="container relative z-10">
@@ -89,8 +89,8 @@ export default function USPSection() {
                 onMouseEnter={!isTouchDevice ? e => {
                   const el = e.currentTarget as HTMLElement
                   el.style.transform = 'translateY(-6px) scale(1.01)'
-                  el.style.boxShadow = '0 16px 48px rgba(10,102,194,0.2)'
-                  el.style.borderColor = 'rgba(10,102,194,0.3)'
+                  el.style.boxShadow = '0 16px 48px rgba(255,90,31,0.2)'
+                  el.style.borderColor = 'rgba(255,90,31,0.3)'
                 } : undefined}
                 onMouseLeave={!isTouchDevice ? e => {
                   const el = e.currentTarget as HTMLElement
@@ -101,18 +101,18 @@ export default function USPSection() {
               >
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                  style={{ background: 'radial-gradient(circle at 50% 0%, rgba(10,102,194,0.1) 0%, transparent 70%)' }}
+                  style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,90,31,0.1) 0%, transparent 70%)' }}
                 />
 
                 <div className="flex items-start gap-4 relative z-10">
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(10,102,194,0.15)', color: '#6BADE6' }}
+                    style={{ background: 'rgba(255,90,31,0.15)', color: '#FF8A60' }}
                   >
                     <Icon size={22} />
                   </div>
                   <div>
-                    <h3 className="font-serif text-[17px] font-bold text-white mb-3 group-hover:text-blue/90 transition-colors duration-200">
+                    <h3 className="font-serif text-[17px] font-bold text-white mb-3 group-hover:text-tangerine/90 transition-colors duration-200">
                       {card.title}
                     </h3>
                     <p className="font-sans text-[13px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>

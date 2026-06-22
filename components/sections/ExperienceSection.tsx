@@ -78,12 +78,12 @@ export default function ExperienceSection() {
     <section
       id="experience"
       ref={containerRef}
-      className="py-[50px] px-4 md:px-6 bg-ivory"
+      className="py-[50px] px-4 md:px-6 bg-zinc"
     >
       <div className="max-w-5xl mx-auto">
         <h2
           ref={titleRef}
-          className="font-serif font-semibold text-center mb-16 text-navy"
+          className="font-serif font-semibold text-center mb-16 text-obsidian"
           style={{ fontSize: 'clamp(28px, 5vw, 48px)' }}
         >
           {experienceContent.title}
@@ -92,7 +92,7 @@ export default function ExperienceSection() {
         <div ref={timelineRef} className="relative">
           {/* Timeline line: left edge on mobile (16px), centre on desktop */}
           <div
-            className="timeline-line absolute top-0 bottom-0 bg-mist origin-top left-[16px] md:left-1/2 md:-translate-x-1/2"
+            className="timeline-line absolute top-0 bottom-0 bg-border origin-top left-[16px] md:left-1/2 md:-translate-x-1/2"
             style={{ width: '2px' }}
           />
 
@@ -112,17 +112,17 @@ export default function ExperienceSection() {
                       isLeft ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'
                     }`}
                   >
-                    <div className="bg-sky-tint border border-mist rounded-lg p-4 md:p-6 hover:border-blue/30 transition-colors">
+                    <div className="bg-surface border border-border rounded-lg p-4 md:p-6 hover:border-tangerine/30 transition-colors">
                       <span
-                        className="inline-block text-[11px] md:text-sm font-medium text-blue mb-1 md:mb-2 truncate"
+                        className="inline-block text-[11px] md:text-sm font-medium text-tangerine mb-1 md:mb-2 truncate"
                         title={`${item.year} | ${item.company}`}
                       >
                         {item.year} | {item.company}
                       </span>
-                      <h3 className="text-base md:text-lg font-semibold text-navy mb-1">
+                      <h3 className="text-base md:text-lg font-semibold text-obsidian mb-1">
                         {item.role}
                       </h3>
-                      <p className="text-xs md:text-sm text-slate leading-relaxed">
+                      <p className="text-xs md:text-sm text-muted leading-relaxed">
                         {item.description}
                       </p>
                     </div>
@@ -130,7 +130,7 @@ export default function ExperienceSection() {
 
                   {/* Dot: mobile left-aligned with line, desktop centre-aligned */}
                   <div
-                    className="absolute w-3 h-3 md:w-4 md:h-4 bg-blue rounded-full border-[3px] md:border-4 border-ivory left-[9px] md:left-1/2 md:-translate-x-1/2"
+                    className="absolute w-3 h-3 md:w-4 md:h-4 bg-tangerine rounded-full border-[3px] md:border-4 border-zinc left-[9px] md:left-1/2 md:-translate-x-1/2"
                   />
                 </div>
               );

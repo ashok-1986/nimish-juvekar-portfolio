@@ -57,12 +57,12 @@ export default function ContactSection() {
       id="contact"
       ref={sectionRef}
       className="relative overflow-hidden"
-      style={{ padding: '50px 0', background: 'linear-gradient(135deg, #EAF2FB 0%, #F9F8F6 100%)' }}
+      style={{ padding: '50px 0', background: '#EDF4F5' }}
     >
       <div className="container relative z-10">
         <div className="contact-heading mb-14" style={{ opacity: 0 }}>
           <p className="section-eyebrow mb-3">Connect</p>
-          <h2 className="font-serif text-[clamp(28px,5vw,52px)] font-bold text-navy heading-underline">
+          <h2 className="font-serif text-[clamp(28px,5vw,52px)] font-bold text-obsidian heading-underline">
             Get In Touch
           </h2>
           <p className="font-sans text-[15px] text-slate mt-6 max-w-lg mx-auto text-center">
@@ -79,22 +79,22 @@ export default function ContactSection() {
                 background: 'rgba(255,255,255,0.75)',
                 backdropFilter: 'blur(16px)',
                 border: '1px solid rgba(255,255,255,0.6)',
-                boxShadow: '0 4px 24px rgba(10,102,194,0.07)',
+                boxShadow: '0 4px 24px rgba(255,90,31,0.07)',
               }}
             >
-              <h3 className="font-serif text-[18px] font-bold text-navy mb-5">Contact Details</h3>
+              <h3 className="font-serif text-[18px] font-bold text-obsidian mb-5">Contact Details</h3>
 
               <div className="space-y-4">
                 <a
                   href={`mailto:${PERSONAL.email}`}
                   className="flex items-start gap-3 group"
                 >
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(10,102,194,0.1)', color: '#0A66C2' }}>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(255,90,31,0.1)', color: '#FF5A1F' }}>
                     <Mail size={16} />
                   </div>
                   <div>
                     <p className="font-sans text-[11px] font-600 uppercase tracking-wider text-slate mb-0.5">Primary Email</p>
-                    <p className="font-sans text-[13px] text-blue group-hover:underline">{PERSONAL.email}</p>
+                    <p className="font-sans text-[13px] text-tangerine group-hover:underline">{PERSONAL.email}</p>
                   </div>
                 </a>
 
@@ -102,12 +102,12 @@ export default function ContactSection() {
                   href={`mailto:${PERSONAL.emailUEL}`}
                   className="flex items-start gap-3 group"
                 >
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(10,102,194,0.1)', color: '#0A66C2' }}>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(255,90,31,0.1)', color: '#FF5A1F' }}>
                     <Mail size={16} />
                   </div>
                   <div>
                     <p className="font-sans text-[11px] font-600 uppercase tracking-wider text-slate mb-0.5">UEL Official</p>
-                    <p className="font-sans text-[13px] text-blue group-hover:underline">{PERSONAL.emailUEL}</p>
+                    <p className="font-sans text-[13px] text-tangerine group-hover:underline">{PERSONAL.emailUEL}</p>
                   </div>
                 </a>
 
@@ -115,12 +115,12 @@ export default function ContactSection() {
                   href={`tel:${PERSONAL.phone}`}
                   className="flex items-start gap-3 group"
                 >
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(10,102,194,0.1)', color: '#0A66C2' }}>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(255,90,31,0.1)', color: '#FF5A1F' }}>
                     <Phone size={16} />
                   </div>
                   <div>
                     <p className="font-sans text-[11px] font-600 uppercase tracking-wider text-slate mb-0.5">Phone</p>
-                    <p className="font-sans text-[13px] text-navy group-hover:text-blue transition-colors">{PERSONAL.phone}</p>
+                    <p className="font-sans text-[13px] text-obsidian group-hover:text-tangerine transition-colors">{PERSONAL.phone}</p>
                   </div>
                 </a>
 
@@ -130,14 +130,14 @@ export default function ContactSection() {
                   rel="noopener noreferrer"
                   className="flex items-start gap-3 group"
                 >
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(10,102,194,0.1)', color: '#0A66C2' }}>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(255,90,31,0.1)', color: '#FF5A1F' }}>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" width={16} height={16}>
                       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
                     </svg>
                   </div>
                   <div>
                     <p className="font-sans text-[11px] font-600 uppercase tracking-wider text-slate mb-0.5">LinkedIn</p>
-                    <p className="font-sans text-[13px] text-blue group-hover:underline">Connect with me</p>
+                    <p className="font-sans text-[13px] text-tangerine group-hover:underline">Connect with me</p>
                   </div>
                 </a>
               </div>
@@ -146,7 +146,7 @@ export default function ContactSection() {
             <div
               className="rounded-2xl p-6 text-center"
               style={{
-                background: 'linear-gradient(135deg, #0A66C2 0%, #0D4F9A 100%)',
+                background: 'linear-gradient(135deg, #FF5A1F 0%, #073038 100%)',
                 color: '#FFFFFF',
               }}
             >
@@ -162,7 +162,7 @@ export default function ContactSection() {
               background: 'rgba(255,255,255,0.75)',
               backdropFilter: 'blur(16px)',
               border: '1px solid rgba(255,255,255,0.6)',
-              boxShadow: '0 4px 24px rgba(10,102,194,0.07)',
+              boxShadow: '0 4px 24px rgba(255,90,31,0.07)',
             }}
           >
             <div

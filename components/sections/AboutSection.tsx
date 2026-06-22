@@ -67,7 +67,7 @@ export default function AboutSection() {
     <section
       id="about"
       ref={containerRef}
-      className="py-[50px] px-6 bg-ivory"
+      className="py-[50px] px-6 bg-zinc"
     >
       <div className="max-w-5xl mx-auto">
         <h2
@@ -85,7 +85,7 @@ export default function AboutSection() {
           {aboutContent.story.map((paragraph, index) => (
             <div
               key={index}
-              className="text-slate leading-relaxed text-center md:text-left"
+              className="text-muted leading-relaxed text-center md:text-left"
             >
               {paragraph}
             </div>
@@ -99,7 +99,7 @@ export default function AboutSection() {
           {aboutContent.credentials.map((credential, index) => (
             <span
               key={index}
-              className="w-full text-center px-4 py-2 bg-sky-tint border border-mist rounded-full text-sm font-medium text-navy"
+              className="w-full text-center px-4 py-2 bg-surface border border-border rounded-full text-sm font-medium text-obsidian"
             >
               {credential}
             </span>

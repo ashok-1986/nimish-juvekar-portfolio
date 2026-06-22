@@ -6,7 +6,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-navy text-white py-16 px-6" role="contentinfo">
+    <footer className="bg-obsidian text-white py-16 px-6" role="contentinfo">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
           <div className="text-center md:text-left">
@@ -23,7 +23,7 @@ export default function Footer() {
                 <a
                   key={index}
                   href={link.href}
-                  className="text-white/60 hover:text-blue transition-colors text-xs md:text-sm"
+                  className="text-white/60 hover:text-tangerine transition-colors text-xs md:text-sm"
                 >
                   {link.label}
                 </a>
@@ -39,7 +39,7 @@ export default function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/60 hover:text-blue transition-colors text-xs md:text-sm"
+                  className="text-white/60 hover:text-tangerine transition-colors text-xs md:text-sm"
                 >
                   {link.label}
                 </a>
@@ -58,7 +58,7 @@ export default function Footer() {
               href="https://alchemetyx.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue hover:text-blue/80 transition-colors underline"
+              className="text-tangerine hover:text-tangerine/80 transition-colors underline"
             >
               Alchemetryx
             </a>
