@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { personalInfo } from "@/lib/data";
-import UnicornBackground from "@/components/ui/UnicornBackground";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -105,7 +104,6 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col relative">
-        <UnicornBackground />
         {children}
       </body>
     </html>
