@@ -40,7 +40,7 @@ export default function HeroSection() {
         // 1. Base Structure fade in
         tl.from(topNavRef.current, { y: -20, opacity: 0, duration: 1 }, 0)
           .from(layer1Ref.current, { opacity: 0, y: 30, duration: 1.5 }, 0.2)
-          .from(layer2Ref.current, { opacity: 0, scale: 0.8, duration: 1.5 }, 0.3)
+          .fromTo(layer2Ref.current, { opacity: 0, scale: 0.8 }, { opacity: 0.15, scale: 1, duration: 1.5 }, 0.3)
           
         // 2. Layer 3 Typography Reveal
         // Mask wipe up for the massive text
@@ -122,7 +122,6 @@ export default function HeroSection() {
           borderRadius: '50%',
           backgroundImage: 'radial-gradient(circle, #FF4103 1.5px, transparent 2px)',
           backgroundSize: '20px 20px',
-          opacity: 0.15,
           maskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)',
           WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)',
         }}
