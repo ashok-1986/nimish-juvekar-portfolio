@@ -173,7 +173,7 @@ export default function HeroSection() {
           }}
         >
           <Image
-            src="/images/nimish.jpg"
+            src="/images/Nimish.png"
             alt="Nimish Juvekar"
             fill
             sizes="(max-width: 768px) 100vw, 600px"
