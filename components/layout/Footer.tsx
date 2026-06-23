@@ -1,69 +1,51 @@
 "use client";
 
-import { personalInfo, navLinks, socialLinks } from "@/lib/data";
-
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const currentYear = 2026;
+
+  const standardLinks = [
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/nimishjuvekar" },
+    { label: "University Profile", href: "https://www.uel.ac.uk/about-uel/staff/nimish-vivek-juvekar" },
+    { label: "ORCID", href: "https://orcid.org/0009-0000-4319-2899" },
+    { label: "Email", href: "mailto:N.Juvekar@uel.ac.uk" }
+  ];
 
   return (
-    <footer className="bg-obsidian text-white py-16 px-6" role="contentinfo">
-      <div className="max-w-5xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
-          <div className="text-center md:text-left">
-            <h3 className="font-serif text-xl font-semibold mb-2">
-              {personalInfo.name}
-            </h3>
-            <p className="text-white/60 text-xs md:text-sm">{personalInfo.title}</p>
-            <p className="text-white/60 text-xs md:text-sm">{personalInfo.location}</p>
+    <footer id="contact" className="bg-obsidian text-zinc py-24 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto flex flex-col justify-between min-h-[50vh]">
+        
+        {/* Top: Massive Typography */}
+        <div className="mb-24 mt-12">
+          <h2 
+            className="text-zinc leading-[0.85] tracking-tighter hover:text-tangerine transition-colors duration-500 cursor-default"
+            style={{ fontSize: "clamp(5rem, 12vw, 15rem)" }}
+          >
+            Let's<br />Collaborate.
+          </h2>
+        </div>
+
+        {/* Bottom: Links & Copyright */}
+        <div className="border-t border-zinc/20 pt-12 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12">
+          
+          <nav className="flex flex-wrap gap-x-8 gap-y-4">
+            {standardLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-sans text-base md:text-[20px] text-zinc hover:text-tangerine hover:line-through focus-visible:outline focus-visible:outline-2 focus-visible:outline-tangerine focus-visible:outline-offset-4 transition-all duration-300"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="font-sans text-base md:text-lg text-zinc/60 lg:text-right">
+            <p>&copy; {currentYear} Nimish Juvekar. All rights reserved.</p>
           </div>
-
-          <nav aria-label="Footer navigation">
-            <div className="flex flex-wrap justify-center gap-6">
-              {navLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  className="text-white/60 hover:text-tangerine transition-colors text-xs md:text-sm"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </nav>
-
-          <nav aria-label="Social media links">
-            <div className="flex flex-wrap justify-center gap-6">
-              {socialLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/60 hover:text-tangerine transition-colors text-xs md:text-sm"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </nav>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-          <p className="text-white/40 text-xs md:text-sm">
-            &copy; {currentYear} {personalInfo.name}. All rights reserved.
-          </p>
-          <p className="text-white/40 text-xs md:text-sm">
-            Built by{' '}
-            <a
-              href="https://alchemetyx.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-tangerine hover:text-tangerine/80 transition-colors underline"
-            >
-              Alchemetryx
-            </a>
-          </p>
-        </div>
       </div>
     </footer>
   );
