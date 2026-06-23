@@ -171,7 +171,7 @@ export default function StatsSection() {
       id="stats"
       ref={containerRef}
       className="relative overflow-hidden"
-      style={{ padding: '50px 0', background: 'linear-gradient(160deg, #052026 0%, #073038 60%, #0A3D4A 100%)' }}
+      style={{ padding: '50px 0', background: 'linear-gradient(160deg, #001621 0%, #073038 60%, #0A3D4A 100%)' }}
     >
       {/* Particle canvas */}
       <canvas

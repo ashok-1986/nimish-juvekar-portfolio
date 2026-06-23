@@ -131,21 +131,21 @@ export default function ExperienceSection() {
                         background: "rgba(255,255,255,0.65)",
                         backdropFilter: "blur(20px)",
                         WebkitBackdropFilter: "blur(20px)",
-                        border: "1px solid rgba(5,32,38,0.08)",
-                        boxShadow: "0 2px 16px rgba(5,32,38,0.04)",
+                        border: "1px solid rgba(0,22,33,0.08)",
+                        boxShadow: "0 2px 16px rgba(0,22,33,0.04)",
                       }}
                       onMouseEnter={e => {
                         const el = e.currentTarget as HTMLElement;
                         el.style.background = "rgba(255,255,255,0.88)";
-                        el.style.borderColor = "rgba(255,90,31,0.18)";
-                        el.style.boxShadow = "0 8px 32px rgba(5,32,38,0.08)";
+                        el.style.borderColor = "rgba(255,65,3,0.18)";
+                        el.style.boxShadow = "0 8px 32px rgba(0,22,33,0.08)";
                         el.style.transform = "translateY(-3px)";
                       }}
                       onMouseLeave={e => {
                         const el = e.currentTarget as HTMLElement;
                         el.style.background = "rgba(255,255,255,0.65)";
-                        el.style.borderColor = "rgba(5,32,38,0.08)";
-                        el.style.boxShadow = "0 2px 16px rgba(5,32,38,0.04)";
+                        el.style.borderColor = "rgba(0,22,33,0.08)";
+                        el.style.boxShadow = "0 2px 16px rgba(0,22,33,0.04)";
                         el.style.transform = "translateY(0)";
                       }}
                     >
@@ -153,7 +153,7 @@ export default function ExperienceSection() {
                       <div className="flex flex-wrap items-center gap-3 mb-3">
                         <span
                           className="inline-flex items-center gap-1.5 font-sans font-medium"
-                          style={{ fontSize: "12px", color: "#FF5A1F" }}
+                          style={{ fontSize: "12px", color: "#FF4103" }}
                         >
                           <IconCalendar />
                           {item.year}
@@ -190,7 +190,7 @@ export default function ExperienceSection() {
                             <li key={hi} className="flex items-start gap-2">
                               <span
                                 className="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0"
-                                style={{ background: "rgba(255,90,31,0.10)", color: "#FF5A1F" }}
+                                style={{ background: "rgba(255,65,3,0.10)", color: "#FF4103" }}
                               >
                                 <IconCheck />
                               </span>
@@ -211,7 +211,7 @@ export default function ExperienceSection() {
                   <div className="hidden md:flex w-14 justify-center items-start pt-6 flex-shrink-0">
                     <div
                       className="w-4 h-4 rounded-full border-2 border-zinc flex-shrink-0"
-                      style={{ background: "#FF5A1F", boxShadow: "0 0 0 4px rgba(255,90,31,0.12)" }}
+                      style={{ background: "#FF4103", boxShadow: "0 0 0 4px rgba(255,65,3,0.12)" }}
                     />
                   </div>
 

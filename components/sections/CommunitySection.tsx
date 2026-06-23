@@ -79,31 +79,31 @@ export default function CommunitySection() {
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
                   border: '1px solid rgba(255,255,255,0.6)',
-                  boxShadow: '0 4px 24px rgba(255,90,31,0.07)',
+                  boxShadow: '0 4px 24px rgba(255,65,3,0.07)',
                   transition: 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.3s ease',
                 }}
                 onMouseEnter={e => {
                   const el = e.currentTarget as HTMLElement
                   el.style.transform = 'translateY(-6px) scale(1.01)'
-                  el.style.boxShadow = '0 16px 48px rgba(255,90,31,0.14)'
-                  el.style.borderColor = 'rgba(255,90,31,0.25)'
+                  el.style.boxShadow = '0 16px 48px rgba(255,65,3,0.14)'
+                  el.style.borderColor = 'rgba(255,65,3,0.25)'
                 }}
                 onMouseLeave={e => {
                   const el = e.currentTarget as HTMLElement
                   el.style.transform = 'translateY(0) scale(1)'
-                  el.style.boxShadow = '0 4px 24px rgba(255,90,31,0.07)'
+                  el.style.boxShadow = '0 4px 24px rgba(255,65,3,0.07)'
                   el.style.borderColor = 'rgba(255,255,255,0.6)'
                 }}
               >
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                  style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,90,31,0.06) 0%, transparent 70%)' }}
+                  style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,65,3,0.06) 0%, transparent 70%)' }}
                 />
 
                 <div className="flex items-start gap-3 mb-5 relative z-10">
                   <div
                     className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(255,90,31,0.1)', color: '#FF5A1F' }}
+                    style={{ background: 'rgba(255,65,3,0.1)', color: '#FF4103' }}
                   >
                     <Icon size={20} />
                   </div>
@@ -119,7 +119,7 @@ export default function CommunitySection() {
                 <ul className="space-y-2 relative z-10">
                   {role.highlights.map((h, j) => (
                     <li key={j} className="flex items-start gap-2">
-                      <span style={{ color: '#FF5A1F', marginTop: '5px', flexShrink: 0 }}>
+                      <span style={{ color: '#FF4103', marginTop: '5px', flexShrink: 0 }}>
                         <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="2"/></svg>
                       </span>
                       <span className="font-sans text-[13px] text-muted leading-snug">{h}</span>

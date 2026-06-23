@@ -66,7 +66,7 @@ export default function USPSection() {
           <p className="font-sans text-[16px] mt-4 mb-6" style={{ color: 'rgba(255,255,255,0.65)' }}>
             Bridging Industry & Academia
           </p>
-          <blockquote className="text-base md:text-lg italic max-w-2xl mx-auto leading-relaxed" style={{ fontFamily: 'Times New Roman, serif', color: 'rgba(255,255,255,0.75)' }}>
+          <blockquote className="text-base md:text-lg italic max-w-2xl mx-auto leading-relaxed" style={{ fontFamily: 'var(--font-serif)', color: 'rgba(255,255,255,0.75)' }}>
             {PERSONAL.quote}
           </blockquote>
         </div>
@@ -89,8 +89,8 @@ export default function USPSection() {
                 onMouseEnter={!isTouchDevice ? e => {
                   const el = e.currentTarget as HTMLElement
                   el.style.transform = 'translateY(-6px) scale(1.01)'
-                  el.style.boxShadow = '0 16px 48px rgba(255,90,31,0.2)'
-                  el.style.borderColor = 'rgba(255,90,31,0.3)'
+                  el.style.boxShadow = '0 16px 48px rgba(255,65,3,0.2)'
+                  el.style.borderColor = 'rgba(255,65,3,0.3)'
                 } : undefined}
                 onMouseLeave={!isTouchDevice ? e => {
                   const el = e.currentTarget as HTMLElement
@@ -101,13 +101,13 @@ export default function USPSection() {
               >
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                  style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,90,31,0.1) 0%, transparent 70%)' }}
+                  style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,65,3,0.1) 0%, transparent 70%)' }}
                 />
 
                 <div className="flex items-start gap-4 relative z-10">
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(255,90,31,0.15)', color: '#FF8A60' }}
+                    style={{ background: 'rgba(255,65,3,0.15)', color: '#FF8A60' }}
                   >
                     <Icon size={22} />
                   </div>

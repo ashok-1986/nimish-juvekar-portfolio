@@ -86,25 +86,25 @@ export default function TeachingSection() {
                 backdropFilter: 'blur(16px)',
                 WebkitBackdropFilter: 'blur(16px)',
                 border: '1px solid rgba(255,255,255,0.6)',
-                boxShadow: '0 4px 24px rgba(255,90,31,0.07)',
+                boxShadow: '0 4px 24px rgba(255,65,3,0.07)',
                 transition: 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.3s ease',
               }}
               onMouseEnter={e => {
                 const el = e.currentTarget as HTMLElement
                 el.style.transform = 'translateY(-6px) scale(1.01)'
-                el.style.boxShadow = '0 16px 48px rgba(255,90,31,0.14)'
-                el.style.borderColor = 'rgba(255,90,31,0.25)'
+                el.style.boxShadow = '0 16px 48px rgba(255,65,3,0.14)'
+                el.style.borderColor = 'rgba(255,65,3,0.25)'
               }}
               onMouseLeave={e => {
                 const el = e.currentTarget as HTMLElement
                 el.style.transform = 'translateY(0) scale(1)'
-                el.style.boxShadow = '0 4px 24px rgba(255,90,31,0.07)'
+                el.style.boxShadow = '0 4px 24px rgba(255,65,3,0.07)'
                 el.style.borderColor = 'rgba(255,255,255,0.6)'
               }}
             >
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,90,31,0.06) 0%, transparent 70%)' }}
+                style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,65,3,0.06) 0%, transparent 70%)' }}
               />
 
               <div className="relative z-10">
@@ -117,9 +117,9 @@ export default function TeachingSection() {
                 {mod.score && (
                   <div
                     className="inline-block px-3 py-1.5 rounded-xl mb-4"
-                    style={{ background: 'rgba(255,90,31,0.08)' }}
+                    style={{ background: 'rgba(255,65,3,0.08)' }}
                   >
-                    <span className="font-serif font-bold text-[18px]" style={{ color: '#FF5A1F' }}>
+                    <span className="font-serif font-bold text-[18px]" style={{ color: '#FF4103' }}>
                       {mod.score}
                     </span>
                     <span className="font-sans text-[11px] text-muted ml-2">Module Score</span>
@@ -135,7 +135,7 @@ export default function TeachingSection() {
           <div className="flex items-center gap-3 mb-6">
             <div
               className="w-8 h-8 rounded-lg flex items-center justify-center"
-              style={{ background: 'rgba(255,90,31,0.1)', color: '#FF5A1F' }}
+              style={{ background: 'rgba(255,65,3,0.1)', color: '#FF4103' }}
             >
               <CheckCircle size={16} className="text-tangerine" />
             </div>
@@ -156,11 +156,11 @@ export default function TeachingSection() {
                   style={{
                     opacity: 0,
                     background: hasScore && scoreMatch && parseInt(scoreMatch[1]) >= 100
-                      ? 'rgba(255,90,31,0.08)'
+                      ? 'rgba(255,65,3,0.08)'
                       : 'rgba(255,255,255,0.7)',
                     backdropFilter: 'blur(8px)',
                     border: hasScore && scoreMatch && parseInt(scoreMatch[1]) >= 100
-                      ? '1px solid rgba(255,90,31,0.2)'
+                      ? '1px solid rgba(255,65,3,0.2)'
                       : '1px solid rgba(232,228,220,0.8)',
                   }}
                 >
@@ -169,7 +169,7 @@ export default function TeachingSection() {
                   {hasScore && scoreMatch && (
                     <span
                       className="font-sans text-[10px] md:text-[11px] font-700"
-                      style={{ color: '#FF5A1F' }}
+                      style={{ color: '#FF4103' }}
                     >
                       {scoreMatch[1]}%
                     </span>

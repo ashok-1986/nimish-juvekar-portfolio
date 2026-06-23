@@ -38,7 +38,7 @@ export const ACCREDITATIONS = [
     expires: 'March 2027',
     credentialId: 'CMBE2611617383',
     icon: 'award',
-    color: '#FF5A1F',
+    color: '#FF4103',
   },
   {
     title: 'Associate Fellow of Advance HE (AFHEA)',
@@ -46,7 +46,7 @@ export const ACCREDITATIONS = [
     issued: 'March 2026',
     credentialId: 'PR337918',
     icon: 'graduation',
-    color: '#FF5A1F',
+    color: '#FF4103',
   },
   {
     title: 'Foundation Chartered Manager (fCMgr)',
@@ -54,7 +54,7 @@ export const ACCREDITATIONS = [
     issued: '2025',
     credentialId: null,
     icon: 'briefcase',
-    color: '#052026',
+    color: '#001621',
   },
 ]
 

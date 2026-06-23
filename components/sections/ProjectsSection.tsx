@@ -10,7 +10,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Calendar,
 }
 
-const ACCENT_MAP = ['#FF5A1F', '#FF5A1F', '#FF5A1F', '#052026']
+const ACCENT_MAP = ['#FF4103', '#FF4103', '#FF4103', '#001621']
 
 export default function ProjectsSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -107,20 +107,20 @@ export default function ProjectsSection() {
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
                   border: '1px solid rgba(255,255,255,0.6)',
-                  boxShadow: '0 4px 24px rgba(255,90,31,0.07)',
+                  boxShadow: '0 4px 24px rgba(255,65,3,0.07)',
                   transition: 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.3s ease',
                 }}
                 {...(!isTouchDevice ? {
                   onMouseEnter: e => {
                     const el = e.currentTarget as HTMLElement
                     el.style.transform = 'translateY(-6px) scale(1.01)'
-                    el.style.boxShadow = '0 16px 48px rgba(255,90,31,0.14)'
-                    el.style.borderColor = 'rgba(255,90,31,0.25)'
+                    el.style.boxShadow = '0 16px 48px rgba(255,65,3,0.14)'
+                    el.style.borderColor = 'rgba(255,65,3,0.25)'
                   },
                   onMouseLeave: e => {
                     const el = e.currentTarget as HTMLElement
                     el.style.transform = 'translateY(0) scale(1)'
-                    el.style.boxShadow = '0 4px 24px rgba(255,90,31,0.07)'
+                    el.style.boxShadow = '0 4px 24px rgba(255,65,3,0.07)'
                     el.style.borderColor = 'rgba(255,255,255,0.6)'
                   },
                 } : {})}
@@ -128,7 +128,7 @@ export default function ProjectsSection() {
                 {/* Hover glow */}
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                  style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,90,31,0.06) 0%, transparent 70%)' }}
+                  style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,65,3,0.06) 0%, transparent 70%)' }}
                 />
 
                 {/* Top row */}
@@ -136,7 +136,7 @@ export default function ProjectsSection() {
                   <div className="flex items-center gap-3">
                     <div
                       className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: accent === '#FF5A1F' ? 'rgba(255,90,31,0.1)' : 'rgba(26,26,46,0.07)' }}
+                      style={{ background: accent === '#FF4103' ? 'rgba(255,65,3,0.1)' : 'rgba(26,26,46,0.07)' }}
                     >
                       <Icon size={20} style={{ color: accent }} />
                     </div>
@@ -179,9 +179,9 @@ export default function ProjectsSection() {
                       key={tag}
                       className="font-sans text-[10px] md:text-[11px] font-500 px-2 py-0.5 md:px-2.5 md:py-1 rounded-full"
                       style={{
-                        background: 'rgba(255,90,31,0.07)',
-                        color: '#FF5A1F',
-                        border: '1px solid rgba(255,90,31,0.12)',
+                        background: 'rgba(255,65,3,0.07)',
+                        color: '#FF4103',
+                        border: '1px solid rgba(255,65,3,0.12)',
                       }}
                     >
                       {tag}

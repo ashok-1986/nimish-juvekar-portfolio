@@ -86,8 +86,8 @@ export default function FreelanceSection() {
                 onMouseEnter={e => {
                   const el = e.currentTarget as HTMLElement
                   el.style.transform = 'translateY(-6px) scale(1.01)'
-                  el.style.boxShadow = '0 16px 48px rgba(255,90,31,0.2)'
-                  el.style.borderColor = 'rgba(255,90,31,0.3)'
+                  el.style.boxShadow = '0 16px 48px rgba(255,65,3,0.2)'
+                  el.style.borderColor = 'rgba(255,65,3,0.3)'
                 }}
                 onMouseLeave={e => {
                   const el = e.currentTarget as HTMLElement
@@ -98,13 +98,13 @@ export default function FreelanceSection() {
               >
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                  style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,90,31,0.1) 0%, transparent 70%)' }}
+                  style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,65,3,0.1) 0%, transparent 70%)' }}
                 />
 
                 <div className="flex items-start gap-3 mb-5 relative z-10">
                   <div
                     className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(255,90,31,0.15)', color: '#FF5A1F' }}
+                    style={{ background: 'rgba(255,65,3,0.15)', color: '#FF4103' }}
                   >
                     <Icon size={20} />
                   </div>
@@ -128,9 +128,9 @@ export default function FreelanceSection() {
                       key={tag}
                       className="font-sans text-[10px] font-500 px-2.5 py-1 rounded-full"
                       style={{
-                        background: 'rgba(255,90,31,0.12)',
+                        background: 'rgba(255,65,3,0.12)',
                         color: '#FF8A60',
-                        border: '1px solid rgba(255,90,31,0.2)',
+                        border: '1px solid rgba(255,65,3,0.2)',
                       }}
                     >
                       {tag}

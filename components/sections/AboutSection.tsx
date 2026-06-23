@@ -214,7 +214,7 @@ export default function AboutSection() {
             className="about-card col-span-12 md:col-span-7 rounded-2xl overflow-hidden relative group"
             style={{
               minHeight: '320px',
-              background: '#052026',
+              background: '#001621',
               clipPath: 'inset(100% 0 0 0)',
             }}
           >
@@ -233,14 +233,14 @@ export default function AboutSection() {
             <div
               className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105"
               style={{
-                backgroundImage: 'linear-gradient(to top right, rgba(5,32,38,0.96) 0%, rgba(5,32,38,0.6) 100%)',
+                backgroundImage: 'linear-gradient(to top right, rgba(0,22,33,0.96) 0%, rgba(0,22,33,0.6) 100%)',
               }}
             />
             <div className="relative z-10 p-8 md:p-10 flex flex-col justify-between h-full" style={{ minHeight: '320px' }}>
               <div className="flex items-start gap-3 mb-auto">
                 <div
                   className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: 'rgba(255,90,31,0.15)', color: '#FF5A1F' }}
+                  style={{ background: 'rgba(255,65,3,0.15)', color: '#FF4103' }}
                 >
                   {ICONS.graduation}
                 </div>
@@ -264,7 +264,7 @@ export default function AboutSection() {
               </div>
               {/* Location chip */}
               <div className="flex items-center gap-2 mt-6">
-                <span style={{ color: '#FF5A1F' }}>{ICONS.mapPin}</span>
+                <span style={{ color: '#FF4103' }}>{ICONS.mapPin}</span>
                 <span className="font-sans text-white/50 text-xs">{PERSONAL.location}</span>
               </div>
             </div>
@@ -281,7 +281,7 @@ export default function AboutSection() {
           >
             <div className="p-8 h-full flex flex-col">
               <div className="flex items-center gap-2 mb-6">
-                <span style={{ color: '#FF5A1F' }}>{ICONS.sparkle}</span>
+                <span style={{ color: '#FF4103' }}>{ICONS.sparkle}</span>
                 <span className="font-sans text-obsidian text-xs font-semibold tracking-widest uppercase">Career at a Glance</span>
               </div>
               <div className="grid grid-cols-2 gap-4 flex-1">
@@ -320,8 +320,8 @@ export default function AboutSection() {
                     <div
                       className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-200"
                       style={{
-                        background: 'rgba(255,90,31,0.08)',
-                        color: '#FF5A1F',
+                        background: 'rgba(255,65,3,0.08)',
+                        color: '#FF4103',
                       }}
                     >
                       {acc.icon === 'graduation' ? ICONS.graduation : acc.icon === 'briefcase' ? ICONS.briefcase : ICONS.award}
@@ -342,7 +342,7 @@ export default function AboutSection() {
           <div
             className="about-card col-span-12 md:col-span-6 rounded-2xl overflow-hidden"
             style={{
-              background: '#052026',
+              background: '#001621',
               clipPath: 'inset(100% 0 0 0)',
             }}
           >
@@ -351,7 +351,7 @@ export default function AboutSection() {
                 <div className="flex items-center gap-2 mb-5">
                   <div
                     className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(255,90,31,0.12)', color: '#FF5A1F' }}
+                    style={{ background: 'rgba(255,65,3,0.12)', color: '#FF4103' }}
                   >
                     {ICONS.bookOpen}
                   </div>
@@ -364,7 +364,7 @@ export default function AboutSection() {
               <a
                 href="#experience"
                 className="inline-flex items-center gap-2 mt-6 font-sans text-sm font-medium text-white group/cta"
-                style={{ color: '#FF5A1F' }}
+                style={{ color: '#FF4103' }}
               >
                 <span>View full career</span>
                 <span className="transition-transform duration-200 group-hover/cta:translate-x-1">
@@ -392,9 +392,9 @@ export default function AboutSection() {
                 }}
                 onMouseEnter={e => {
                   const el = e.currentTarget as HTMLElement
-                  el.style.background = 'rgba(255,90,31,0.06)'
-                  el.style.borderColor = 'rgba(255,90,31,0.3)'
-                  el.style.boxShadow = '0 8px 24px rgba(255,90,31,0.10)'
+                  el.style.background = 'rgba(255,65,3,0.06)'
+                  el.style.borderColor = 'rgba(255,65,3,0.3)'
+                  el.style.boxShadow = '0 8px 24px rgba(255,65,3,0.10)'
                 }}
                 onMouseLeave={e => {
                   const el = e.currentTarget as HTMLElement
@@ -405,7 +405,7 @@ export default function AboutSection() {
               >
                 <div
                   className="w-9 h-9 rounded-xl flex items-center justify-center mb-4 transition-colors duration-200 group-hover:bg-tangerine/10"
-                  style={{ background: 'rgba(5,32,38,0.06)', color: '#052026' }}
+                  style={{ background: 'rgba(0,22,33,0.06)', color: '#001621' }}
                 >
                   <span className="group-hover:text-tangerine transition-colors duration-200" style={{ color: 'inherit' }}>
                     {p.icon}

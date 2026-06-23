@@ -1,11 +1,5 @@
 import Navbar from "@/components/layout/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
-import ModulesSection from "@/components/sections/ModulesSection";
-import Footer from "@/components/layout/Footer";
-import SmoothScroll from "@/components/ui/SmoothScroll";
-
-// Temporarily commenting out other sections to adhere strictly to the 2026 minimalist 4-section layout
-/*
 import ScrollyTellingWrapper from "@/components/animations/ScrollyTellingWrapper";
 import Overlay from "@/components/animations/Overlay";
 import AboutSection from "@/components/sections/AboutSection";
@@ -19,25 +13,22 @@ import CommunitySection from "@/components/sections/CommunitySection";
 import FreelanceSection from "@/components/sections/FreelanceSection";
 import USPSection from "@/components/sections/USPSection";
 import ContactSection from "@/components/sections/ContactSection";
+import Footer from "@/components/layout/Footer";
 import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
-*/
+import SmoothScroll from "@/components/ui/SmoothScroll";
 
 export default function Home() {
   return (
     <>
       <SmoothScroll />
+      <ScrollProgressBar />
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
       <Navbar />
-      
+      <Overlay />
       <main id="main-content" role="main" tabIndex={-1}>
         <HeroSection />
-        <ModulesSection />
-        
-        {/* Temporarily hidden sections */}
-        {/* 
-        <Overlay />
         <ScrollyTellingWrapper />
         <AboutSection />
         <StatsSection />
@@ -50,9 +41,7 @@ export default function Home() {
         <FreelanceSection />
         <USPSection />
         <ContactSection />
-        */}
       </main>
-      
       <Footer />
     </>
   );

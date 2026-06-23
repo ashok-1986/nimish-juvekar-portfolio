@@ -5,7 +5,7 @@ import { COMPETENCIES } from '@/lib/data'
 
 const CATEGORY_ICONS = ['BookOpen', 'Briefcase', 'Wrench', 'Palette']
 
-const ICON_COLORS = ['#FF5A1F', '#052026', '#4A5A5D', '#FF5A1F']
+const ICON_COLORS = ['#FF4103', '#001621', '#4A5A5D', '#FF4103']
 
 const ICON_SVGS: Record<string, React.ReactNode> = {
   BookOpen: (
@@ -98,7 +98,7 @@ export default function CompetenciesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {entries.map(([name, skills], catIndex) => {
             const iconKey = CATEGORY_ICONS[catIndex] || 'BookOpen'
-            const color = ICON_COLORS[catIndex] || '#FF5A1F'
+            const color = ICON_COLORS[catIndex] || '#FF4103'
             return (
               <div key={name} className="comp-category">
                 <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-5">
@@ -124,9 +124,9 @@ export default function CompetenciesSection() {
                       }}
                       onMouseEnter={e => {
                         const el = e.currentTarget as HTMLElement
-                        el.style.borderColor = 'rgba(255,90,31,0.4)'
-                        el.style.color = '#FF5A1F'
-                        el.style.background = 'rgba(255,90,31,0.06)'
+                        el.style.borderColor = 'rgba(255,65,3,0.4)'
+                        el.style.color = '#FF4103'
+                        el.style.background = 'rgba(255,65,3,0.06)'
                         el.style.transform = 'translateY(-1px)'
                       }}
                       onMouseLeave={e => {

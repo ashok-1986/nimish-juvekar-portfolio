@@ -52,12 +52,12 @@ export default function ScrollyCanvas() {
       const g = Math.round(248 - (248 - 26) * progress)
       const b = Math.round(246 - (246 - 46) * progress)
       grad.addColorStop(0, `rgb(${r},${g},${b})`)
-      grad.addColorStop(1, '#052026')
+      grad.addColorStop(1, '#001621')
       ctx.fillStyle = grad
       ctx.fillRect(0, 0, cw, ch)
 
       // Dot grid
-      ctx.fillStyle = `rgba(5,32,38,${0.02 + progress * 0.04})`
+      ctx.fillStyle = `rgba(0,22,33,${0.02 + progress * 0.04})`
       for (let x = 0; x < cw; x += 28) {
         for (let y = 0; y < ch; y += 28) {
           ctx.beginPath()
@@ -173,7 +173,7 @@ export default function ScrollyCanvas() {
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(to bottom, rgba(5,32,38,0.1) 0%, transparent 30%, transparent 70%, rgba(5,32,38,0.15) 100%)',
+            background: 'linear-gradient(to bottom, rgba(0,22,33,0.1) 0%, transparent 30%, transparent 70%, rgba(0,22,33,0.15) 100%)',
             pointerEvents: 'none',
             zIndex: 1,
           }}

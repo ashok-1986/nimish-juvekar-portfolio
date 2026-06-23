@@ -121,7 +121,7 @@ function TextOverlay() {
         >
           <div style={{ width: 'min(100%, 980px)' }}>
             <p style={{
-              fontFamily: 'DM Sans, sans-serif',
+              fontFamily: 'var(--font-sans)',
               fontSize: 'clamp(10px, 1.2vw, 13px)',
               fontWeight: 600,
               letterSpacing: '0.12em',
@@ -133,7 +133,7 @@ function TextOverlay() {
               {section.eyebrow}
             </p>
             <h2 style={{
-              fontFamily: 'var(--font-playfair), Georgia, Times New Roman, serif',
+              fontFamily: 'var(--font-playfair), Georgia, var(--font-serif)',
               fontSize: 'clamp(28px, 6vw, 88px)',
               fontWeight: 700,
               color: '#FFFFFF',
@@ -147,9 +147,9 @@ function TextOverlay() {
             <div style={{
               width: '48px',
               height: '3px',
-              background: '#FF5A1F',
+              background: '#FF4103',
               borderRadius: '2px',
-              boxShadow: '0 0 12px rgba(255,90,31,0.9)',
+              boxShadow: '0 0 12px rgba(255,65,3,0.9)',
               marginLeft: section.align === 'right' || section.align === 'center' ? 'auto' : 0,
               marginRight: section.align === 'left' || section.align === 'center' ? 'auto' : 0,
             }} />

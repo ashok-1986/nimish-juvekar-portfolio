@@ -79,7 +79,7 @@ export default function ContactSection() {
                 background: 'rgba(255,255,255,0.75)',
                 backdropFilter: 'blur(16px)',
                 border: '1px solid rgba(255,255,255,0.6)',
-                boxShadow: '0 4px 24px rgba(255,90,31,0.07)',
+                boxShadow: '0 4px 24px rgba(255,65,3,0.07)',
               }}
             >
               <h3 className="font-serif text-[18px] font-bold text-obsidian mb-5">Contact Details</h3>
@@ -89,7 +89,7 @@ export default function ContactSection() {
                   href={`mailto:${PERSONAL.email}`}
                   className="flex items-start gap-3 group"
                 >
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(255,90,31,0.1)', color: '#FF5A1F' }}>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(255,65,3,0.1)', color: '#FF4103' }}>
                     <Mail size={16} />
                   </div>
                   <div>
@@ -102,7 +102,7 @@ export default function ContactSection() {
                   href={`mailto:${PERSONAL.emailUEL}`}
                   className="flex items-start gap-3 group"
                 >
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(255,90,31,0.1)', color: '#FF5A1F' }}>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(255,65,3,0.1)', color: '#FF4103' }}>
                     <Mail size={16} />
                   </div>
                   <div>
@@ -115,7 +115,7 @@ export default function ContactSection() {
                   href={`tel:${PERSONAL.phone}`}
                   className="flex items-start gap-3 group"
                 >
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(255,90,31,0.1)', color: '#FF5A1F' }}>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(255,65,3,0.1)', color: '#FF4103' }}>
                     <Phone size={16} />
                   </div>
                   <div>
@@ -130,7 +130,7 @@ export default function ContactSection() {
                   rel="noopener noreferrer"
                   className="flex items-start gap-3 group"
                 >
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(255,90,31,0.1)', color: '#FF5A1F' }}>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(255,65,3,0.1)', color: '#FF4103' }}>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" width={16} height={16}>
                       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
                     </svg>
@@ -146,7 +146,7 @@ export default function ContactSection() {
             <div
               className="rounded-2xl p-6 text-center"
               style={{
-                background: 'linear-gradient(135deg, #FF5A1F 0%, #073038 100%)',
+                background: 'linear-gradient(135deg, #FF4103 0%, #073038 100%)',
                 color: '#FFFFFF',
               }}
             >
@@ -162,7 +162,7 @@ export default function ContactSection() {
               background: 'rgba(255,255,255,0.75)',
               backdropFilter: 'blur(16px)',
               border: '1px solid rgba(255,255,255,0.6)',
-              boxShadow: '0 4px 24px rgba(255,90,31,0.07)',
+              boxShadow: '0 4px 24px rgba(255,65,3,0.07)',
             }}
           >
             <div
