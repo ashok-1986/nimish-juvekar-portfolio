@@ -170,8 +170,8 @@ export default function QualificationsSection() {
                   key={i}
                   className="rounded-2xl p-5 relative overflow-hidden"
                   style={{
-                    background: isCMBE ? 'linear-gradient(135deg, #FF4103 0%, #073038 100%)' : acc.color === '#FF4103' ? 'linear-gradient(135deg, #FF4103 0%, #073038 100%)' : 'linear-gradient(135deg, #001621 0%, #0A3840 100%)',
-                    color: '#FFFFFF',
+                    background: isCMBE ? '#FF4103' : acc.color === '#FF4103' ? '#FF4103' : '#001621',
+                    color: '#FAFAFA',
                   }}
                 >
                   {isCMBE && (

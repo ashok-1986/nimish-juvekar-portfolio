@@ -146,8 +146,8 @@ export default function ContactSection() {
             <div
               className="rounded-2xl p-6 text-center"
               style={{
-                background: 'linear-gradient(135deg, #FF4103 0%, #073038 100%)',
-                color: '#FFFFFF',
+                background: '#FF4103',
+                color: '#FAFAFA',
               }}
             >
               <p className="font-serif text-[15px] font-bold text-white mb-1">Location</p>
