@@ -1,267 +1,320 @@
-"use client";
+'use client'
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { heroContent } from "@/lib/data";
-import { RevealText } from "@/components/ui/reveal-text";
-import Image from "next/image";
+import { useEffect, useRef } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function HeroSection() {
-  const containerRef   = useRef<HTMLDivElement>(null);
-  const credentialsRef = useRef<HTMLSpanElement>(null);
-  const nameRef        = useRef<HTMLDivElement>(null);
-  const subtitleRef    = useRef<HTMLParagraphElement>(null);
-  const descRef        = useRef<HTMLParagraphElement>(null);
-  const ctaRef         = useRef<HTMLAnchorElement>(null);
-  const scrollRef      = useRef<HTMLDivElement>(null);
-  const photoRef       = useRef<HTMLDivElement>(null);
-  const badgeRef       = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null)
+  const portraitRef = useRef<HTMLDivElement>(null)
+  const layer1Ref = useRef<HTMLDivElement>(null)
+  const layer2Ref = useRef<HTMLDivElement>(null)
+  const layer3Ref = useRef<HTMLHeadingElement>(null)
+  const leftContentRef = useRef<HTMLDivElement>(null)
+  const rightContentRef = useRef<HTMLDivElement>(null)
+  const bottomLogosRef = useRef<HTMLDivElement>(null)
+  const topNavRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
+    let ctx: { revert: () => void } | undefined
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-      if (prefersReducedMotion) {
-        gsap.set(
-          [credentialsRef.current, nameRef.current, subtitleRef.current,
-           descRef.current, ctaRef.current, scrollRef.current,
-           photoRef.current, badgeRef.current],
-          { opacity: 1, y: 0, x: 0, scale: 1, rotateY: 0 }
-        );
-        return;
-      }
+    const init = async () => {
+      const gsapMod = await import('gsap')
+      const gsap = gsapMod.gsap
 
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      ctx = gsap.context(() => {
+        if (prefersReducedMotion) {
+          gsap.set([
+            portraitRef.current, layer1Ref.current, layer2Ref.current, 
+            layer3Ref.current, leftContentRef.current, rightContentRef.current, 
+            bottomLogosRef.current, topNavRef.current
+          ], { opacity: 1, y: 0, scale: 1, clipPath: 'inset(0% 0% 0% 0%)' })
+          return
+        }
 
-      tl.from(photoRef.current, {
-        x: 80, opacity: 0, rotateY: 8,
-        duration: 1.1, ease: "power4.out", transformPerspective: 800,
-      }, 0.2)
-      .from(badgeRef.current, {
-        y: 20, opacity: 0, scale: 0.85,
-        duration: 0.6, ease: "back.out(1.7)",
-      }, 0.9)
-      .from(credentialsRef.current, {
-        y: 20, opacity: 0, duration: 0.7,
-      }, 0.3)
-      .from(nameRef.current, {
-        y: 30, opacity: 0, duration: 0.5,
-      }, 0.4)
-      .from(subtitleRef.current, {
-        y: 30, opacity: 0, duration: 0.7,
-      }, 0.65)
-      .from(descRef.current, {
-        y: 20, opacity: 0, duration: 0.6,
-      }, 0.75)
-      .from(ctaRef.current, {
-        y: 16, opacity: 0, scale: 0.95, duration: 0.5,
-      }, 0.85)
-      .from(scrollRef.current, {
-        y: 10, opacity: 0, duration: 0.4,
-      }, 1.0);
-    }, containerRef);
+        const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
 
-    return () => ctx.revert();
-  }, []);
+        // 1. Base Structure fade in
+        tl.from(topNavRef.current, { y: -20, opacity: 0, duration: 1 }, 0)
+          .from(layer1Ref.current, { opacity: 0, y: 30, duration: 1.5 }, 0.2)
+          .from(layer2Ref.current, { opacity: 0, scale: 0.8, duration: 1.5 }, 0.3)
+          
+        // 2. Layer 3 Typography Reveal
+        // Mask wipe up for the massive text
+        tl.fromTo(layer3Ref.current, 
+          { clipPath: 'inset(100% 0% 0% 0%)', y: 50 },
+          { clipPath: 'inset(0% 0% 0% 0%)', y: 0, duration: 1.2, ease: 'power3.out' },
+          0.4
+        )
 
-  // Subtle parallax on photo
-  useEffect(() => {
-    const photo = photoRef.current;
-    if (!photo) return;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
+        // 3. Layer 4 Image Reveal (GSAP Wipe Up + Scale)
+        tl.fromTo(portraitRef.current,
+          { clipPath: 'inset(100% 0% 0% 0%)', scale: 1.05, opacity: 0 },
+          { clipPath: 'inset(0% 0% -10% 0%)', scale: 1, opacity: 1, duration: 1.6, ease: 'power3.inOut' },
+          0.6
+        )
 
-    const onScroll = () => {
-      const scrollY = window.scrollY;
-      const heroHeight = containerRef.current?.offsetHeight || window.innerHeight;
-      if (scrollY > heroHeight) return;
-      const progress = scrollY / heroHeight;
-      photo.style.transform = `translateY(${progress * -40}px) scale(${1 + progress * 0.02})`;
-    };
+        // 4. Foreground UI
+        tl.from(leftContentRef.current, { x: -30, opacity: 0, duration: 1 }, 1.2)
+          .from(rightContentRef.current, { x: 30, opacity: 0, duration: 1 }, 1.3)
+          .from(bottomLogosRef.current?.children || [], { y: 20, opacity: 0, duration: 0.8, stagger: 0.1 }, 1.4)
+          
+      }, containerRef)
+    }
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const NIMISH_IMAGES = [
-    "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80",
-    "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80",
-    "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80",
-    "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80",
-    "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800&q=80",
-    "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=800&q=80",
-  ];
-
-  const JUVEKAR_IMAGES = [
-    "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80",
-    "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&q=80",
-    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80",
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
-    "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80",
-    "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80",
-    "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80",
-  ];
+    init()
+    return () => ctx?.revert()
+  }, [])
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center px-6 pt-20 bg-zinc overflow-hidden"
+      className="relative w-full flex flex-col md:block"
+      style={{
+        minHeight: '100svh',
+        backgroundColor: '#FAFAFA',
+        color: '#001621',
+        overflow: 'hidden',
+      }}
     >
-      {/* Dot grid */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: "radial-gradient(circle, #C8D8DA 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-          opacity: 0.4,
+      {/* ─────────────────────────────────────────────────────────────
+          LAYER 1: Background Watermark (z-index: 0)
+          ───────────────────────────────────────────────────────────── */}
+      <div 
+        ref={layer1Ref}
+        className="absolute top-0 left-0 w-full flex justify-center pt-8 pointer-events-none select-none"
+        style={{ zIndex: 0 }}
+        aria-hidden="true"
+      >
+        <span 
+          style={{
+            fontFamily: '"Times New Roman", serif',
+            fontWeight: 700,
+            fontSize: '15vw',
+            opacity: 0.03,
+            color: '#001621',
+            lineHeight: 0.8,
+            letterSpacing: '-0.02em'
+          }}
+        >
+          NIMISH
+        </span>
+      </div>
+
+      {/* ─────────────────────────────────────────────────────────────
+          LAYER 2: Halftone Dotted Circle (z-index: 1)
+          ───────────────────────────────────────────────────────────── */}
+      <div 
+        ref={layer2Ref}
+        className="absolute top-[40%] md:top-1/2 left-1/2 pointer-events-none"
+        style={{ 
+          zIndex: 1,
+          width: 'clamp(300px, 40vw, 600px)',
+          aspectRatio: '1/1',
+          transform: 'translate(-50%, -50%)',
+          borderRadius: '50%',
+          backgroundImage: 'radial-gradient(circle, #FF4103 1.5px, transparent 2px)',
+          backgroundSize: '20px 20px',
+          opacity: 0.15,
+          maskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)',
+          WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)',
         }}
       />
 
-      {/* Decorative N */}
-      <span
-        className="absolute select-none pointer-events-none font-serif font-bold opacity-30 lg:opacity-100 overflow-hidden"
-        style={{
-          fontSize: "clamp(200px, 30vw, 380px)",
-          color: "#EDF4F5",
-          right: "-2%",
-          bottom: "-8%",
-          lineHeight: 1,
-          zIndex: 0,
+      {/* ─────────────────────────────────────────────────────────────
+          LAYER 3: Massive Typography (z-index: 2)
+          ───────────────────────────────────────────────────────────── */}
+      <div 
+        className="absolute top-[35%] md:top-1/2 left-1/2 pointer-events-none"
+        style={{ 
+          zIndex: 2,
+          transform: 'translate(-50%, -50%)',
         }}
-        aria-hidden="true"
-      >N</span>
+      >
+        <h1 
+          ref={layer3Ref}
+          style={{
+            fontFamily: '"Times New Roman", serif',
+            textTransform: 'uppercase',
+            fontSize: 'clamp(4rem, 12vw, 10rem)',
+            color: '#001621',
+            lineHeight: 1,
+            whiteSpace: 'nowrap',
+            fontWeight: 700,
+            letterSpacing: '-0.02em',
+          }}
+        >
+          NIMISH JUVEKAR
+        </h1>
+      </div>
 
-      {/* Main content */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center lg:text-left lg:max-w-none lg:w-full">
-        <div className="lg:grid lg:grid-cols-[1fr_420px] lg:gap-16 lg:items-center">
-
-          {/* Left */}
-          <div>
-            <span
-              ref={credentialsRef}
-              className="inline-block text-tangerine text-xs md:text-sm font-medium mb-4 tracking-[0.15em] uppercase"
-            >
-              {heroContent.credentials}
-            </span>
-
-            {/* Name */}
-            <div
-              ref={nameRef}
-              className="mb-6"
-              style={{ lineHeight: 1 }}
-            >
-              <RevealText
-                text="NIMISH"
-                textColor="text-obsidian"
-                overlayColor="text-tangerine"
-                fontSize="text-[clamp(40px,10vw,88px)]"
-                letterDelay={0.07}
-                overlayDelay={0.05}
-                overlayDuration={0.4}
-                springDuration={500}
-                letterImages={NIMISH_IMAGES}
-                justify="start"
-              />
-              <div style={{ marginTop: '-4px' }}>
-                <RevealText
-                  text="JUVEKAR"
-                  textColor="text-obsidian"
-                  overlayColor="text-tangerine"
-                  fontSize="text-[clamp(40px,10vw,88px)]"
-                  letterDelay={0.06}
-                  overlayDelay={0.04}
-                  overlayDuration={0.4}
-                  springDuration={500}
-                  letterImages={JUVEKAR_IMAGES}
-                  justify="start"
-                />
-              </div>
-            </div>
-
-            <p
-              ref={subtitleRef}
-              className="text-lg md:text-xl text-muted mb-6 max-w-2xl mx-auto lg:mx-0"
-            >
-              {heroContent.subtitle}
-            </p>
-
-            <p
-              ref={descRef}
-              className="text-base text-muted mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed"
-            >
-              {heroContent.description}
-            </p>
-
-            <a
-              ref={ctaRef}
-              href="#experience"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-tangerine text-white px-8 py-4 rounded-lg font-medium transition-all duration-200 hover:bg-tangerine/90 hover:shadow-lg hover:shadow-tangerine/25 hover:-translate-y-0.5 active:scale-[0.97]"
-            >
-              {heroContent.cta}
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </a>
-          </div>
-
-          {/* Right: Photo */}
-          <div ref={photoRef} className="hidden lg:block relative" style={{ willChange: "transform" }}>
-            <div
-              className="absolute rounded-2xl bg-surface"
-              style={{ inset: 0, transform: "rotate(-3deg) scale(1.06)", zIndex: 0 }}
-            />
-            <div
-              className="absolute rounded-2xl"
-              style={{
-                width: "40%", height: "40%",
-                bottom: "-4%", right: "-4%",
-                background: "#FF4103",
-                opacity: 0.07,
-                transform: "rotate(4deg)",
-                zIndex: 0,
-              }}
-            />
-            <div
-              className="relative z-10 rounded-2xl overflow-hidden"
-              style={{ aspectRatio: "3/4", boxShadow: "0 20px 60px rgba(0,22,33,0.18)" }}
-            >
-              <Image
-                src="/images/nimish.jpg"
-                alt="Nimish Juvekar — Lecturer, University of East London"
-                fill
-                sizes="(max-width: 768px) 100vw, 420px"
-                priority
-                className="object-cover object-top"
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAKAAoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooA//9k="
-              />
-            </div>
-            <div
-              ref={badgeRef}
-              className="absolute -bottom-4 -left-4 z-20 bg-white rounded-xl shadow-lg px-4 py-3"
-              style={{ borderLeft: "4px solid #FF4103", minWidth: "160px" }}
-            >
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "10px", fontWeight: 600, color: "#FF4103", textTransform: "uppercase", letterSpacing: "0.06em" }}>UEL · AFHEA</p>
-              <p style={{ fontFamily: "var(--font-serif)", fontSize: "15px", fontWeight: 700, color: "#001621", marginTop: "2px" }}>Lecturer</p>
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "11px", color: "#4A5A5D", marginTop: "1px" }}>Royal Docks School of Business & Law</p>
-            </div>
-          </div>
-
+      {/* ─────────────────────────────────────────────────────────────
+          LAYER 4: The Subject Portrait (z-index: 3)
+          ───────────────────────────────────────────────────────────── */}
+      <div 
+        className="relative md:absolute bottom-0 left-1/2 md:translate-x-[-50%] mt-[40vh] md:mt-0 w-full md:w-[600px] h-[50vh] md:h-[85vh] pointer-events-none flex justify-center items-end"
+        style={{ zIndex: 3 }}
+      >
+        <div 
+          ref={portraitRef}
+          className="relative w-full h-full max-w-[500px]"
+          style={{
+            maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+          }}
+        >
+          <Image
+            src="/images/nimish.jpg"
+            alt="Nimish Juvekar"
+            fill
+            sizes="(max-width: 768px) 100vw, 600px"
+            priority
+            className="object-cover object-top md:object-[center_15%]"
+          />
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div
-        ref={scrollRef}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted"
+      {/* ─────────────────────────────────────────────────────────────
+          LAYER 5: Foreground UI & Floating Content (z-index: 10)
+          ───────────────────────────────────────────────────────────── */}
+      <div 
+        className="absolute inset-0 pointer-events-none flex flex-col justify-between"
+        style={{ zIndex: 10 }}
       >
-        <span className="text-xs tracking-widest uppercase">{heroContent.scrollIndicator}</span>
-        <div className="w-6 h-10 rounded-full border-2 border-muted/30 flex justify-center pt-2">
-          <div className="w-1.5 h-3 bg-tangerine rounded-full animate-bounce" />
+        {/* Top Navigation */}
+        <div 
+          ref={topNavRef}
+          className="flex items-center justify-between pointer-events-auto"
+          style={{ padding: '2rem 5%' }}
+        >
+          <div className="font-serif font-bold text-lg" style={{ color: '#001621', letterSpacing: '0.05em' }}>
+            ✻ NIMISH
+          </div>
+          
+          <div className="hidden md:flex gap-8" style={{ fontFamily: '"Playfair Display", serif', fontSize: '16px', color: '#001621' }}>
+            <Link href="#qualifications" className="nav-link hover:text-tangerine transition-colors">Academic</Link>
+            <Link href="#freelance" className="nav-link hover:text-tangerine transition-colors">Consultancy</Link>
+            <Link href="#experience" className="nav-link hover:text-tangerine transition-colors">Experience</Link>
+            <Link href="#contact" className="nav-link hover:text-tangerine transition-colors">Contact</Link>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <div className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+            </div>
+            <span style={{ fontFamily: '"Playfair Display", serif', fontSize: '14px', color: '#001621', fontStyle: 'italic' }} className="hidden sm:inline">
+              Open for collaborations
+            </span>
+          </div>
+        </div>
+
+        {/* Floating Left Content (Hidden on Mobile) */}
+        <div 
+          ref={leftContentRef}
+          className="hidden md:block absolute pointer-events-auto"
+          style={{ left: '5%', top: '50%', transform: 'translateY(-50%)', maxWidth: '300px' }}
+        >
+          <p 
+            style={{ fontFamily: '"Playfair Display", serif', fontSize: '20px', color: '#001621', lineHeight: 1.5, marginBottom: '1.5rem' }}
+          >
+            Hey there! I'm a Lecturer & Global Project Manager specializing in operational strategy and applied business frameworks.
+          </p>
+          <a 
+            href="#projects"
+            className="inline-block transition-colors duration-300"
+            style={{ fontFamily: '"Times New Roman", serif', fontWeight: 700, fontSize: '16px', color: '#001621', letterSpacing: '0.05em' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = '#FF4103'}
+            onMouseLeave={(e) => e.currentTarget.style.color = '#001621'}
+          >
+            // VIEW RESEARCH →
+          </a>
+        </div>
+
+        {/* Floating Right Content (Expertise List) (Hidden on Mobile) */}
+        <div 
+          ref={rightContentRef}
+          className="hidden md:flex flex-col text-right absolute pointer-events-auto"
+          style={{ right: '5%', top: '50%', transform: 'translateY(-50%)', gap: '0.5rem' }}
+        >
+          <div style={{ fontFamily: '"Playfair Display", serif', fontSize: '20px', color: '#001621', opacity: 0.4 }}>Global Strategy</div>
+          <div style={{ fontFamily: '"Playfair Display", serif', fontSize: '20px', color: '#001621', opacity: 0.4 }}>Intelligence-Led Business Systems</div>
+          <div style={{ fontFamily: '"Playfair Display", serif', fontSize: '20px', color: '#FF4103', opacity: 1, fontWeight: 600 }}>Project Management</div>
+          <div style={{ fontFamily: '"Playfair Display", serif', fontSize: '20px', color: '#001621', opacity: 0.4 }}>Academic Research</div>
+        </div>
+
+        {/* Bottom Marquee / Partner Logos */}
+        <div 
+          ref={bottomLogosRef}
+          className="w-full flex items-center justify-evenly pointer-events-auto"
+          style={{ paddingBottom: '2rem' }}
+        >
+          {/* UEL */}
+          <div className="group cursor-pointer transition-all duration-300 opacity-40 hover:opacity-100 hover:text-tangerine text-obsidian grayscale hover:grayscale-0">
+            <svg width="120" height="40" viewBox="0 0 120 40" fill="currentColor">
+              <rect x="0" y="10" width="20" height="20" rx="4" />
+              <text x="30" y="25" fontFamily="'Times New Roman', serif" fontSize="18" fontWeight="bold">UEL London</text>
+            </svg>
+          </div>
+          {/* Alchemetryx */}
+          <div className="group cursor-pointer transition-all duration-300 opacity-40 hover:opacity-100 hover:text-tangerine text-obsidian grayscale hover:grayscale-0">
+            <svg width="120" height="40" viewBox="0 0 120 40" fill="currentColor">
+              <polygon points="10,30 20,10 30,30" />
+              <text x="35" y="25" fontFamily="'Times New Roman', serif" fontSize="18" fontWeight="bold">Alchemetryx</text>
+            </svg>
+          </div>
+          {/* Placeholder 1 */}
+          <div className="group hidden sm:block cursor-pointer transition-all duration-300 opacity-40 hover:opacity-100 hover:text-tangerine text-obsidian grayscale hover:grayscale-0">
+            <svg width="120" height="40" viewBox="0 0 120 40" fill="currentColor">
+              <circle cx="15" cy="20" r="10" />
+              <text x="35" y="25" fontFamily="'Times New Roman', serif" fontSize="18" fontWeight="bold">Advance HE</text>
+            </svg>
+          </div>
+          {/* Placeholder 2 */}
+          <div className="group hidden md:block cursor-pointer transition-all duration-300 opacity-40 hover:opacity-100 hover:text-tangerine text-obsidian grayscale hover:grayscale-0">
+            <svg width="120" height="40" viewBox="0 0 120 40" fill="currentColor">
+              <rect x="0" y="10" width="10" height="20" />
+              <rect x="15" y="10" width="10" height="20" />
+              <text x="35" y="25" fontFamily="'Times New Roman', serif" fontSize="18" fontWeight="bold">CMI Global</text>
+            </svg>
+          </div>
+          {/* Placeholder 3 */}
+          <div className="group hidden lg:block cursor-pointer transition-all duration-300 opacity-40 hover:opacity-100 hover:text-tangerine text-obsidian grayscale hover:grayscale-0">
+            <svg width="120" height="40" viewBox="0 0 120 40" fill="currentColor">
+              <path d="M0,20 Q10,0 20,20 T40,20" stroke="currentColor" strokeWidth="4" fill="none" />
+              <text x="50" y="25" fontFamily="'Times New Roman', serif" fontSize="18" fontWeight="bold">CABS</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+      {/* ─────────────────────────────────────────────────────────────
+          MOBILE ONLY FALLBACK (Below Hero)
+          ───────────────────────────────────────────────────────────── */}
+      <div className="md:hidden relative z-20 px-6 pb-16 bg-zinc flex flex-col gap-8">
+        <div>
+          <p 
+            style={{ fontFamily: '"Playfair Display", serif', fontSize: '18px', color: '#001621', lineHeight: 1.6, marginBottom: '1.25rem' }}
+          >
+            Hey there! I'm a Lecturer & Global Project Manager specializing in operational strategy and applied business frameworks.
+          </p>
+          <a 
+            href="#projects"
+            className="inline-block"
+            style={{ fontFamily: '"Times New Roman", serif', fontWeight: 700, fontSize: '16px', color: '#FF4103', letterSpacing: '0.05em' }}
+          >
+            // VIEW RESEARCH →
+          </a>
+        </div>
+        
+        <div className="flex flex-col gap-2 pt-6 border-t border-border">
+          <div style={{ fontFamily: '"Playfair Display", serif', fontSize: '18px', color: '#001621', opacity: 0.6 }}>Global Strategy</div>
+          <div style={{ fontFamily: '"Playfair Display", serif', fontSize: '18px', color: '#001621', opacity: 0.6 }}>Intelligence-Led Business Systems</div>
+          <div style={{ fontFamily: '"Playfair Display", serif', fontSize: '18px', color: '#FF4103', opacity: 1, fontWeight: 600 }}>Project Management</div>
+          <div style={{ fontFamily: '"Playfair Display", serif', fontSize: '18px', color: '#001621', opacity: 0.6 }}>Academic Research</div>
         </div>
       </div>
     </section>
-  );
+  )
 }
