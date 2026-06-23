@@ -145,7 +145,7 @@ export default function HeroSection() {
             letterSpacing: '-0.02em',
           }}
         >
-          NIMISH JUVEKAR
+          NIMISH
         </h1>
       </div>
 
@@ -214,7 +214,7 @@ export default function HeroSection() {
         <div 
           ref={leftContentRef}
           className="hidden md:block absolute pointer-events-auto"
-          style={{ left: '5%', top: '50%', transform: 'translateY(-50%)', maxWidth: '300px' }}
+          style={{ left: 'max(5%, 80px)', top: '50%', transform: 'translateY(-50%)', maxWidth: '300px' }}
         >
           <p 
             style={{ fontFamily: '"Playfair Display", serif', fontSize: '20px', color: '#001621', lineHeight: 1.5, marginBottom: '1.5rem' }}
