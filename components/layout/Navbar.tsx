@@ -44,7 +44,7 @@ export default function Navbar() {
         aria-label="Main navigation"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-zinc/90 backdrop-blur-md border-b border-border py-3"
+            ? "bg-zinc/90 backdrop-blur-md border-b border-obsidian py-3"
             : "bg-transparent py-5"
         }`}
       >
@@ -61,16 +61,13 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors relative ${
+                className={`nav-link text-sm font-medium transition-colors relative ${
                   activeSection === link.href.slice(1)
-                    ? "text-tangerine"
+                    ? "text-tangerine active"
                     : "text-muted hover:text-obsidian"
                 }`}
               >
                 {link.label}
-                {activeSection === link.href.slice(1) && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-tangerine rounded-full" />
-                )}
               </a>
             ))}
             <a
