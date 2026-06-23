@@ -60,7 +60,7 @@ export default function HeroSection() {
         // 4. Foreground UI
         tl.fromTo(leftContentRef.current, { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 1 }, 1.2)
           .fromTo(rightContentRef.current, { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 1 }, 1.3)
-          .to(bottomLogosRef.current, { opacity: 1, duration: 0.1 }, 1.3)
+          .set(bottomLogosRef.current, { opacity: 1 }, 1.3)
           .from(bottomLogosRef.current?.children || [], { y: 20, opacity: 0, duration: 0.8, stagger: 0.1 }, 1.4)
           
       }, containerRef)
