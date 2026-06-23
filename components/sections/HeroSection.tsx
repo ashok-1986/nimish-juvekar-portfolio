@@ -17,10 +17,12 @@ export default function HeroSection() {
 
   useEffect(() => {
     let ctx: { revert: () => void } | undefined
+    let isMounted = true
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     const init = async () => {
       const gsapMod = await import('gsap')
+      if (!isMounted) return
       const gsap = gsapMod.gsap
 
       ctx = gsap.context(() => {
@@ -64,7 +66,10 @@ export default function HeroSection() {
     }
 
     init()
-    return () => ctx?.revert()
+    return () => {
+      isMounted = false
+      ctx?.revert()
+    }
   }, [])
 
   return (
@@ -84,7 +89,7 @@ export default function HeroSection() {
       <div 
         ref={layer1Ref}
         className="absolute top-0 left-0 w-full flex justify-center pt-8 pointer-events-none select-none"
-        style={{ zIndex: 0 }}
+        style={{ zIndex: 0, opacity: 0 }}
         aria-hidden="true"
       >
         <span 
@@ -110,6 +115,7 @@ export default function HeroSection() {
         className="absolute top-[40%] md:top-1/2 left-1/2 pointer-events-none"
         style={{ 
           zIndex: 1,
+          opacity: 0,
           width: 'clamp(300px, 40vw, 600px)',
           aspectRatio: '1/1',
           transform: 'translate(-50%, -50%)',
@@ -143,6 +149,7 @@ export default function HeroSection() {
             whiteSpace: 'nowrap',
             fontWeight: 700,
             letterSpacing: '-0.02em',
+            clipPath: 'inset(100% 0% 0% 0%)',
           }}
         >
           NIMISH
@@ -153,15 +160,17 @@ export default function HeroSection() {
           LAYER 4: The Subject Portrait (z-index: 3)
           ───────────────────────────────────────────────────────────── */}
       <div 
-        className="relative md:absolute bottom-0 left-1/2 md:translate-x-[-50%] mt-[40vh] md:mt-0 w-full md:w-[600px] h-[50vh] md:h-[85vh] pointer-events-none flex justify-center items-end"
+        className="relative md:absolute bottom-0 md:left-1/2 md:translate-x-[-50%] mt-[40vh] md:mt-0 w-full md:w-[600px] h-[50vh] md:h-[85vh] pointer-events-none flex justify-center items-end"
         style={{ zIndex: 3 }}
       >
         <div 
           ref={portraitRef}
           className="relative w-full h-full max-w-[500px]"
           style={{
+            opacity: 0,
             maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
             WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+            clipPath: 'inset(100% 0% 0% 0%)',
           }}
         >
           <Image
@@ -186,7 +195,7 @@ export default function HeroSection() {
         <div 
           ref={topNavRef}
           className="flex items-center justify-between pointer-events-auto"
-          style={{ padding: '2rem 5%' }}
+          style={{ padding: '2rem 5%', opacity: 0 }}
         >
           <div className="font-serif font-bold text-lg" style={{ color: '#001621', letterSpacing: '0.05em' }}>
             ✻ NIMISH
@@ -214,12 +223,12 @@ export default function HeroSection() {
         <div 
           ref={leftContentRef}
           className="hidden md:block absolute pointer-events-auto"
-          style={{ left: 'max(5%, 80px)', top: '50%', transform: 'translateY(-50%)', maxWidth: '300px' }}
+          style={{ left: 'max(5%, 80px)', top: '50%', transform: 'translateY(-50%)', maxWidth: '300px', opacity: 0 }}
         >
           <p 
             style={{ fontFamily: '"Playfair Display", serif', fontSize: '20px', color: '#001621', lineHeight: 1.5, marginBottom: '1.5rem' }}
           >
-            Hey there! I'm a Lecturer & Global Project Manager specializing in operational strategy and applied business frameworks.
+            Hey there! I&apos;m a Lecturer & Global Project Manager specializing in operational strategy and applied business frameworks.
           </p>
           <a 
             href="#projects"
@@ -236,7 +245,7 @@ export default function HeroSection() {
         <div 
           ref={rightContentRef}
           className="hidden md:flex flex-col text-right absolute pointer-events-auto"
-          style={{ right: '5%', top: '50%', transform: 'translateY(-50%)', gap: '0.5rem' }}
+          style={{ right: '5%', top: '50%', transform: 'translateY(-50%)', gap: '0.5rem', opacity: 0 }}
         >
           <div style={{ fontFamily: '"Playfair Display", serif', fontSize: '20px', color: '#001621', opacity: 0.4 }}>Global Strategy</div>
           <div style={{ fontFamily: '"Playfair Display", serif', fontSize: '20px', color: '#001621', opacity: 0.4 }}>Intelligence-Led Business Systems</div>
@@ -248,7 +257,7 @@ export default function HeroSection() {
         <div 
           ref={bottomLogosRef}
           className="w-full flex items-center justify-evenly pointer-events-auto"
-          style={{ paddingBottom: '2rem' }}
+          style={{ paddingBottom: '2rem', opacity: 0 }}
         >
           {/* UEL */}
           <div className="group cursor-pointer transition-all duration-300 opacity-40 hover:opacity-100 hover:text-tangerine text-obsidian grayscale hover:grayscale-0">
@@ -297,7 +306,7 @@ export default function HeroSection() {
           <p 
             style={{ fontFamily: '"Playfair Display", serif', fontSize: '18px', color: '#001621', lineHeight: 1.6, marginBottom: '1.25rem' }}
           >
-            Hey there! I'm a Lecturer & Global Project Manager specializing in operational strategy and applied business frameworks.
+            Hey there! I&apos;m a Lecturer & Global Project Manager specializing in operational strategy and applied business frameworks.
           </p>
           <a 
             href="#projects"
