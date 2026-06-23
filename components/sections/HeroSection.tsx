@@ -38,8 +38,8 @@ export default function HeroSection() {
         const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
 
         // 1. Base Structure fade in
-        tl.from(topNavRef.current, { y: -20, opacity: 0, duration: 1 }, 0)
-          .from(layer1Ref.current, { opacity: 0, y: 30, duration: 1.5 }, 0.2)
+        tl.fromTo(topNavRef.current, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, 0)
+          .fromTo(layer1Ref.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.5 }, 0.2)
           .fromTo(layer2Ref.current, { opacity: 0, scale: 0.8 }, { opacity: 0.15, scale: 1, duration: 1.5 }, 0.3)
           
         // 2. Layer 3 Typography Reveal
@@ -58,8 +58,9 @@ export default function HeroSection() {
         )
 
         // 4. Foreground UI
-        tl.from(leftContentRef.current, { x: -30, opacity: 0, duration: 1 }, 1.2)
-          .from(rightContentRef.current, { x: 30, opacity: 0, duration: 1 }, 1.3)
+        tl.fromTo(leftContentRef.current, { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 1 }, 1.2)
+          .fromTo(rightContentRef.current, { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 1 }, 1.3)
+          .to(bottomLogosRef.current, { opacity: 1, duration: 0.1 }, 1.3)
           .from(bottomLogosRef.current?.children || [], { y: 20, opacity: 0, duration: 0.8, stagger: 0.1 }, 1.4)
           
       }, containerRef)
@@ -176,8 +177,9 @@ export default function HeroSection() {
             src="/images/Nimish.png"
             alt="Nimish Juvekar"
             fill
-            sizes="(max-width: 768px) 100vw, 600px"
+            sizes="(max-width: 768px) 100vw, 1200px"
             priority
+            quality={100}
             className="object-cover object-top md:object-[center_15%]"
           />
         </div>
